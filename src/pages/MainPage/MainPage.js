@@ -11,7 +11,7 @@ export const MainPage = () => {
             <h2 className={styles.description}>
                 Поминутная аренда авто твоего города
             </h2>
-            {/* Временная кнопка, потом будет сделана в ui-kit */}
+            {/* temporary button, which will be added from ui-kit */}
             <button>Забронировать</button>
         </main>
     );
