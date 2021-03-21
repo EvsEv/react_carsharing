@@ -19,21 +19,25 @@ export const MainLayout = () => {
             description:
                 "Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а также в аэропортах.",
             image: parkingImage,
+            link: "#",
         },
         {
             title: "Страховка",
             description: "Полная страховка страховка автомобиля",
             image: insuranceImage,
+            link: "#",
         },
         {
             title: "Бензин",
             description: "Полный бак на любой заправке города за наш счёт",
             image: fuelImage,
+            link: "#",
         },
         {
             title: "Обслуживание",
             description: "Автомобиль проходит еженедельное ТО",
             image: serviceImage,
+            link: "#",
         },
     ];
 

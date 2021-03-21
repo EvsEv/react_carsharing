@@ -2,6 +2,7 @@ import React from "react";
 import SlickSlider from "react-slick";
 
 import "../../assets/styles/slick-slider.sass";
+import Button from "../Button/Button";
 import styles from "./slider.module.sass";
 
 export const Slider = ({ slides }) => {
@@ -13,7 +14,7 @@ export const Slider = ({ slides }) => {
         draggable: true,
         speed: 500,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 3000,
         slidesToShow: 1,
         slidesToScroll: 1,
     };
@@ -25,13 +26,18 @@ export const Slider = ({ slides }) => {
             customPaging={() => <button></button>}
             appendDots={(dots) => <ul className="dots">{dots}</ul>}
         >
-            {slides.map((slide) => (
+            {slides.map((slide, idx) => (
                 <div key={slide.title}>
                     <div className={styles.information}>
                         <h3 className={styles.title}>{slide.title}</h3>
                         <p className={styles.description}>
                             {slide.description}
                         </p>
+                        <Button
+                            text="Подробнее"
+                            link={slide.link}
+                            style={["more", `color-${idx}`]}
+                        />
                     </div>
                     <picture className={styles.image}>
                         <img src={slide.image} />

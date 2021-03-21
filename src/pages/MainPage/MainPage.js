@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../../components/Button/Button";
 
 import styles from "./main-page.module.sass";
 
@@ -11,8 +12,7 @@ export const MainPage = () => {
             <h2 className={styles.description}>
                 Поминутная аренда авто твоего города
             </h2>
-            {/* temporary button, which will be added from ui-kit */}
-            <button>Забронировать</button>
+            <Button text="Забронировать" link="/order" />
         </main>
     );
 };

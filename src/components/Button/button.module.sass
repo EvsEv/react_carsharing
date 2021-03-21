@@ -1,0 +1,61 @@
+@import ../../assets/styles/variables
+
+.default
+  font-weight: 500
+  font-size: 18px
+  line-height: 21px
+  text-decoration: none
+  text-align: center
+  color: $white
+  width: 250px
+  height: 48px
+  padding: 15px 0 11px 0
+  margin-top: 60px
+  box-sizing: border-box
+  display: block
+  position: relative
+
+  &::before
+    content: ""
+    width: 100%
+    height: 100%
+    background: linear-gradient(90deg, $mainAccent 2.61%, $secondAccent 112.6%)
+    border-radius: 8px
+    background-blend-mode: normal
+    position: absolute
+    top: 0
+    left: 0
+    z-index: -1
+    transition: all $short ease
+
+  &:hover, &:target
+    &::before
+      filter: brightness(0.9)
+
+  &:active
+    &::before
+      filter: brightness(0.8)
+
+.more
+  width: 164px
+  margin-top: 32px
+
+  &::before
+  border-radius: 4px
+
+.color-0
+  &::before
+    background: linear-gradient(90deg, #13493F 0%, #0C7B1B 100%)
+
+
+.color-1
+  &::before
+    background: linear-gradient(90deg, #132949 0%, #0C7B67 100%)
+
+.color-2
+  &::before
+    background: linear-gradient(90deg, #493013 0%, #7B0C3B 100%)
+
+.color-3
+  &::before
+    background: linear-gradient(90deg, #281349 0%, #720C7B 100%)
