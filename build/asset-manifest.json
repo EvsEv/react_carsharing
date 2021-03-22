@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/react_carsharing/build/static/css/main.7399c049.chunk.css",
-    "main.js": "/react_carsharing/build/static/js/main.d8d2c780.chunk.js",
-    "main.js.map": "/react_carsharing/build/static/js/main.d8d2c780.chunk.js.map",
+    "main.css": "/react_carsharing/build/static/css/main.9a1936af.chunk.css",
+    "main.js": "/react_carsharing/build/static/js/main.ea21ed37.chunk.js",
+    "main.js.map": "/react_carsharing/build/static/js/main.ea21ed37.chunk.js.map",
     "runtime-main.js": "/react_carsharing/build/static/js/runtime-main.f8f67573.js",
     "runtime-main.js.map": "/react_carsharing/build/static/js/runtime-main.f8f67573.js.map",
     "static/js/2.48ddc083.chunk.js": "/react_carsharing/build/static/js/2.48ddc083.chunk.js",
@@ -10,8 +10,9 @@
     "static/js/3.2d1e97e1.chunk.js": "/react_carsharing/build/static/js/3.2d1e97e1.chunk.js",
     "static/js/3.2d1e97e1.chunk.js.map": "/react_carsharing/build/static/js/3.2d1e97e1.chunk.js.map",
     "index.html": "/react_carsharing/build/index.html",
-    "static/css/main.7399c049.chunk.css.map": "/react_carsharing/build/static/css/main.7399c049.chunk.css.map",
+    "static/css/main.9a1936af.chunk.css.map": "/react_carsharing/build/static/css/main.9a1936af.chunk.css.map",
     "static/js/2.48ddc083.chunk.js.LICENSE.txt": "/react_carsharing/build/static/js/2.48ddc083.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/react_carsharing/build/static/media/Roboto-Regular.a0a70ade.eot",
     "static/media/fuel.8da0b911.jpg": "/react_carsharing/build/static/media/fuel.8da0b911.jpg",
     "static/media/insurance.79264d84.jpg": "/react_carsharing/build/static/media/insurance.79264d84.jpg",
     "static/media/parking.ae22260d.jpg": "/react_carsharing/build/static/media/parking.ae22260d.jpg",
@@ -20,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.f8f67573.js",
     "static/js/2.48ddc083.chunk.js",
-    "static/css/main.7399c049.chunk.css",
-    "static/js/main.d8d2c780.chunk.js"
+    "static/css/main.9a1936af.chunk.css",
+    "static/js/main.ea21ed37.chunk.js"
   ]
 }
