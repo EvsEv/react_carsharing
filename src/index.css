@@ -1,5 +1,5 @@
 body {
-    font-family: "Roboto";
+    font-family: "RobotoReg";
 }
 
 body,
@@ -12,4 +12,35 @@ p {
 
 button {
     outline: none;
+}
+
+@font-face {
+    font-family: "RobotoReg";
+    font-weight: normal;
+    font-style: normal;
+    src: url("./assets/fonts/Roboto-Regular.eot");
+    src: url("./assets/fonts/Roboto-Regular.ttf") format("truetype"),
+        url("./assets/fonts/Roboto-Regular.svg") format("svg"),
+        url("./assets/fonts/Roboto-Regular.otf") format("opentype"),
+        url("./assets//fonts/Roboto-Regular.woff") format("woff");
+}
+@font-face {
+    font-family: "RobotoMed";
+    font-weight: normal;
+    font-style: normal;
+    src: url("./assets/fonts/Roboto-Medium.eot");
+    src: url("./assets/fonts/Roboto-Medium.ttf") format("truetype"),
+        url("./assets/fonts/Roboto-Medium.svg") format("svg"),
+        url("./assets/fonts/Roboto-Medium.otf") format("opentype"),
+        url("./assets//fonts/Roboto-Medium.woff") format("woff");
+}
+@font-face {
+    font-family: "RobotoLgt";
+    font-weight: 300;
+    font-style: normal;
+    src: url("./assets/fonts/Roboto-Light.eot");
+    src: url("./assets/fonts/Roboto-Light.ttf") format("truetype"),
+        url("./assets/fonts/Roboto-Light.svg") format("svg"),
+        url("./assets/fonts/Roboto-Light.otf") format("opentype"),
+        url("./assets//fonts/Roboto-Light.woff") format("woff");
 }
