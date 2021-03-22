@@ -40,7 +40,7 @@ export const Slider = ({ slides }) => {
                         />
                     </div>
                     <picture className={styles.image}>
-                        <img src={slide.image} />
+                        <img src={slide.image} alt="" />
                     </picture>
                 </div>
             ))}

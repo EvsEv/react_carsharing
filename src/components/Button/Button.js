@@ -26,13 +26,7 @@ const Button = ({ text, link, style }) => {
 Button.propTypes = {
     text: propTypes.string.isRequired,
     link: propTypes.string.isRequired,
-    style: propTypes.arrayOf([
-        "more",
-        "color-0",
-        "color-1",
-        "color-2",
-        "color-3",
-    ]),
+    style: propTypes.array,
 };
 
 export default Button;
