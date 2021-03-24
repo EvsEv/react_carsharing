@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Social } from "../Social/Social";
+import { SwitchLang } from "../SwitchLang/SwitchLang";
 
 import styles from "./menu.module.sass";
 
@@ -32,6 +33,7 @@ export const Menu = ({ isOpen, toggle }) => {
                 </ul>
             </nav>
             <Social />
+            <SwitchLang menu={true} />
         </div>
     );
 };

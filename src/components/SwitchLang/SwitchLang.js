@@ -4,14 +4,20 @@ import { switchLanguage } from "../../redux/actions";
 
 import styles from "./switch-lang.module.sass";
 
-export const SwitchLang = () => {
+export const SwitchLang = ({ menu }) => {
     const language = useSelector((state) => state.language.currentLanguage);
     const dispatch = useDispatch();
+
+    const classes = [styles.lang];
+
+    if (menu) {
+        classes.push(styles.inMenu);
+    }
 
     return (
         <button
             onClick={() => dispatch(switchLanguage())}
-            className={styles.lang}
+            className={classes.join(" ")}
         >
             {language}
         </button>

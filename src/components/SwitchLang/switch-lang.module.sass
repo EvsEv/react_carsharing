@@ -17,3 +17,20 @@
 
   &:active
     color: $mainAccent
+
+.inMenu
+  display: none
+
+@media screen and ( max-width:  $tablet)
+
+  .inMenu
+    height: 16px
+    width: 31px
+    margin-top: auto
+    padding: 0
+    display: block
+    border-radius: 0
+    &:hover
+      border: none
+    &:active
+      color: $lightGrey
