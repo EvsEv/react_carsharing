@@ -5,8 +5,7 @@ import "../../assets/styles/slick-slider.sass";
 import Button from "../Button/Button";
 import styles from "./slider.module.sass";
 
-export const Slider = ({ slides }) => {
-    console.log("testing");
+export const Slider = ({ slides, desktopOnly }) => {
     const settings = {
         dots: true,
         arrows: true,
@@ -17,6 +16,13 @@ export const Slider = ({ slides }) => {
         autoplaySpeed: 3000,
         slidesToShow: 1,
         slidesToScroll: 1,
+        responsive: desktopOnly && [
+            { breakpoint: 1023, settings: "unslick" },
+            {
+                breakpoint: 9999,
+                settings: "slick",
+            },
+        ],
     };
 
     return (

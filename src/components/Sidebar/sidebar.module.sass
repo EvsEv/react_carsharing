@@ -1,20 +1,15 @@
-@import ../../assets/styles/variables.sass
+@import ../../assets/styles/variables
 
 .sidebar
     width: 64px
+    padding: 32px 16px
+    box-sizing: border-box
     background-color: $lightBlack
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
 
-.menu
-    width: 100vw
-    height: 100vh
-    background: blue
-    display: none
-    position: absolute
-    top: 0
-    left: 0
-    z-index: 2
-    opacity: 0.8
-    transition: all 1s ease
-
-.open
-    display: block
+@media screen and ( max-width:  $tablet)
+    .sidebar
+        display: none

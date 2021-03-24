@@ -84,4 +84,12 @@
     button
       background: $mainAccent
 
+@media screen and ( max-width: $desktop )
+  .slick-arrow
+    width: 32px
+    &::after
+      left: 37%
+  .slick-prev
+    &::after
+      left: 63%
 

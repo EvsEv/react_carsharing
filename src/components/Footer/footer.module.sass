@@ -5,7 +5,6 @@
   justify-content: space-between
 
 .copyright,.phone
-  font-family: "RobotoMed"
   font-size: 13px
   line-height: 15px
 
@@ -15,3 +14,18 @@
 .phone
   color: $mainBlack
   text-decoration: none
+
+@media screen and ( max-width: $tablet )
+  .footer
+    padding: 16px
+    margin: 0 -16px -16px
+    background: $lightBlack
+    flex-direction: column-reverse
+    align-items: flex-end
+
+  .phone
+    color: $mainAccent
+
+  .copyright
+    color: $lightGrey
+    margin-top: 8px
