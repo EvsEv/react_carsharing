@@ -1,0 +1,24 @@
+@import ../../assets/styles/variables
+
+.wrapper
+  display: flex
+
+.link
+  display: inline-block
+  width: 32px
+  margin-right: 32px
+  svg
+    path
+      transition: all $short ease
+
+  &:hover
+    svg
+      path
+        fill: $mainAccent
+
+  &:last-of-type
+    margin-right: 0
+
+@media screen and ( max-width:  $desktopMin)
+  .link
+    margin-right: 24px

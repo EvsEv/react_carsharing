@@ -2,18 +2,20 @@ import React from "react";
 
 import styles from "./burger.module.sass";
 
-export const Burger = ({ isOpen, toggle }) => {
+export const Burger = ({ isOpenMenu, toggle, header }) => {
     const classes = [styles.inner];
 
-    if (isOpen) {
+    if (isOpenMenu) {
         classes.push(styles.clicked);
     }
 
+    if (header) {
+        classes.push(styles.mobile);
+    }
+
     return (
-        <div className={styles.burger} onClick={() => toggle()}>
-            <div className={classes.join(" ")}>
-                <span></span>
-            </div>
+        <div className={classes.join(" ")} onClick={() => toggle()}>
+            <span></span>
         </div>
     );
 };

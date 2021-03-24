@@ -1,20 +1,11 @@
 import React from "react";
-import { HashRouter, Route, Switch } from "react-router-dom";
-import { routes } from "../../routes";
+import { HashRouter } from "react-router-dom";
+import { MainLayout } from "../../layouts/MainLayout/MainLayout";
 
 export const App = () => {
     return (
         <HashRouter basename="/">
-            <Switch>
-                {routes.map((page) => (
-                    <Route
-                        key={page.path}
-                        exact
-                        path={page.path}
-                        render={() => page.component}
-                    />
-                ))}
-            </Switch>
+            <MainLayout />
         </HashRouter>
     );
 };

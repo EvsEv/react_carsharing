@@ -1,9 +1,11 @@
+@import ../../assets/styles/variables
+
 .body
   display: flex
 
 .content
   min-height: 100vh
-  width: calc(50% - 32px)
+  width: 100%
   padding: 32px 64px
   display: flex
   flex-direction: column
@@ -12,3 +14,20 @@
 
 .slider
   width: calc(50% - 32px)
+
+
+@media screen and (max-width: $desktop)
+  .content
+    width: 100%
+    padding: 32px
+
+  .slider
+    width: calc(410 * 100% / 1024)
+
+@media screen and ( max-width:  $desktopMin)
+  .slider
+    display: none
+
+@media screen and (max-width: $tablet)
+  .content
+    padding: 16px
