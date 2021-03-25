@@ -1,4 +1,5 @@
 @import ../../assets/styles/variables
+@import ../../assets/styles/media
 
 .footer
   display: flex
@@ -14,8 +15,11 @@
 .phone
   color: $mainBlack
   text-decoration: none
+  transition: all $short ease
+  &:hover, &:active
+    color: $mainAccent
 
-@media screen and ( max-width: $tablet )
+@include mobileDevice
   .footer
     padding: 16px
     margin: 0 -16px -16px
@@ -25,7 +29,14 @@
 
   .phone
     color: $mainAccent
+    &:hover, &:active
+      color: $lightGrey
 
   .copyright
     color: $lightGrey
     margin-top: 8px
+
+@include mobileMinDevice
+  .footer
+    flex-direction: row
+

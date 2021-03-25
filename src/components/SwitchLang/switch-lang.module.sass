@@ -1,4 +1,5 @@
 @import ../../assets/styles/variables
+@import ../../assets/styles/media
 
 .lang
   color: $mainAccent
@@ -12,6 +13,8 @@
   transition: all $short ease
 
   &:hover
+    outline: none
+    padding: 0
     color: $lightGrey
     border: 1px solid $lightGrey
 
@@ -21,16 +24,20 @@
 .inMenu
   display: none
 
-@media screen and ( max-width:  $tablet)
-
+@include mobileDevice
   .inMenu
     height: 16px
-    width: 31px
-    margin-top: auto
+    width: 25px
+    display: block
     padding: 0
+    margin-top: auto
     display: block
     border-radius: 0
     &:hover
       border: none
     &:active
       color: $lightGrey
+
+
+
+

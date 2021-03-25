@@ -1,4 +1,5 @@
 @import ../../assets/styles/variables
+@import ../../assets/styles/media
 
 .wrapper
   display: flex
@@ -19,6 +20,11 @@
   &:last-of-type
     margin-right: 0
 
-@media screen and ( max-width:  $desktopMin)
+@include tabletDevice
   .link
     margin-right: 24px
+
+@include mobileMinDevice
+  svg
+    width: 25px
+    height: 25px
