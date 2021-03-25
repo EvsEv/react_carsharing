@@ -17,7 +17,6 @@ import styles from "./main-layout.module.sass";
 export const MainLayout = () => {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const location = useLocation();
-
     useEffect(() => {
         const presingEscape = (event) => {
             if (event.key === "Escape") {

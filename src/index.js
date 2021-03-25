@@ -10,8 +10,10 @@ import { rootReducer } from "./redux/reducers/root";
 import { Provider } from "react-redux";
 
 const ReactReduxDevTools =
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__();
+    process.evn.NODE_ENV === "development"
+        ? window.__REDUX_DEVTOOLS_EXTENSION__ &&
+          window.__REDUX_DEVTOOLS_EXTENSION__()
+        : null;
 
 const store = createStore(
     rootReducer,
