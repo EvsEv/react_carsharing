@@ -1,4 +1,5 @@
 @import ../../assets/styles/variables
+@import ../../assets/styles/media
 
 .default
   font-family: "RobotoMed"
@@ -60,7 +61,7 @@
   &::before
     background: linear-gradient(90deg, #281349 0%, #720C7B 100%)
 
-@media screen and ( max-width:  $tablet)
+@include mobileDevice
   .default
     width: 100vw
     margin-top: 32px
@@ -68,3 +69,7 @@
 
     &::before
       border-radius: 0px
+
+@include mobileMinDevice
+  .default
+    margin-top: 5px

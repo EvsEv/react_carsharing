@@ -1,4 +1,5 @@
 @import ../../assets/styles/variables
+@import ../../assets/styles/media
 
 .body
   display: flex
@@ -16,7 +17,7 @@
   width: calc(50% - 32px)
 
 
-@media screen and (max-width: $desktop)
+@include desktopMinDevice
   .content
     width: 100%
     padding: 32px
@@ -24,10 +25,14 @@
   .slider
     width: calc(410 * 100% / 1024)
 
-@media screen and ( max-width:  $desktopMin)
+@include tabletDevice
   .slider
     display: none
 
-@media screen and (max-width: $tablet)
+@include mobileDevice
+  .body
+    width: 100vw
+    height: 100vh
+    overflow: hidden
   .content
     padding: 16px

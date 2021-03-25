@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, Route, Switch } from "react-router-dom";
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
@@ -17,6 +17,19 @@ import styles from "./main-layout.module.sass";
 export const MainLayout = () => {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const location = useLocation();
+
+    useEffect(() => {
+        const presingEscape = (event) => {
+            if (event.key === "Escape") {
+                setIsOpenMenu(false);
+            }
+        };
+        window.addEventListener("keydown", presingEscape);
+
+        return () => {
+            window.removeEventListener("keydown", presingEscape);
+        };
+    }, []);
 
     function toggleMenu() {
         setIsOpenMenu(!isOpenMenu);

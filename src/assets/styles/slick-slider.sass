@@ -69,20 +69,32 @@
   list-style: none
 
   button
-    width: 8px
-    height: 8px
+    width: 12px
+    height: 16px
     padding: 0
-    margin-right: 8px
+    margin-right: 2px
     display: block
     border: none
-    border-radius: 50%
-    background: $lightGrey
+    background: none
+    position: relative
     cursor: pointer
-    transition: all $medium ease
+
+    &::after
+      content: ""
+      width: 8px
+      height: 8px
+      border-radius: 50%
+      position: absolute
+      top: 25%
+      left: 50%
+      transform: translateX(-50%)
+      background: $lightGrey
+      transition: all $medium ease
 
   .slick-active
     button
-      background: $mainAccent
+      &::after
+        background: $mainAccent
 
 @media screen and ( max-width: $desktop )
   .slick-arrow

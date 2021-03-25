@@ -1,4 +1,5 @@
 @import ../../assets/styles/variables
+@import ../../assets/styles/media
 
 .menu
     width: 100vw
@@ -53,13 +54,13 @@
     &:hover
         color: $mainAccent
 
-@media screen and ( max-width:  $desktop)
+@include desktopMinDevice
     .menu
         padding-left: 97px
         &::before
             width: calc(614 * 100% / 1024)
 
-@media screen and ( max-width:  $desktopMin)
+@include tabletDevice
     .menu
         background: rgb(21, 27, 31)
 
@@ -71,7 +72,7 @@
         font-size: 28px
         line-height: 33px
 
-@media screen and ( max-width: $tablet )
+@include mobileDevice
     .menu
         padding:  80px 0 28px 22px
         justify-content: flex-start
@@ -79,3 +80,14 @@
     .link
         font-size: 22px
         line-height: 26px
+
+@include mobileMinDevice
+    .menu
+        width: 100%
+        padding-top: 55px
+    .navigation
+        padding-bottom: 20px
+    .link
+        font-size: 16px
+        line-height: 100%
+        margin-bottom: 10px
