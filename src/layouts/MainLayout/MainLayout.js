@@ -46,7 +46,6 @@ const slides = [
 export const MainLayout = () => {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const location = useLocation();
-
     useEffect(() => {
         const presingEscape = (event) => {
             if (event.key === "Escape") {
