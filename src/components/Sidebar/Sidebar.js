@@ -1,6 +1,6 @@
 import React from "react";
-import { Burger } from "../Burger/Burger";
-import { SwitchLang } from "../SwitchLang/SwitchLang";
+import Burger from "../Menu/Burger";
+import SwitchLang from "../Menu/SwitchLang";
 
 import styles from "./sidebar.module.sass";
 

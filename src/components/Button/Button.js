@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import propTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Preloader } from "../Preloader/Preloader";
+import Preloader from "../Preloader";
 
 import styles from "./button.module.sass";
 

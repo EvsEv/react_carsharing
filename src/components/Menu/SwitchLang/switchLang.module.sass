@@ -1,20 +1,21 @@
-@import ../../assets/styles/variables
-@import ../../assets/styles/media
+@import ../../../assets/styles/variables
+@import ../../../assets/styles/media
 
 .lang
   color: $mainAccent
   width: 48px
-  height: 48px
+  padding: 15.5px 0
+  transform: translateY(15.5px)
   background: none
   outline: none
   border: 1px solid transparent
   border-radius: 50%
   box-sizing: border-box
+  cursor: pointer
   transition: all $short ease
 
   &:hover
     outline: none
-    padding: 0
     color: $lightGrey
     border: 1px solid $lightGrey
 
@@ -30,6 +31,7 @@
     width: 25px
     display: block
     padding: 0
+    transform: none
     margin-top: auto
     display: block
     border-radius: 0

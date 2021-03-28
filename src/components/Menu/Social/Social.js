@@ -1,8 +1,8 @@
 import React from "react";
 
-import { ReactComponent as Telegram } from "../../assets/icons/telegram.svg";
-import { ReactComponent as Facebook } from "../../assets/icons/facebook.svg";
-import { ReactComponent as Instagram } from "../../assets/icons/instagram.svg";
+import { ReactComponent as Telegram } from "../../../assets/icons/telegram.svg";
+import { ReactComponent as Facebook } from "../../../assets/icons/facebook.svg";
+import { ReactComponent as Instagram } from "../../../assets/icons/instagram.svg";
 
 import styles from "./social.module.sass";
 
