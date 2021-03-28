@@ -5,16 +5,17 @@ import SwitchLang from "./SwitchLang";
 
 import styles from "./menu.module.sass";
 
+const links = [
+    { name: "Парковка", href: "#" },
+    { name: "Страховка", href: "#" },
+    { name: "Бензин", href: "#" },
+    { name: "Обслуживание", href: "#" },
+];
+
 export const Menu = ({ isOpen, toggle }) => {
     const classes = [styles.menu];
     if (isOpen) classes.push(styles.open);
 
-    const links = [
-        { name: "Парковка", href: "#" },
-        { name: "Страховка", href: "#" },
-        { name: "Бензин", href: "#" },
-        { name: "Обслуживание", href: "#" },
-    ];
     return (
         <div className={classes.join(" ")}>
             <nav className={styles.navigation}>
