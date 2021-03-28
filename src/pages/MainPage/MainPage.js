@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../../components/Button/Button";
+import Button from "../../components/Button";
 
-import styles from "./main-page.module.sass";
+import styles from "./mainPage.module.sass";
 
 export const MainPage = () => {
     return (
