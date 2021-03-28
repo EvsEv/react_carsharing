@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Social } from "../Social/Social";
-import { SwitchLang } from "../SwitchLang/SwitchLang";
+import Social from "./Social";
+import SwitchLang from "./SwitchLang";
 
 import styles from "./menu.module.sass";
 
@@ -10,10 +10,10 @@ export const Menu = ({ isOpen, toggle }) => {
     if (isOpen) classes.push(styles.open);
 
     const links = [
-        { name: "Парковка", href: "/parking" },
-        { name: "Страховка", href: "/insurance" },
-        { name: "Бензин", href: "/fuel" },
-        { name: "Обслуживание", href: "/service" },
+        { name: "Парковка", href: "#" },
+        { name: "Страховка", href: "#" },
+        { name: "Бензин", href: "#" },
+        { name: "Обслуживание", href: "#" },
     ];
     return (
         <div className={classes.join(" ")}>

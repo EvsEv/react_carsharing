@@ -1,9 +1,5 @@
-import { MainPage } from "../pages/MainPage/MainPage";
-import { OrderPage } from "../pages/OrderPage/OrderPage";
-import { ParkingPage } from "../pages/ParkingPage/ParkingPage";
-import { InsurancePage } from "../pages/InsurancePage/InsurancePage";
-import { FuelPage } from "../pages/FuelPage/FuelPage";
-import { ServicePage } from "../pages/ServicePage/ServicePage";
+import MainPage from "../pages/MainPage";
+import OrderPage from "../pages/OrderPage";
 
 export const routes = [
     {
@@ -13,21 +9,5 @@ export const routes = [
     {
         path: "/order",
         component: <OrderPage />,
-    },
-    {
-        path: "/parking",
-        component: <ParkingPage />,
-    },
-    {
-        path: "/insurance",
-        component: <InsurancePage />,
-    },
-    {
-        path: "/fuel",
-        component: <FuelPage />,
-    },
-    {
-        path: "/service",
-        component: <ServicePage />,
     },
 ];

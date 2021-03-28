@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { switchLanguage } from "../../redux/actions";
+import { switchLanguage } from "../../../redux/actions";
 
-import styles from "./switch-lang.module.sass";
+import styles from "./switchLang.module.sass";
 
 export const SwitchLang = ({ menu }) => {
     const language = useSelector((state) => state.language.currentLanguage);

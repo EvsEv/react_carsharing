@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Route, Switch } from "react-router-dom";
-import { Footer } from "../../components/Footer/Footer";
-import { Header } from "../../components/Header/Header";
-import { Sidebar } from "../../components/Sidebar/Sidebar";
-import { Menu } from "../../components/Menu/Menu";
-import { Slider } from "../../components/Slider/Slider";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import Sidebar from "../../components/Sidebar";
+import Menu from "../../components/Menu";
+import Slider from "../../components/Slider";
 import { routes } from "../../routes";
 
 import parkingImage from "../../assets/images/slider/parking.jpg";
@@ -12,7 +12,7 @@ import insuranceImage from "../../assets/images/slider/insurance.jpg";
 import fuelImage from "../../assets/images/slider/fuel.jpg";
 import serviceImage from "../../assets/images/slider/service.jpg";
 
-import styles from "./main-layout.module.sass";
+import styles from "./mainLayout.module.sass";
 
 export const MainLayout = () => {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
