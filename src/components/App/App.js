@@ -1,11 +1,13 @@
 import React from "react";
-import { HashRouter } from "react-router-dom";
-import { MainLayout } from "../../layouts/MainLayout/MainLayout";
+import { HashRouter, Route } from "react-router-dom";
+import MainLayout from "../../layouts/MainLayout";
+import OrderLayout from "../../layouts/OrderLayout";
 
 export const App = () => {
     return (
         <HashRouter basename="/">
-            <MainLayout />
+            <Route exact path="/" render={() => <MainLayout />} />
+            <Route path="/order" render={() => <OrderLayout />} />
         </HashRouter>
     );
 };

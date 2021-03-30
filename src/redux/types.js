@@ -1,1 +1,4 @@
+export const CURRENT_CITY = "CURRENT_CITY";
+export const CHOOSING_POINT = "CHOOSING_POINT";
 export const SWITCH_LANGUAGE = "SWITCH_LANGUAGE";
+export const ADD_LOCATION = "ADD_LOCATION";

@@ -10,7 +10,7 @@ import { rootReducer } from "./redux/reducers/root";
 import { Provider } from "react-redux";
 
 const ReactReduxDevTools =
-    process.evn.NODE_ENV === "development"
+    process.env.NODE_ENV === "development"
         ? window.__REDUX_DEVTOOLS_EXTENSION__ &&
           window.__REDUX_DEVTOOLS_EXTENSION__()
         : null;
