@@ -15,6 +15,10 @@
   box-sizing: border-box
   display: block
   position: relative
+  outline: none
+  border: none
+  cursor: pointer
+  background: none
 
   &::before
     content: ""
@@ -29,13 +33,22 @@
     z-index: -1
     transition: all $short ease
 
-  &:hover, &:target
+  &:hover
     &::before
       filter: brightness(0.9)
 
   &:active
     &::before
       filter: brightness(0.8)
+
+  &:disabled
+    &::before
+      background: $lightGrey
+      filter: none
+
+  &:hover:disabled
+    &::before
+      filter: none
 
 .more
   width: 164px
@@ -60,6 +73,12 @@
 .color-3
   &::before
     background: linear-gradient(90deg, #281349 0%, #720C7B 100%)
+
+
+.wide
+  font-size: 17px
+  line-height: 21px
+  width: 100%
 
 @include mobileDevice
   .default

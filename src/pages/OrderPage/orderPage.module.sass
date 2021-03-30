@@ -1,0 +1,67 @@
+@import ../../assets/styles/variables
+
+.main
+  margin-top: 40px
+  display: flex
+  flex-direction: column
+  flex-grow: 1
+
+.breadcrumbs
+  padding: 0
+  margin: 0
+  display: flex
+  list-style: none
+  // &::before, &::after
+  //   content: ""
+  //   width: 100vw
+  //   height: 10px
+  //   background: black
+  //   position: absolute
+  //   left: 0
+  // &::after
+  //   bottom: 0
+
+  &__item
+    margin-right: 38px
+    position: relative
+
+    &::after
+      content: ""
+      width: 0px
+      height: 0px
+      border: 4px solid transparent
+      border-right-width: 0px
+      border-left: 6px solid $darkGrey
+      position: absolute
+      top: 50%
+      right: -22px
+      transform: translateY(-50%)
+
+    &:last-of-type
+      margin-right: 0
+      &::after
+        display: none
+
+  &__button
+    font-family: "RobotoReg"
+    font-size: 14px
+    font-weight: bold
+    line-height: 16px
+    color: $mainAccent
+    padding: 0
+    background: none
+    outline: none
+    border: none
+    &:disabled
+      color: $darkGrey
+
+.wrapper
+  display: flex
+  justify-content: space-between
+  flex-grow: 1
+
+.stage
+  width: calc(736 * 100% / 1248)
+  padding-top: 39px
+  padding-right: calc(192 * 100% / 1248)
+  border-right: 1px solid $lightGrey

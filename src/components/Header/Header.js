@@ -1,11 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import Burger from "../Menu/Burger";
 
 import styles from "./header.module.sass";
 
-export const Header = ({ toggleMenu, isOpenMenu }) => {
+export const Header = ({ isOpenMenu, toggleMenu }) => {
+    const currentCity = useSelector((state) => state.location.currentCity);
     return (
         <header className={styles.header}>
             <Burger isOpenMenu={isOpenMenu} toggle={toggleMenu} header={true} />
@@ -39,7 +41,7 @@ export const Header = ({ toggleMenu, isOpenMenu }) => {
                             strokeLinejoin="round"
                         />
                     </svg>
-                    <p className={styles.city}>Ульяновск</p>
+                    <p className={styles.city}>{currentCity}</p>
                 </div>
             </div>
         </header>
