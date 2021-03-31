@@ -1,4 +1,5 @@
 @import ../../assets/styles/variables
+@import ../../assets/styles/media
 
 .check
   width: calc(287 * 100% / 1248)
@@ -28,3 +29,25 @@
   text-align: end
   span
     display: block
+
+@include desktopMinDevice
+  .check
+    width: 35%
+    padding-left: 5%
+
+@include tabletDevice
+  .check
+    width: 100%
+    padding-left: 0
+    padding-bottom: 64px
+  .dots
+    width: 300px
+
+@include mobileDevice
+  .check
+    padding-top: 20px
+    padding-bottom: 20px
+  .title
+    display: none
+  .parameter
+    display: none
