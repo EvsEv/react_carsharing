@@ -1,17 +1,17 @@
-import { CHOOSING_POINT, CURRENT_CITY } from "../types";
+import { SET_SELECTED_CITY, SET_SELECTED_POINT } from "../types";
 
 const initialState = {
-    currentCity: "Ульяновск",
-    choosingPoint: "Нариманова, 42",
-    loading: false,
+    geolocation: "Ульяновск",
+    selectedCity: "Ульяновск",
+    selectedPoint: "",
 };
 
 export const location = (state = initialState, action) => {
     switch (action.type) {
-        case CURRENT_CITY:
-            return { ...state, currentCity: action.payload };
-        case CHOOSING_POINT:
-            return { ...state, choosingPoint: action.payload };
+        case SET_SELECTED_CITY:
+            return { ...state, selectedCity: action.payload };
+        case SET_SELECTED_POINT:
+            return { ...state, selectedPoint: action.payload };
         default:
             return state;
     }

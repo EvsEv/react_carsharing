@@ -1,0 +1,28 @@
+@import ../../../assets/styles/variables
+@import ../../../assets/styles/media
+
+.parameter
+  display: flex
+  justify-content: space-between
+  align-items: flex-end
+  margin-top: 16px
+.name
+  font-family: "RobotoLgt"
+  color: $mainBlack
+
+
+.dots
+  width: 33%
+  border-bottom: 1px dotted $darkGrey
+
+.value
+  font-family: "RobotoLgt"
+  color: $darkGrey
+  text-align: end
+  span
+    display: block
+
+@include tabletDevice
+  .value
+    span
+      display: inline
