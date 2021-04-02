@@ -1,8 +1,11 @@
 import {
-    ADD_LOCATION,
-    CHANGE_STAGE,
-    CHOOSING_POINT,
-    CURRENT_CITY,
+    CHANGE_CHOOSING_FILTER,
+    CHANGE_COMPLETED_STAGE,
+    CHANGE_CURRENT_STAGE,
+    FILTER_MODELS,
+    SELECT_MODEL,
+    SET_SELECTED_CITY,
+    SET_SELECTED_POINT,
     SWITCH_LANGUAGE,
 } from "./types";
 
@@ -14,35 +17,47 @@ export function switchLanguage() {
     };
 }
 
-export function choosingPoint(value) {
+export function changeCurrentStage(stage) {
     return (dispatch) => {
-        dispatch({ type: CHOOSING_POINT, payload: value });
+        dispatch({ type: CHANGE_CURRENT_STAGE, payload: stage });
     };
 }
 
-export function selectCity(value) {
+export function setSelectedCity(city) {
     return (dispatch) => {
-        dispatch({ type: CURRENT_CITY, payload: value });
+        dispatch({ type: SET_SELECTED_CITY, payload: city });
     };
 }
 
-export function addLocation(city, point) {
+export function setSelectedPoint(point) {
     return (dispatch) => {
-        dispatch({ type: ADD_LOCATION, payload: { city, point } });
+        dispatch({ type: SET_SELECTED_POINT, payload: point });
     };
 }
 
-export function changeStage(stage) {
+export function changeCompletedStage(stage) {
+    return (dispatch) => {
+        dispatch({ type: CHANGE_COMPLETED_STAGE, payload: stage });
+    };
+}
+
+export function filterModels(filter) {
     return (dispatch, getState) => {
-        const order = getState().order;
-        switch (stage) {
-            case 1:
-                order.model = "";
-                break;
+        const modelState = getState().model;
+        modelState.choosingFilter = filter;
+        let filteredModels =
+            modelState.choosingFilter === "All"
+                ? modelState.allModels
+                : modelState.allModels.filter(
+                      (model) =>
+                          model.categoryId.name === modelState.choosingFilter
+                  );
+        dispatch({ type: FILTER_MODELS, payload: filteredModels });
+    };
+}
 
-            default:
-                break;
-        }
-        dispatch({ type: CHANGE_STAGE, payload: stage });
+export function selectModel(model) {
+    return (dispatch) => {
+        dispatch({ type: SELECT_MODEL, payload: model });
     };
 }
