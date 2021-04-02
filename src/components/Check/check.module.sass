@@ -6,29 +6,13 @@
   padding-top: 39px
   padding-left: calc(32 * 100% / 1248)
 
-.parameter
-  display: flex
-  justify-content: space-between
-  align-items: flex-end
+
 
 .title
   text-align: end
   margin-bottom: 26px
 
-.dots
-  width: 60px
-  border-bottom: 1px dotted $darkGrey
 
-.name
-  font-family: "RobotoLgt"
-  color: $mainBlack
-
-.value
-  font-family: "RobotoLgt"
-  color: $darkGrey
-  text-align: end
-  span
-    display: block
 
 @include desktopMinDevice
   .check
@@ -40,6 +24,7 @@
     width: 100%
     padding-left: 0
     padding-bottom: 64px
+    flex-grow: 2
   .dots
     width: 300px
 

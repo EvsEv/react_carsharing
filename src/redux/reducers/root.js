@@ -2,6 +2,12 @@ import { combineReducers } from "redux";
 
 import { language } from "./language";
 import { location } from "./location";
-import { order } from "./order";
+import { model } from "./model";
+import { stage } from "./stage";
 
-export const rootReducer = combineReducers({ language, location, order });
+export const rootReducer = combineReducers({
+    language,
+    location,
+    model,
+    stage,
+});

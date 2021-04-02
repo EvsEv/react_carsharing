@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./location.module.sass";
 
 import mapImage from "../../assets/images/mapImage.jpg";
-import { choosingPoint, selectCity } from "../../redux/actions";
+import { setSelectedCity, setSelectedPoint } from "../../redux/actions";
 
 export const Location = () => {
     const location = useSelector((state) => state.location);
     const dispatch = useDispatch();
+
     const inputCity = useRef();
     const inputPoint = useRef();
+
     return (
         <div>
             <form className={styles.inputData}>
@@ -19,14 +21,19 @@ export const Location = () => {
                         id="currentCity"
                         type="text"
                         placeholder="Выберите город"
-                        value={location.currentCity}
                         ref={inputCity}
-                        onChange={(e) => dispatch(selectCity(e.target.value))}
+                        defaultValue={location.geolocation}
+                        onChange={(e) =>
+                            dispatch(setSelectedCity(e.target.value))
+                        }
                     />
                     <label htmlFor="currentCity">Город </label>
                     <span
                         className={styles.close}
-                        onClick={() => dispatch(selectCity(""))}
+                        onClick={() => {
+                            dispatch(setSelectedCity(""));
+                            inputCity.current.value = "";
+                        }}
                     ></span>
                 </div>
                 <div className={styles.select}>
@@ -35,15 +42,15 @@ export const Location = () => {
                         type="text"
                         placeholder="Начните вводить пункт"
                         ref={inputPoint}
-                        value={location.choosingPoint}
+                        value={location.selectedPoint}
                         onChange={(e) =>
-                            dispatch(choosingPoint(e.target.value))
+                            dispatch(setSelectedPoint(e.target.value))
                         }
                     />
                     <label htmlFor="pickUpPoint">Пункт выдачи </label>
                     <span
                         className={styles.close}
-                        onClick={() => dispatch(choosingPoint(""))}
+                        onClick={() => dispatch(setSelectedPoint(""))}
                     ></span>
                 </div>
             </form>

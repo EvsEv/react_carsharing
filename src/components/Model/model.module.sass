@@ -1,0 +1,70 @@
+@import ../../assets/styles/variables
+
+.model
+  height: 100%
+  display: flex
+  flex-direction: column
+  position: relative
+
+.select
+  display: flex
+
+.parameter
+  margin-right: 16px
+  &:last-of-type
+    margin-right: 0
+
+.radio
+  display: none
+
+.label
+  font-family: "RobotoLgt"
+  color: $darkGrey
+  padding-left: 20px
+  position: relative
+  cursor: pointer
+  transition: all $short ease
+
+  &::before, &::after
+    content: ""
+    width: 12px
+    height: 12px
+    border-radius: 50%
+    background: $mainAccent
+    box-sizing: border-box
+    position: absolute
+    top: 50%
+    left: 0
+    transform: translateY(-50%)
+
+  &::after
+    background: $white
+    transition: all $short ease
+
+.radio:checked ~ .label
+  color: $mainBlack
+  &::after
+    transform: translateY(-50%) scale(0.5)
+
+.wrapper
+  display: flex
+  align-content: baseline
+  flex-wrap: wrap
+  flex-grow: 1
+  position: absolute
+  top: 48px
+  left: 0
+  right: 0
+  bottom: 0
+  overflow: auto
+
+.item
+  width: 50%
+  height: 224px
+  box-sizing: border-box
+  border: 1px solid $lightGrey
+
+  &:target
+    border-color: $mainAccent
+
+
