@@ -7,7 +7,7 @@ import { changeCurrentStage } from "../../redux/actions";
 
 import styles from "./orderPage.module.sass";
 
-const breadcrumbs = ["Местоположение", "Модель", "Дополнительно", "Итого"];
+const stages = ["Местоположение", "Модель", "Дополнительно", "Итого"];
 
 export const OrderPage = () => {
     const stage = useSelector((state) => state.stage);
@@ -26,23 +26,27 @@ export const OrderPage = () => {
     return (
         <main className={styles.main}>
             <ul className={styles.breadcrumbs}>
-                {breadcrumbs.map((item, idx) => (
-                    <li className={styles.item} key={idx}>
-                        <button
-                            className={
-                                idx + 1 === stage.currentStage
-                                    ? [styles.button, styles.selected].join(" ")
-                                    : styles.button
-                            }
-                            disabled={idx > stage.completedStage}
-                            onClick={() =>
-                                dispatch(changeCurrentStage(idx + 1))
-                            }
-                        >
-                            {item}
-                        </button>
-                    </li>
-                ))}
+                <div className={styles.container}>
+                    {stages.map((item, idx) => (
+                        <li className={styles.item} key={idx}>
+                            <button
+                                className={
+                                    idx + 1 === stage.currentStage
+                                        ? [styles.button, styles.selected].join(
+                                              " "
+                                          )
+                                        : styles.button
+                                }
+                                disabled={idx > stage.completedStage}
+                                onClick={() =>
+                                    dispatch(changeCurrentStage(idx + 1))
+                                }
+                            >
+                                {item}
+                            </button>
+                        </li>
+                    ))}
+                </div>
             </ul>
             <div className={styles.wrapper}>
                 <div className={styles.stage}>{printStage()}</div>

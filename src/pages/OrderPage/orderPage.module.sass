@@ -7,22 +7,24 @@
   flex-direction: column
   flex-grow: 1
 
+
+.container
+  line-height: 0
+  max-width: $desktopMaxWidth
+  padding: 0 $defaultPadding * 2
+  box-sizing: border-box
+  margin: 0 auto
+  display: flex
+  flex-wrap: wrap
+
+
+
 .breadcrumbs
   padding: 0
   margin: 0
-  display: flex
-  flex-wrap: wrap
   list-style: none
-  // &::before, &::after
-  //   content: ""
-  //   width: 100vw
-  //   height: 10px
-  //   background: black
-  //   position: absolute
-  //   left: 0
-  // &::after
-  //   bottom: 0
-
+  border-top: 1px solid $lightGrey
+  border-bottom: 1px solid $lightGrey
 .item
   margin-right: 38px
   position: relative
@@ -49,7 +51,7 @@
   font-weight: bold
   line-height: 16px
   color: $mainBlack
-  padding: 0
+  padding: 8px 0
   background: none
   outline: none
   border: none
@@ -60,6 +62,11 @@
     cursor: default
 
 .wrapper
+  max-width: $desktopMaxWidth
+  width: $desktopMaxWidth
+  padding: 0 $defaultPadding * 2
+  margin: 0 auto
+  box-sizing: border-box
   display: flex
   justify-content: space-between
   flex-grow: 1
@@ -74,33 +81,28 @@
 .selected
   color: $mainAccent
 
-
 @include desktopMinDevice
-  .stage
-    width: 55%
-    padding-right: 5%
+  .wrapper, .container
+    margin: 0
+    width: 100%
+    padding: 0 $defaultPadding 0
+    justify-content: flex-start
 
 @include tabletDevice
   .wrapper
+    display: flex
     flex-direction: column
-    justify-content: space-between
   .stage
     width: 100%
     padding-right: 0
-    flex-grow: 4
     border: none
 
 @include mobileDevice
-  .main
-    margin-top: 30px
-  .wrapper
-    justify-content: flex-start
-  .breadcrumbs
-    &__item
-      margin-right: 20px
-      &::after
-        display: none
-    &__button
-      font-size: 10px
-  .stage
-    padding-top: 20px
+  .container, .wrapper
+    padding: 0 $defaultPadding /2 0
+  .item
+    margin-right: 10px
+    &::after
+      display: none
+  .button
+    font-size: 11px
