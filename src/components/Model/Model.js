@@ -1,11 +1,13 @@
 import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterModels, selectModel } from "../../redux/actions";
+import CarCard from "./CarCard";
 
 import styles from "./model.module.sass";
 
 export const Model = () => {
     const model = useSelector((state) => state.model);
+    const filteredModels = model.filteredModels;
     const dispatch = useDispatch();
 
     const filterByCategory = (e) => {
@@ -17,16 +19,20 @@ export const Model = () => {
     }, []);
 
     const printModels = useMemo(() => {
-        return model.filteredModels.map((item, idx) => (
-            <div
-                key={idx}
-                className={styles.item}
-                onClick={() => dispatch(selectModel(item))}
-            >
-                {item.name}
-            </div>
-        ));
-    }, [model.filteredModels]);
+        return filteredModels.map((car) => <CarCard key={car.id} />);
+    }, [filteredModels]);
+
+    // const printModels = useMemo(() => {
+    //     return model.filteredModels.map((item, idx) => (
+    //         <div
+    //             key={idx}
+    //             className={styles.item}
+    //             onClick={() => dispatch(selectModel(item))}
+    //         >
+    //             {item.name}
+    //         </div>
+    //     ));
+    // }, [model.filteredModels]);
 
     return (
         <div className={styles.model}>
