@@ -18,6 +18,9 @@ export default function useMenu() {
 
     function toggleMenu() {
         setIsOpenMenu(!isOpenMenu);
+        !isOpenMenu
+            ? (document.body.style.overflow = "hidden")
+            : (document.body.style.overflow = null);
     }
 
     return [isOpenMenu, toggleMenu];

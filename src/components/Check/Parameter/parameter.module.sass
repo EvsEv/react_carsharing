@@ -22,7 +22,6 @@
   span
     display: block
 
-@include tabletDevice
-  .value
-    span
-      display: inline
+@include mobileDevice
+  .value, .name
+    font-size: 12px

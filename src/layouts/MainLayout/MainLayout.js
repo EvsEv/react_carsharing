@@ -12,7 +12,7 @@ import insuranceImage from "../../assets/images/slider/insurance.jpg";
 import fuelImage from "../../assets/images/slider/fuel.jpg";
 import serviceImage from "../../assets/images/slider/service.jpg";
 
-import styles from "../layout.module.sass";
+import styles from "./mainLayout.module.sass";
 const slides = [
     {
         title: "Бесплатная парковка",
