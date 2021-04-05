@@ -4,8 +4,8 @@ const initialState = {
     allModels: [
         {
             id: 1,
-            priceMax: 120000,
-            priceMin: 250000,
+            priceMax: 12000,
+            priceMin: 25000,
             name: "ELANTRA",
             thumbnail: {},
             description: "string",
@@ -14,8 +14,8 @@ const initialState = {
         },
         {
             id: 2,
-            priceMax: 100000,
-            priceMin: 320000,
+            priceMax: 10000,
+            priceMin: 32000,
             name: "i30 N",
             thumbnail: {},
             description: "string",
@@ -24,8 +24,8 @@ const initialState = {
         },
         {
             id: 3,
-            priceMax: 120000,
-            priceMin: 250000,
+            priceMax: 12000,
+            priceMin: 25000,
             name: "Test",
             thumbnail: {},
             description: "string",
@@ -34,8 +34,8 @@ const initialState = {
         },
         {
             id: 4,
-            priceMax: 120000,
-            priceMin: 250000,
+            priceMax: 12000,
+            priceMin: 25000,
             name: "abc",
             thumbnail: {},
             description: "string",
@@ -44,8 +44,8 @@ const initialState = {
         },
         {
             id: 5,
-            priceMax: 100000,
-            priceMin: 320000,
+            priceMax: 10000,
+            priceMin: 32000,
             name: "ssss",
             thumbnail: {},
             description: "string",
@@ -54,8 +54,8 @@ const initialState = {
         },
         {
             id: 6,
-            priceMax: 120000,
-            priceMin: 250000,
+            priceMax: 12000,
+            priceMin: 25000,
             name: "n1",
             thumbnail: {},
             description: "string",
@@ -64,8 +64,8 @@ const initialState = {
         },
         {
             id: 7,
-            priceMax: 120000,
-            priceMin: 250000,
+            priceMax: 12000,
+            priceMin: 25000,
             name: "v3",
             thumbnail: {},
             description: "string",
@@ -74,8 +74,8 @@ const initialState = {
         },
         {
             id: 8,
-            priceMax: 100000,
-            priceMin: 320000,
+            priceMax: 10000,
+            priceMin: 32000,
             name: "Test01",
             thumbnail: {},
             description: "string",
@@ -84,8 +84,8 @@ const initialState = {
         },
         {
             id: 9,
-            priceMax: 120000,
-            priceMin: 250000,
+            priceMax: 12000,
+            priceMin: 25000,
             name: "testing",
             thumbnail: {},
             description: "string",
