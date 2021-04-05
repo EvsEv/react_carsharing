@@ -6,8 +6,15 @@ import Burger from "../Menu/Burger";
 
 import styles from "./header.module.sass";
 
-export const Header = ({ isOpenMenu, toggleMenu }) => {
+export const Header = ({ isOpenMenu, toggleMenu, order }) => {
     const location = useSelector((state) => state.location);
+
+    const classesForLocation = [styles.location];
+
+    if (order) {
+        classesForLocation.push(styles.locationOrder);
+    }
+
     return (
         <header className={styles.header}>
             <Burger isOpenMenu={isOpenMenu} toggle={toggleMenu} header={true} />
@@ -17,7 +24,7 @@ export const Header = ({ isOpenMenu, toggleMenu }) => {
                         Need for drive
                     </Link>
                 </h4>
-                <div className={styles.location}>
+                <div className={classesForLocation.join(" ")}>
                     <svg
                         width="18"
                         height="20"

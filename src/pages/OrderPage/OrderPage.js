@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Scrollbars from "react-custom-scrollbars";
 import { useDispatch, useSelector } from "react-redux";
 import Check from "../../components/Check";
 import Location from "../../components/Location";
@@ -48,10 +49,12 @@ export const OrderPage = () => {
                     ))}
                 </div>
             </ul>
-            <div className={styles.wrapper}>
-                <div className={styles.stage}>{printStage()}</div>
-                <Check />
-            </div>
+            <Scrollbars className={styles.scroll}>
+                <div className={styles.wrapper}>
+                    <div className={styles.stage}>{printStage()}</div>
+                    <Check />
+                </div>
+            </Scrollbars>
         </main>
     );
 };

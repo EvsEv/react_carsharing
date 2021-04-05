@@ -1,0 +1,35 @@
+@import ../../../assets/styles/variables
+@import ../../../assets/styles/media
+
+.item
+  width: 50%
+  height: 0px
+  padding: 16px
+  padding-bottom: calc(204 * 100% / 736)
+  box-sizing: border-box
+  border: 1px solid $lightGrey
+  cursor: pointer
+  transition: all $momentary ease
+
+.selected
+  border: 1px solid $mainAccent
+
+
+.name
+  font-size: 18px
+  line-height: 21px
+  color: $mainBlack
+  text-transform: uppercase
+
+.price
+  font-size: 14px
+  line-height: 16px
+  color: $darkGrey
+
+@include mobileDevice
+  .name
+    font-size: 11px
+    line-height: 1
+  .price
+    font-size: 11px
+    line-height: 14px

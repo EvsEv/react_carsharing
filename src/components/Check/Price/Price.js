@@ -16,8 +16,8 @@ export const Price = () => {
             return <span>Выберите модель</span>;
         }
 
-        return `от ${model.choosingModel.priceMin} до 
-        ${model.choosingModel.priceMax} ₽`;
+        return `от ${model.choosingModel.priceMin.toLocaleString("ru")} до 
+        ${model.choosingModel.priceMax.toLocaleString("ru")} ₽`;
     };
 
     if (stage.completedStage > 0) {
