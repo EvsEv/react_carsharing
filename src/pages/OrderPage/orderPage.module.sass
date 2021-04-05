@@ -81,6 +81,11 @@
 .selected
   color: $mainAccent
 
+
+.scroll
+  > div
+    display: flex
+
 @include desktopMinDevice
   .wrapper, .container
     margin: 0
@@ -100,6 +105,8 @@
 @include mobileDevice
   .container, .wrapper
     padding: 0 $defaultPadding /2 0
+  .stage
+    padding-top: 20px
   .item
     margin-right: 10px
     &::after

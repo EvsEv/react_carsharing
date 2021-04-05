@@ -15,7 +15,11 @@ export const OrderLayout = () => {
             <Sidebar toggleMenu={toggleMenu} isOpenMenu={isOpenMenu} />
             <section className={styles.content}>
                 <div className={styles.container}>
-                    <Header toggleMenu={toggleMenu} isOpenMenu={isOpenMenu} />
+                    <Header
+                        toggleMenu={toggleMenu}
+                        isOpenMenu={isOpenMenu}
+                        order={true}
+                    />
                 </div>
                 <OrderPage />
             </section>

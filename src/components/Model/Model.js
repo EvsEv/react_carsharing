@@ -1,15 +1,29 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import Scrollbars from "react-custom-scrollbars";
+import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { filterModels, selectModel } from "../../redux/actions";
+import CarCard from "./CarCard";
 
 import styles from "./model.module.sass";
 
+const carsPerPage = 4;
+
 export const Model = () => {
     const model = useSelector((state) => state.model);
+    const filteredModels = model.filteredModels;
     const dispatch = useDispatch();
+    const [pageNumber, setPageNumber] = useState(0);
+    const pageVisited = pageNumber * carsPerPage;
+    const pageCount = Math.ceil(filteredModels.length / carsPerPage);
 
     const filterByCategory = (e) => {
+        setPageNumber(0);
         dispatch(filterModels(e.target.value));
+    };
+
+    const changePage = ({ selected }) => {
+        setPageNumber(selected);
     };
 
     useEffect(() => {
@@ -17,16 +31,14 @@ export const Model = () => {
     }, []);
 
     const printModels = useMemo(() => {
-        return model.filteredModels.map((item, idx) => (
-            <div
-                key={idx}
-                className={styles.item}
-                onClick={() => dispatch(selectModel(item))}
-            >
-                {item.name}
-            </div>
-        ));
-    }, [model.filteredModels]);
+        return filteredModels.map((car) => <CarCard key={car.id} car={car} />);
+    }, [filteredModels]);
+
+    const printModelsWithPaginate = () => {
+        return filteredModels
+            .slice(pageVisited, pageVisited + carsPerPage)
+            .map((car) => <CarCard key={car.id} car={car} />);
+    };
 
     return (
         <div className={styles.model}>
@@ -74,7 +86,25 @@ export const Model = () => {
                     </label>
                 </div>
             </form>
-            <section className={styles.wrapper}>{printModels}</section>
+            <Scrollbars className={styles.scroll}>
+                <section className={styles.wrapper}>{printModels}</section>
+            </Scrollbars>
+            <section
+                className={[styles.wrapper, styles.withPaginate].join(" ")}
+            >
+                {printModelsWithPaginate()}
+                <ReactPaginate
+                    previousLabel=""
+                    nextLabel=""
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={styles.paginationNav}
+                    previousLinkClassName={styles.prev}
+                    nextLinkClassName={styles.next}
+                    disabledClassName={styles.disabled}
+                    activeClassName={styles.pageActive}
+                />
+            </section>
         </div>
     );
 };
