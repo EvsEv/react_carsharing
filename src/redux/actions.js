@@ -3,6 +3,7 @@ import {
     CHANGE_COMPLETED_STAGE,
     CHANGE_CURRENT_STAGE,
     FILTER_MODELS,
+    SELECT_COLOR,
     SELECT_MODEL,
     SET_SELECTED_CITY,
     SET_SELECTED_POINT,
@@ -57,7 +58,14 @@ export function filterModels(filter) {
 }
 
 export function selectModel(model) {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        getState().additionalParams.colors = model.colors;
         dispatch({ type: SELECT_MODEL, payload: model });
+    };
+}
+
+export function selectColor(color) {
+    return (dispatch) => {
+        dispatch({ type: SELECT_COLOR, payload: color });
     };
 }

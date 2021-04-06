@@ -5,19 +5,16 @@ import styles from "./price.module.sass";
 
 export const Price = () => {
     const stage = useSelector((state) => state.stage);
-    const model = useSelector((state) => state.model);
+    const order = useSelector((state) => state.order);
 
     const priceValue = () => {
-        console.log(model.choosingModel);
-        if (
-            stage.completedStage === 1 &&
-            !Object.keys(model.choosingModel).length
-        ) {
+        console.log(order.model);
+        if (stage.completedStage === 1 && !Object.keys(order.model).length) {
             return <span>Выберите модель</span>;
         }
 
-        return `от ${model.choosingModel.priceMin.toLocaleString("ru")} до 
-        ${model.choosingModel.priceMax.toLocaleString("ru")} ₽`;
+        return `от ${order.model.priceMin.toLocaleString("ru")} до 
+        ${order.model.priceMax.toLocaleString("ru")} ₽`;
     };
 
     if (stage.completedStage > 0) {

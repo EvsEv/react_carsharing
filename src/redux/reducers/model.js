@@ -95,15 +95,12 @@ const initialState = {
     ],
     choosingFilter: "All",
     filteredModels: [],
-    choosingModel: {},
 };
 
 export const model = (state = initialState, action) => {
     switch (action.type) {
         case FILTER_MODELS:
             return { ...state, filteredModels: action.payload };
-        case SELECT_MODEL:
-            return { ...state, choosingModel: action.payload };
         default:
             return state;
     }
