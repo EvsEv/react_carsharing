@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import styles from "./leaseTerm.module.sass";
-import stylesParameter from "../detail.module.sass";
 import useCurrentDate from "../../../assets/scripts/useCurrentDate";
 import { useDispatch, useSelector } from "react-redux";
 import { setDateFrom, setDateTo } from "../../../redux/actions";
@@ -42,8 +41,7 @@ export const LeaseTerm = () => {
     };
 
     return (
-        <div className={[stylesParameter.param, styles.param].join(" ")}>
-            <h3 className={stylesParameter.title}>Дата аренды</h3>
+        <>
             <div className={styles.date}>
                 <span className={styles.text}>С</span>
                 <div className={styles.dateField}>
@@ -91,6 +89,6 @@ export const LeaseTerm = () => {
                     ></span>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
