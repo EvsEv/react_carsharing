@@ -3,7 +3,10 @@ import {
     CHANGE_COMPLETED_STAGE,
     CHANGE_CURRENT_STAGE,
     FILTER_MODELS,
+    SELECT_COLOR,
     SELECT_MODEL,
+    SET_DATE_FROM,
+    SET_DATE_TO,
     SET_SELECTED_CITY,
     SET_SELECTED_POINT,
     SWITCH_LANGUAGE,
@@ -57,7 +60,26 @@ export function filterModels(filter) {
 }
 
 export function selectModel(model) {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        getState().additionalParams.colors = model.colors;
         dispatch({ type: SELECT_MODEL, payload: model });
+    };
+}
+
+export function selectColor(color) {
+    return (dispatch) => {
+        dispatch({ type: SELECT_COLOR, payload: color });
+    };
+}
+
+export function setDateFrom(dateFrom) {
+    return (dispatch) => {
+        dispatch({ type: SET_DATE_FROM, payload: dateFrom });
+    };
+}
+
+export function setDateTo(dateTo) {
+    return (dispatch) => {
+        dispatch({ type: SET_DATE_TO, payload: dateTo });
     };
 }

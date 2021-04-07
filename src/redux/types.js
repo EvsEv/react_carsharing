@@ -8,3 +8,7 @@ export const SET_SELECTED_POINT = "SET_SELECTED_POINT";
 
 export const FILTER_MODELS = "FILTER_MODELS";
 export const SELECT_MODEL = "SELECT_MODEL";
+
+export const SELECT_COLOR = "SELECT_COLOR";
+export const SET_DATE_FROM = "SET_DATE_FROM";
+export const SET_DATE_TO = "SET_DATE_TO";
