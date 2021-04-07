@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectColor } from "../../redux/actions";
 import RadioButton from "../Input/RadioButton";
-import InputMask from "react-input-mask";
 
 import styles from "./detail.module.sass";
+import LeaseTerm from "./LeaseTerm";
 
 export const Detail = () => {
     const params = useSelector((state) => state.additionalParams);
@@ -46,19 +46,7 @@ export const Detail = () => {
                     ))}
                 </div>
             </div>
-            <div className={styles.param}>
-                <h3 className={styles.title}>Дата аренды</h3>
-                <div className>
-                    <InputMask
-                        className={styles.date}
-                        type="text"
-                        name="from"
-                        placeholder="Введите дату и время"
-                        mask="99.99.9999 99:99"
-                        maskChar="-"
-                    />
-                </div>
-            </div>
+            <LeaseTerm />
         </form>
     );
 };

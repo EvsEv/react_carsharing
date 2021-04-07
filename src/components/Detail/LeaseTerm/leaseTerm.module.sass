@@ -1,0 +1,96 @@
+@import ../../../assets/styles/variables
+
+.param
+  width: 245px
+
+.date
+  display: flex
+  justify-content: flex-end
+  &:first-of-type
+    margin-top: 16px
+
+.text
+  font-family: "RobotoLgt"
+  font-size: 14px
+  line-height: 22px
+  margin-right: 3px
+
+
+.mask
+  font-family: "RobotoLgt"
+  font-size: 14px
+  line-height: 22px
+  color: $darkGrey
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 20px
+  background: $white
+  border-bottom: 1px solid $darkGrey
+  opacity: 1
+  visibility: visible
+  transition: all $short ease
+  cursor: text
+
+.maskOff
+  opacity: 0
+  visibility: hidden
+
+.reset
+  width: 20px
+  height: 20px
+  display: block
+  opacity: 0
+  position: absolute
+  top: 40%
+  right: 7px
+  transform: translateY(-50%)
+  cursor: pointer
+  z-index: 5
+
+  &::before, &::after
+    content: ""
+    width: 11px
+    height: 1px
+    position: absolute
+    top: 50%
+    left: 50%
+    background: $mainBlack
+    transform-origin: center
+    transform: translate(-50%) rotate(45deg)
+  &::after
+    transform: translate(-50%) rotate(-45deg)
+
+.dateInput
+  font-family: "RobotoLgt"
+  font-size: 14px
+  line-height: 16px
+  color: $mainBlack
+  width: 224px
+  border: none
+  border-bottom: 1px solid $darkGrey
+
+  &:invalid
+    border-bottom-color: red
+    ~ .mask
+        opacity: 0
+        visibility: hidden
+    &:focus
+      ~ .mask
+          opacity: 0
+          visibility: hidden
+  &:focus
+    outline: none
+    ~ .reset
+        opacity: 1
+    ~ .mask
+        opacity: 0
+        visibility: hidden
+
+  &::-webkit-calendar-picker-indicator
+    display: none
+
+.dateField
+  position: relative
+

@@ -5,6 +5,8 @@ import {
     FILTER_MODELS,
     SELECT_COLOR,
     SELECT_MODEL,
+    SET_DATE_FROM,
+    SET_DATE_TO,
     SET_SELECTED_CITY,
     SET_SELECTED_POINT,
     SWITCH_LANGUAGE,
@@ -67,5 +69,17 @@ export function selectModel(model) {
 export function selectColor(color) {
     return (dispatch) => {
         dispatch({ type: SELECT_COLOR, payload: color });
+    };
+}
+
+export function setDateFrom(dateFrom) {
+    return (dispatch) => {
+        dispatch({ type: SET_DATE_FROM, payload: dateFrom });
+    };
+}
+
+export function setDateTo(dateTo) {
+    return (dispatch) => {
+        dispatch({ type: SET_DATE_TO, payload: dateTo });
     };
 }
