@@ -6,17 +6,22 @@ import styles from "./carCard.module.sass";
 
 export const CarCard = ({ car }) => {
     const dispatch = useDispatch();
-    const model = useSelector((state) => state.model);
+    const model = useSelector((state) => state.order.model);
 
     const classes = [styles.item];
 
-    if (car.id === model.choosingModel.id) classes.push(styles.selected);
+    if (car.id === model.id) classes.push(styles.selected);
+
+    const setSelectModel = (car) => {
+        if (car.id === model.id) {
+            dispatch(selectModel(""));
+        } else {
+            dispatch(selectModel(car));
+        }
+    };
 
     return (
-        <div
-            className={classes.join(" ")}
-            onClick={() => dispatch(selectModel(car))}
-        >
+        <div className={classes.join(" ")} onClick={() => setSelectModel(car)}>
             <p className={styles.name}>{car.name}</p>
             <p className={styles.price}>
                 {car.priceMin.toLocaleString("ru")} -{" "}

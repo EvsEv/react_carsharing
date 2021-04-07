@@ -11,43 +11,6 @@
   display: flex
   padding-bottom: 48px
 
-.parameter
-  margin-right: 16px
-  &:last-of-type
-    margin-right: 0
-
-.radio
-  display: none
-
-.label
-  font-family: "RobotoLgt"
-  color: $darkGrey
-  padding-left: 20px
-  position: relative
-  cursor: pointer
-  transition: all $short ease
-
-  &::before, &::after
-    content: ""
-    width: 12px
-    height: 12px
-    border-radius: 50%
-    background: $mainAccent
-    box-sizing: border-box
-    position: absolute
-    top: 50%
-    left: 0
-    transform: translateY(-50%)
-
-  &::after
-    background: $white
-    transition: all $short ease
-
-.radio:checked ~ .label
-  color: $mainBlack
-  &::after
-    transform: translateY(-50%) scale(0.5)
-
 .wrapper
   display: flex
   align-content: baseline
@@ -84,6 +47,7 @@
       transition: all $short ease
       a
         padding: 10px
+        cursor: pointer
   .pageActive
     color: $mainAccent
     font-weight: bold
@@ -93,7 +57,7 @@
       content: ""
       width: 0px
       height: 0px
-      border: 5px solid $darkGrey
+      border: 5px solid $mainAccent
       border-bottom-color: transparent
       border-left-color: transparent
       border-top-color: transparent
@@ -109,5 +73,5 @@
   .disabled
     a
       &::before
-        border-right-color: $lightGrey
+        border-right-color: $darkGrey
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import { useDispatch, useSelector } from "react-redux";
 import Check from "../../components/Check";
+import Detail from "../../components/Detail";
 import Location from "../../components/Location";
 import Model from "../../components/Model";
 import { changeCurrentStage } from "../../redux/actions";
@@ -19,6 +20,8 @@ export const OrderPage = () => {
                 return <Location />;
             case 2:
                 return <Model />;
+            case 3:
+                return <Detail />;
             default:
                 return;
         }

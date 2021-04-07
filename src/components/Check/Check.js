@@ -8,7 +8,7 @@ import Price from "./Price";
 
 export const Check = () => {
     const location = useSelector((state) => state.location);
-    const model = useSelector((state) => state.model);
+    const order = useSelector((state) => state.order);
     const stage = useSelector((state) => state.stage);
     return (
         <div className={styles.check}>
@@ -19,7 +19,7 @@ export const Check = () => {
                 valueTwo={location.selectedPoint}
             />
             {stage.completedStage > 0 && (
-                <Parameter name="Модель" valueOne={model.choosingModel.name} />
+                <Parameter name="Модель" valueOne={order.model.name} />
             )}
             <Price />
             <Submit />
