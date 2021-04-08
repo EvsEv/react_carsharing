@@ -1,4 +1,8 @@
-import { CHANGE_CHOOSING_FILTER, FILTER_MODELS, SELECT_MODEL } from "../types";
+import {
+    FILTER_MODELS,
+    SET_COMPLETE_MODEL,
+    SET_INCOMPLETE_MODEL,
+} from "../types";
 
 const initialState = {
     allModels: [
@@ -95,12 +99,17 @@ const initialState = {
     ],
     choosingFilter: "All",
     filteredModels: [],
+    completed: false,
 };
 
 export const model = (state = initialState, action) => {
     switch (action.type) {
         case FILTER_MODELS:
             return { ...state, filteredModels: action.payload };
+        case SET_COMPLETE_MODEL:
+            return { ...state, completed: true };
+        case SET_INCOMPLETE_MODEL:
+            return { ...state, completed: false };
         default:
             return state;
     }

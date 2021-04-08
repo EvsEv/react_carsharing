@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Submit from "../../components/Button/Submit";
+import NextStep from "../../components/Button/NextStep";
 
 import styles from "./check.module.sass";
 import Parameter from "./Parameter";
@@ -21,8 +21,8 @@ export const Check = () => {
             {stage.completedStage > 0 && (
                 <Parameter name="Модель" valueOne={order.model.name} />
             )}
-            <Price />
-            <Submit />
+            {/* <Price /> */}
+            <NextStep />
         </div>
     );
 };

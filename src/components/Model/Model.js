@@ -2,9 +2,10 @@ import React, { useEffect, useMemo, useState } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
-import { filterModels } from "../../redux/actions";
+import { filterModels } from "../../redux/actions/model";
 import RadioButton from "../Input/RadioButton";
 import CarCard from "./CarCard";
+import useCompletedStage from "../../assets/scripts/useCompletedStage";
 
 import styles from "./model.module.sass";
 
@@ -18,6 +19,16 @@ export const Model = () => {
     const pageVisited = pageNumber * carsPerPage;
     const pageCount = Math.ceil(filteredModels.length / carsPerPage);
 
+    useEffect(() => {
+        dispatch(filterModels(model.choosingFilter));
+    }, []);
+
+    useCompletedStage("model");
+
+    const printModels = useMemo(() => {
+        return filteredModels.map((car) => <CarCard key={car.id} car={car} />);
+    }, [filteredModels]);
+
     const filterByCategory = (e) => {
         setPageNumber(0);
         dispatch(filterModels(e.target.value));
@@ -26,14 +37,6 @@ export const Model = () => {
     const changePage = ({ selected }) => {
         setPageNumber(selected);
     };
-
-    useEffect(() => {
-        dispatch(filterModels(model.choosingFilter));
-    }, []);
-
-    const printModels = useMemo(() => {
-        return filteredModels.map((car) => <CarCard key={car.id} car={car} />);
-    }, [filteredModels]);
 
     const printModelsWithPaginate = () => {
         return filteredModels
