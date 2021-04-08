@@ -27,6 +27,9 @@ export const CarCard = ({ car }) => {
                 {car.priceMin.toLocaleString("ru")} -{" "}
                 {car.priceMax.toLocaleString("ru")} Р
             </p>
+            <picture className={styles.image}>
+                <img src={car.img} />
+            </picture>
         </div>
     );
 };

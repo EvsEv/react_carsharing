@@ -15,6 +15,15 @@ export const LeaseTerm = () => {
     const from = useRef();
     const to = useRef();
 
+    useEffect(() => {
+        if (additionalParams.dateFrom) {
+            from.current.value = additionalParams.dateFrom;
+        }
+        if (additionalParams.dateTo) {
+            to.current.value = additionalParams.dateTo;
+        }
+    }, []);
+
     const classesMaskFrom = [styles.mask];
     const classesMaskTo = [styles.mask];
 
@@ -55,7 +64,6 @@ export const LeaseTerm = () => {
                         min={currentDate}
                         max={additionalParams.dateTo}
                         className={styles.dateInput}
-                        value={additionalParams.dateFrom}
                         onChange={changeDate}
                     />
                     <label className={classesMaskFrom.join(" ")} htmlFor="from">
@@ -78,7 +86,6 @@ export const LeaseTerm = () => {
                         id="to"
                         type="datetime-local"
                         min={additionalParams.dateFrom || currentDate}
-                        value={additionalParams.dateTo}
                         className={styles.dateInput}
                         onChange={changeDate}
                     />

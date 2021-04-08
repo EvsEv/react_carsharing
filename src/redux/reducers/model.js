@@ -4,6 +4,8 @@ import {
     SET_INCOMPLETE_MODEL,
 } from "../types";
 
+import testImage from "../../assets/images/testCar.jpg";
+
 const initialState = {
     allModels: [
         {
@@ -15,6 +17,7 @@ const initialState = {
             description: "string",
             categoryId: { name: "Econom" },
             colors: ["blue"],
+            img: testImage,
         },
         {
             id: 2,
@@ -25,6 +28,7 @@ const initialState = {
             description: "string",
             categoryId: { name: "Premium" },
             colors: ["blue", "yellow", "red"],
+            img: testImage,
         },
         {
             id: 3,
@@ -35,6 +39,7 @@ const initialState = {
             description: "string",
             categoryId: { name: "Econom" },
             colors: ["red"],
+            img: testImage,
         },
         {
             id: 4,
@@ -45,6 +50,7 @@ const initialState = {
             description: "string",
             categoryId: { name: "Econom" },
             colors: ["blue"],
+            img: testImage,
         },
         {
             id: 5,
@@ -55,6 +61,7 @@ const initialState = {
             description: "string",
             categoryId: { name: "Premium" },
             colors: ["blue", "yellow", "red"],
+            img: testImage,
         },
         {
             id: 6,
@@ -65,6 +72,7 @@ const initialState = {
             description: "string",
             categoryId: { name: "Econom" },
             colors: ["red"],
+            img: testImage,
         },
         {
             id: 7,
@@ -75,6 +83,7 @@ const initialState = {
             description: "string",
             categoryId: { name: "Econom" },
             colors: ["blue"],
+            img: testImage,
         },
         {
             id: 8,
@@ -85,6 +94,7 @@ const initialState = {
             description: "string",
             categoryId: { name: "Premium" },
             colors: ["blue", "yellow", "red"],
+            img: testImage,
         },
         {
             id: 9,
@@ -95,6 +105,7 @@ const initialState = {
             description: "string",
             categoryId: { name: "Econom" },
             colors: ["red"],
+            img: testImage,
         },
     ],
     choosingFilter: "All",
