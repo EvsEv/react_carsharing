@@ -8,59 +8,6 @@
   flex-grow: 1
 
 
-.container
-  line-height: 0
-  max-width: $desktopMaxWidth
-  padding: 0 $defaultPadding * 2
-  box-sizing: border-box
-  margin: 0 auto
-  display: flex
-  flex-wrap: wrap
-
-
-
-.breadcrumbs
-  padding: 0
-  margin: 0
-  list-style: none
-  border-top: 1px solid $lightGrey
-  border-bottom: 1px solid $lightGrey
-.item
-  margin-right: 38px
-  position: relative
-  &::after
-    content: ""
-    width: 0px
-    height: 0px
-    border: 4px solid transparent
-    border-right-width: 0px
-    border-left: 6px solid $darkGrey
-    position: absolute
-    top: 50%
-    right: -22px
-    transform: translateY(-50%)
-
-  &:last-of-type
-    margin-right: 0
-    &::after
-      display: none
-
-.button
-  font-family: "RobotoReg"
-  font-size: 14px
-  font-weight: bold
-  line-height: 16px
-  color: $mainBlack
-  padding: 8px 0
-  background: none
-  outline: none
-  border: none
-  cursor: pointer
-  transition: all $short ease
-  &:disabled
-    color: $darkGrey
-    cursor: default
-
 .wrapper
   max-width: $desktopMaxWidth
   width: $desktopMaxWidth
@@ -76,11 +23,6 @@
   padding-top: 39px
   padding-right: calc(192 * 100% / 1248)
   border-right: 1px solid $lightGrey
-
-
-.selected
-  color: $mainAccent
-
 
 .scroll
   > div
@@ -109,9 +51,3 @@
     padding: 0 $defaultPadding /2 0
   .stage
     padding-top: 20px
-  .item
-    margin-right: 10px
-    &::after
-      display: none
-  .button
-    font-size: 11px

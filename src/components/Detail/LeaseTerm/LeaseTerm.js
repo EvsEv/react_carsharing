@@ -3,7 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./leaseTerm.module.sass";
 import useCurrentDate from "../../../assets/scripts/useCurrentDate";
 import { useDispatch, useSelector } from "react-redux";
-import { setDateFrom, setDateTo } from "../../../redux/actions";
+import {
+    setDateFrom,
+    setDateTo,
+} from "../../../redux/actions/additionalParams";
 
 export const LeaseTerm = () => {
     const dispatch = useDispatch();
@@ -52,6 +55,7 @@ export const LeaseTerm = () => {
                         min={currentDate}
                         max={additionalParams.dateTo}
                         className={styles.dateInput}
+                        value={additionalParams.dateFrom}
                         onChange={changeDate}
                     />
                     <label className={classesMaskFrom.join(" ")} htmlFor="from">
@@ -74,6 +78,7 @@ export const LeaseTerm = () => {
                         id="to"
                         type="datetime-local"
                         min={additionalParams.dateFrom || currentDate}
+                        value={additionalParams.dateTo}
                         className={styles.dateInput}
                         onChange={changeDate}
                     />

@@ -8,8 +8,10 @@ export const Checkbox = ({ name, value, onChange, label }) => {
             <input
                 id={value}
                 name={name}
+                value={value}
                 type="checkbox"
                 className={styles.checkbox}
+                onChange={onChange}
             />
             <label htmlFor={value} className={styles.label}>
                 {label}

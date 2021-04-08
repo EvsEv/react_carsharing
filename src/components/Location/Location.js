@@ -1,21 +1,29 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./location.module.sass";
 
 import mapImage from "../../assets/images/mapImage.jpg";
-import { setSelectedCity, setSelectedPoint } from "../../redux/actions";
+import {
+    setSelectedCity,
+    setSelectedPoint,
+} from "../../redux/actions/location";
+import useCompletedStage from "../../assets/scripts/useCompletedStage";
 
 export const Location = () => {
     const location = useSelector((state) => state.location);
-    const dispatch = useDispatch();
-
+    const stage = useSelector((state) => state.stage);
     const inputCity = useRef();
     const inputPoint = useRef();
+    const dispatch = useDispatch();
+    useCompletedStage("location");
 
     return (
         <div>
-            <form className={styles.inputData}>
+            <form
+                className={styles.inputData}
+                onInvalid={() => console.log("valid")}
+            >
                 <div className={styles.select}>
                     <input
                         id="currentCity"
