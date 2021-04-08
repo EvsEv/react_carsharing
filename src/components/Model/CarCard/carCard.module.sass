@@ -9,11 +9,12 @@
   box-sizing: border-box
   border: 1px solid $lightGrey
   cursor: pointer
+  position: relative
   transition: all $momentary ease
+
 
 .selected
   border: 1px solid $mainAccent
-
 
 .name
   font-size: 18px
@@ -25,6 +26,19 @@
   font-size: 14px
   line-height: 16px
   color: $darkGrey
+
+.image
+  display: block
+  width: calc(256 * 100% / 366)
+  position: absolute
+  bottom: calc(16 * 100% / 222)
+  right: calc(16 * 100% / 366)
+
+  img
+    display: block
+    width: 100%
+    height: 100%
+    object-fit: contain
 
 @include mobileDevice
   .name
