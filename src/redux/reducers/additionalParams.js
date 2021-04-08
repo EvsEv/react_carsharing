@@ -1,4 +1,11 @@
-import { SELECT_COLOR, SET_DATE_FROM, SET_DATE_TO } from "../types";
+import {
+    SET_COMPLETE_ADDPARAMS,
+    SET_DATE_FROM,
+    SET_DATE_TO,
+    SET_INCOMPLETE_ADDPARAMS,
+    SET_SERVICES,
+    SET_TARIFF,
+} from "../types";
 
 const initialState = {
     colors: [],
@@ -6,6 +13,7 @@ const initialState = {
     dateTo: "",
     tariff: "",
     services: [],
+    completed: false,
 };
 
 export const additionalParams = (state = initialState, action) => {
@@ -14,6 +22,14 @@ export const additionalParams = (state = initialState, action) => {
             return { ...state, dateFrom: action.payload };
         case SET_DATE_TO:
             return { ...state, dateTo: action.payload };
+        case SET_TARIFF:
+            return { ...state, tariff: action.payload };
+        case SET_SERVICES:
+            return { ...state, services: action.payload };
+        case SET_INCOMPLETE_ADDPARAMS:
+            return { ...state, completed: false };
+        case SET_COMPLETE_ADDPARAMS:
+            return { ...state, completed: true };
         default:
             return state;
     }
