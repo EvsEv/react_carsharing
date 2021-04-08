@@ -5,6 +5,7 @@ import Check from "../../components/Check";
 import Detail from "../../components/Detail";
 import Location from "../../components/Location";
 import Model from "../../components/Model";
+import OrderData from "../../components/OrderData";
 import TabNavigation from "../../components/TabNavigation";
 
 import styles from "./orderPage.module.sass";
@@ -19,6 +20,8 @@ export const OrderPage = () => {
                 return <Model />;
             case 3:
                 return <Detail />;
+            case 4:
+                return <OrderData />;
             default:
                 return;
         }
