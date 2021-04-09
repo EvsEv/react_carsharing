@@ -14,10 +14,9 @@ export const CarCard = ({ car }) => {
 
     const setSelectModel = (car) => {
         if (car.id === model.id) {
-            dispatch(selectModel(""));
-        } else {
-            dispatch(selectModel(car));
+            return;
         }
+        dispatch(selectModel(car));
     };
 
     return (

@@ -3,6 +3,8 @@ import {
     SELECT_MODEL,
     SET_DATE_FROM,
     SET_DATE_TO,
+    SET_DURATION,
+    SET_PRICE,
     SET_SELECTED_CITY,
     SET_SELECTED_POINT,
     SET_SERVICES,
@@ -16,8 +18,10 @@ const initialState = {
     color: "Any",
     dateFrom: "",
     dateTo: "",
+    duration: "",
     tariff: "",
     addServices: [],
+    price: "",
 };
 
 export const order = (state = initialState, action) => {
@@ -39,6 +43,12 @@ export const order = (state = initialState, action) => {
             return { ...state, dateTo: action.payload };
         case SET_TARIFF:
             return { ...state, tariff: action.payload };
+        case SET_DURATION: {
+            return { ...state, duration: action.payload };
+        }
+        case SET_PRICE: {
+            return { ...state, price: action.payload };
+        }
         case SET_SERVICES:
             return { ...state, addServices: action.payload };
         default:

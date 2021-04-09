@@ -34,6 +34,7 @@ export const Color = () => {
                             ? "Желтый"
                             : null
                     }
+                    checked={order.color === color}
                 />
             ))}
         </>
