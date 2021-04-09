@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setTariff } from "../../../redux/actions/additionalParams";
+import { setPrice, setTariff } from "../../../redux/actions/additionalParams";
 import RadioButton from "../../Input/RadioButton";
 
 export const Tariff = () => {
@@ -8,6 +8,7 @@ export const Tariff = () => {
     const dispatch = useDispatch();
     const onChange = (e) => {
         dispatch(setTariff(e.target.value));
+        dispatch(setPrice());
     };
     return (
         <>

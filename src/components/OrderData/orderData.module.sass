@@ -1,0 +1,48 @@
+@import ../../assets/styles/variables
+@import ../../assets/styles/media
+
+.order
+  font-size: 14px
+  line-height: 16px
+  display: flex
+  justify-content: space-between
+  color: $mainBlack
+
+
+.model
+  font-size: 18px
+  line-height: 21px
+
+.number, .item
+  margin-top: 8px
+
+.number
+  text-transform: uppercase
+  padding: 4px 8px
+  box-sizing: border-box
+  border-radius: 4px
+  border: 1px solid $darkGrey
+  display: inline-block
+
+.item
+  font-family: "RobotoLgt"
+  span
+    font-family: "RobotoReg"
+    font-weight: bold
+
+.car
+  height: 100%
+  width: calc(256 * 100% / 736)
+  display: block
+  align-self: flex-end
+  img
+    display: block
+    width: 100%
+    height: auto
+    object-fit: contain
+
+@include mobileDevice
+  .order
+    font-size: 11px
+  .car
+    width: calc(125 * 100% / 288)

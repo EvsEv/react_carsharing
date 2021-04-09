@@ -11,6 +11,7 @@ export const NextStep = () => {
     const location = useSelector((state) => state.location);
     const model = useSelector((state) => state.model);
     const additionalParams = useSelector((state) => state.additionalParams);
+    const order = useSelector((state) => state.order);
 
     const dispatch = useDispatch();
 
@@ -27,6 +28,10 @@ export const NextStep = () => {
             case 3:
                 setText("Итого");
                 setDisabledCondition(!additionalParams.completed);
+                break;
+            case 4:
+                setText("Заказать");
+                setDisabledCondition(!order.color);
             default:
                 break;
         }
@@ -35,10 +40,11 @@ export const NextStep = () => {
         location.completed,
         model.completed,
         additionalParams.completed,
+        order.color,
     ]);
 
     const onSumbitStage = () => {
-        dispatch(nextStage());
+        if (stage.stage < 4) dispatch(nextStage());
     };
 
     return (

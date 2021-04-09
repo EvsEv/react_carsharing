@@ -1,5 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setPrice } from "../../../redux/actions/additionalParams";
 
 import styles from "./price.module.sass";
 
@@ -7,14 +8,22 @@ export const Price = () => {
     const stage = useSelector((state) => state.stage);
     const order = useSelector((state) => state.order);
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setPrice());
+    }, [order.duration]);
+
     const priceValue = () => {
-        console.log(order.model);
         if (stage.completedStage === 1 && !Object.keys(order.model).length) {
             return <span>Выберите модель</span>;
         }
-
-        return `от ${order.model.priceMin.toLocaleString("ru")} до 
+        if (stage.completedStage === 2 && order.price === "") {
+            return `от ${order.model.priceMin.toLocaleString("ru")} до 
         ${order.model.priceMax.toLocaleString("ru")} ₽`;
+        }
+
+        return `${order.price} ₽`;
     };
 
     if (stage.completedStage > 0) {
