@@ -68,3 +68,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+react-paginate: for car wrapper in Model.js (this wrapper becomes a paginate-like container only on mobile resolutions). Simply to use and popular
+
+react-slick: for slider. A lot of parameters to change is available, adapted for mobile devices
+
+react-custom-scrollbars: for scroll in OrderLayout.js and car wrapper in Model.js. Simply to use and popular
