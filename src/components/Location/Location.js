@@ -19,7 +19,7 @@ export const Location = () => {
     useCompletedStage("location");
 
     return (
-        <div>
+        <>
             <form
                 className={styles.inputData}
                 onInvalid={() => console.log("valid")}
@@ -68,6 +68,6 @@ export const Location = () => {
                     <img src={mapImage} />
                 </div>
             </section>
-        </div>
+        </>
     );
 };
