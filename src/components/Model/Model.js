@@ -8,6 +8,7 @@ import CarCard from "./CarCard";
 import useCompletedStage from "../../assets/hooks/useCompletedStage";
 
 import styles from "./model.module.sass";
+import { fetchData } from "../../assets/api/fetchData";
 
 const carsPerPage = 4;
 
@@ -19,7 +20,25 @@ export const Model = () => {
     const pageVisited = pageNumber * carsPerPage;
     const pageCount = Math.ceil(filteredModels.length / carsPerPage);
 
+    const [categories, setCategories] = useState([
+        {
+            id: "any",
+            name: "Все модели",
+            description: "Все модели",
+        },
+    ]);
+
+    const fetchCategories = async () => {
+        try {
+            const actualCategories = await fetchData("category");
+            setCategories(categories.concat(actualCategories));
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
     useEffect(() => {
+        fetchCategories();
         dispatch(filterModels(model.choosingFilter));
     }, []);
 
@@ -47,7 +66,17 @@ export const Model = () => {
     return (
         <div className={styles.model}>
             <form className={styles.select}>
-                <RadioButton
+                {categories.map((category) => (
+                    <RadioButton
+                        key={category.id}
+                        name="model"
+                        value={category.name}
+                        onChange={() => {}}
+                        label={category.name}
+                        title={category.description}
+                    />
+                ))}
+                {/* <RadioButton
                     name="model"
                     value="All"
                     checked={model.choosingFilter === "All"}
@@ -67,7 +96,7 @@ export const Model = () => {
                     checked={model.choosingFilter === "Premium"}
                     onChange={filterByCategory}
                     label="Премиум"
-                />
+                /> */}
             </form>
             <Scrollbars className={styles.scroll}>
                 <section className={styles.wrapper}>{printModels}</section>
