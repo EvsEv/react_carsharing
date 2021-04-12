@@ -6,8 +6,8 @@ import {
     SET_DURATION,
     SET_INCOMPLETE_ADDPARAMS,
     SET_PRICE,
-    SET_SERVICES,
     SET_TARIFF,
+    TOGGLE_SERVICE,
 } from "../types";
 
 export function selectColor(color) {
@@ -46,21 +46,11 @@ export function setTariff(tariff) {
     };
 }
 
-export function setSerivces(selected) {
-    return (dispatch, getState) => {
-        const selectedServices = getState().additionalParams.services;
-        const isAlreadyAdded = selectedServices.find(
-            (service) => service === selected
-        );
-        const updatedServices = isAlreadyAdded
-            ? selectedServices.filter((service) => service != selected)
-            : selectedServices.concat(selected);
-        dispatch({
-            type: SET_SERVICES,
-            payload: updatedServices,
-        });
+export const toggleService = (service) => {
+    return (dispatch) => {
+        dispatch({ type: TOGGLE_SERVICE, service });
     };
-}
+};
 
 export function setDuration() {
     return (dispatch, getState) => {

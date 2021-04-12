@@ -1,5 +1,6 @@
 @import ../../../assets/styles/variables
 @import ../../../assets/styles/media
+@import ../../../assets/styles/adaptedProperties
 
 .checkbox
   display: none
@@ -47,7 +48,7 @@
 
 @include mobileDevice
   .label
-    font-size: 11px
+    @include adaptedForMobile(font-size, 11, 15, px)
     &::before
       top: 0
     &::after

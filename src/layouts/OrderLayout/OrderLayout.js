@@ -1,5 +1,5 @@
 import React from "react";
-import useMenu from "../../assets/scripts/useMenu";
+import useMenu from "../../assets/hooks/useMenu";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 import Sidebar from "../../components/Sidebar";

@@ -1,5 +1,6 @@
 @import ../../assets/styles/variables
 @import ../../assets/styles/media
+@import ../../assets/styles/adaptedProperties
 
 .inputData
   max-width: 320px
@@ -82,18 +83,28 @@
     object-fit: cover
 
 @include tabletDevice
+  .onMap
+    display: flex
+    flex-direction: column
+    flex-grow: 1
   .map
-    height: 150px
+    height: auto
+    flex-grow: 1
+    display: flex
+    flex-direction: column
 
 
 @include mobileDevice
   .inputData
-    width: 288px
+    @include adaptedForMobile(width, 288, 315, px)
+
   .select
+    label, input
+      @include adaptedForMobile(font-size, 11, 15, px)
     label
-      font-size: 11px
-      margin-right: 10px
+      margin-right: 9px
     input
-      font-size: 11px
       line-height: 1
       width: 206px
+  .title
+    @include adaptedForMobile(font-size, 11, 15, px)

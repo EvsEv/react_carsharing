@@ -7,6 +7,7 @@ import styles from "./tabItem.module.sass";
 export const TabItem = ({ value, tab }) => {
     const [disabled, setDisabled] = useState();
     const stage = useSelector((state) => state.stage);
+    const { completed } = useSelector((state) => state.additionalParams);
     const dispatch = useDispatch();
 
     const classes = [styles.button];
@@ -21,6 +22,12 @@ export const TabItem = ({ value, tab }) => {
     useEffect(() => {
         setDisabled(tab - 1 > stage.completedStage);
     }, [stage.completedStage]);
+
+    useEffect(() => {
+        if (tab === 4 && !completed) {
+            setDisabled(!completed);
+        }
+    }, [completed]);
 
     return (
         <li className={styles.item}>

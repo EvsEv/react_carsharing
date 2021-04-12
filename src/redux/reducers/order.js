@@ -7,21 +7,23 @@ import {
     SET_PRICE,
     SET_SELECTED_CITY,
     SET_SELECTED_POINT,
-    SET_SERVICES,
     SET_TARIFF,
+    TOGGLE_SERVICE,
 } from "../types";
 
 const initialState = {
     city: "Ульяновск",
     point: "",
     model: "",
-    color: "Any",
+    color: "",
     dateFrom: "",
     dateTo: "",
     duration: "",
     tariff: "",
-    addServices: [],
     price: "",
+    isFullTank: false,
+    isNeedChildChair: false,
+    isRightWheel: false,
 };
 
 export const order = (state = initialState, action) => {
@@ -49,8 +51,9 @@ export const order = (state = initialState, action) => {
         case SET_PRICE: {
             return { ...state, price: action.payload };
         }
-        case SET_SERVICES:
-            return { ...state, addServices: action.payload };
+        case TOGGLE_SERVICE:
+            state[action.service] = !state[action.service];
+            return { ...state };
         default:
             return state;
     }
