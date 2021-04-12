@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterModels } from "../../redux/actions/model";
 import RadioButton from "../Input/RadioButton";
 import CarCard from "./CarCard";
-import useCompletedStage from "../../assets/scripts/useCompletedStage";
+import useCompletedStage from "../../assets/hooks/useCompletedStage";
 
 import styles from "./model.module.sass";
 

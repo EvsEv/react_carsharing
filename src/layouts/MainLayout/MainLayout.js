@@ -5,7 +5,7 @@ import Sidebar from "../../components/Sidebar";
 import Menu from "../../components/Menu";
 import Slider from "../../components/Slider";
 import MainPage from "../../pages/MainPage";
-import useMenu from "../../assets/scripts/useMenu";
+import useMenu from "../../assets/hooks/useMenu";
 
 import parkingImage from "../../assets/images/slider/parking.jpg";
 import insuranceImage from "../../assets/images/slider/insurance.jpg";

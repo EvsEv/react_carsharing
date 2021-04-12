@@ -8,7 +8,7 @@ import {
     setSelectedCity,
     setSelectedPoint,
 } from "../../redux/actions/location";
-import useCompletedStage from "../../assets/scripts/useCompletedStage";
+import useCompletedStage from "../../assets/hooks/useCompletedStage";
 
 export const Location = () => {
     const location = useSelector((state) => state.location);
