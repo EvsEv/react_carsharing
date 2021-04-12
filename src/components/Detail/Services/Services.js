@@ -1,42 +1,41 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSerivces } from "../../../redux/actions/additionalParams";
+import {
+    setIsFullTank,
+    toggleService,
+} from "../../../redux/actions/additionalParams";
 import Checkbox from "../../Input/Checkbox";
 
 export const Services = () => {
-    const additionalParams = useSelector((state) => state.additionalParams);
+    const { isFullTank, isNeedChildChair, isRightWheel } = useSelector(
+        (state) => state.order
+    );
     const dispatch = useDispatch();
     const onChange = (e) => {
-        dispatch(setSerivces(e.target.value));
+        dispatch(toggleService(e.target.value));
     };
     return (
         <>
             <Checkbox
                 name="services"
-                value="fullFuel"
+                value="isFullTank"
                 label="Полный бак, 500р"
                 onChange={onChange}
-                checked={additionalParams.services.find(
-                    (service) => service === "fullFuel"
-                )}
+                checked={isFullTank}
             />
             <Checkbox
                 name="services"
-                value="childChair"
+                value="isNeedChildChair"
                 label="Детское кресло, 200р"
                 onChange={onChange}
-                checked={additionalParams.services.find(
-                    (service) => service === "childChair"
-                )}
+                checked={isNeedChildChair}
             />
             <Checkbox
                 name="services"
-                value="rightHand"
+                value="isRightWheel"
                 label="Правый руль, 1600р"
                 onChange={onChange}
-                checked={additionalParams.services.find(
-                    (service) => service === "rightHand"
-                )}
+                checked={isRightWheel}
             />
         </>
     );

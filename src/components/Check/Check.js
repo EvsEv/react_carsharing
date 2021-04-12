@@ -53,52 +53,6 @@ export const Check = () => {
         }
     }, [order.tariff]);
 
-    const printAddParams = () => {
-        if (completedStage.current > 1) {
-            return (
-                <>
-                    <Parameter name="Цвет" valueOne={color} />
-                    <Parameter name="Тариф" valueOne={tariff} />
-                    <Parameter
-                        name="Длительность аренды"
-                        valueOne={order.duration}
-                    />
-                    {order.addServices &&
-                        order.addServices.map((service) => {
-                            switch (service) {
-                                case "fullFuel":
-                                    return (
-                                        <Parameter
-                                            name="Полный бак"
-                                            valueOne="Да"
-                                            key={service}
-                                        />
-                                    );
-                                case "childChair":
-                                    return (
-                                        <Parameter
-                                            name="Детское кресло"
-                                            valueOne="Да"
-                                            key={service}
-                                        />
-                                    );
-                                case "rightHand":
-                                    return (
-                                        <Parameter
-                                            name="Правый руль"
-                                            valueOne="Да"
-                                            key={service}
-                                        />
-                                    );
-                                default:
-                                    break;
-                            }
-                        })}
-                </>
-            );
-        }
-    };
-
     return (
         <div className={styles.check}>
             <h3 className={styles.title}>Ваш заказ:</h3>
@@ -107,10 +61,21 @@ export const Check = () => {
                 valueOne={location.selectedCity}
                 valueTwo={location.selectedPoint}
             />
-            {completedStage.current > 0 && (
-                <Parameter name="Модель" valueOne={order.model.name} />
+            {(order.model || completedStage.current > 1) && (
+                <Parameter name="Модель" valueOne={order.model.name || ""} />
             )}
-            {printAddParams()}
+            {(order.color || completedStage.current > 2) && (
+                <Parameter name="Цвет" valueOne={order.color || ""} />
+            )}
+            {(order.isFullTank || completedStage.current > 2) && (
+                <Parameter name="Полный бак" valueOne="Да" />
+            )}
+            {(order.isNeedChildChair || completedStage.current > 2) && (
+                <Parameter name="Детское кресло" valueOne="Да" />
+            )}
+            {(order.isRightWheel || completedStage.current > 2) && (
+                <Parameter name="Правый руль" valueOne="Да" />
+            )}
             <Price />
             <NextStep />
         </div>
