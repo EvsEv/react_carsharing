@@ -23,58 +23,8 @@
 .scroll
   min-height: 426px
 
-.withPaginate
-  display: none
-
 @include mobileDevice
-  .withPaginate
-    display: flex
-  .scroll
-    display: none
   .select
     padding-bottom: 20px
   .label
     font-size: 11px
-  .scroll
-    min-height: 196px
-  .paginationNav
-    font-size: 11px
-    color: $darkGrey
-    width: 100%
-    padding-left: 0
-    margin-top: 20px
-    display: flex
-    justify-content: space-between
-    list-style: none
-    li
-      transition: all $short ease
-      a
-        padding: 10px
-        cursor: pointer
-  .pageActive
-    color: $mainAccent
-    font-weight: bold
-  .prev, .next
-    position: relative
-    &::before
-      content: ""
-      width: 0px
-      height: 0px
-      border: 5px solid $mainAccent
-      border-bottom-color: transparent
-      border-left-color: transparent
-      border-top-color: transparent
-      position: absolute
-      top: 50%
-      left: 0
-      transform: translateY(-50%)
-      transition: all $short ease
-  .next
-    &::before
-      left: 5px
-      transform: translateY(-50%) rotate(180deg)
-  .disabled
-    a
-      &::before
-        border-right-color: $darkGrey
-
