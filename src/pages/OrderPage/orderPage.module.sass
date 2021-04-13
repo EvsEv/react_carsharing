@@ -11,7 +11,7 @@
 .wrapper
   max-width: $desktopMaxWidth
   width: $desktopMaxWidth
-  padding: 0 $defaultPadding * 2 $defaultPadding
+  padding: 0 $defaultPadding * 2 0
   margin: 0 auto
   box-sizing: border-box
   display: flex
@@ -23,6 +23,9 @@
   padding-top: 39px
   padding-right: calc(192 * 100% / 1248)
   border-right: 1px solid $lightGrey
+  flex-grow: 1
+  display: flex
+  flex-direction: column
 
 .scroll
   > div
@@ -49,4 +52,4 @@
   .container, .wrapper
     padding: 0 $defaultPadding /2 0
   .stage
-    padding-top: 20px
+    padding-top: 30px

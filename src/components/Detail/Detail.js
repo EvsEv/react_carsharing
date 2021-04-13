@@ -1,5 +1,5 @@
 import React from "react";
-import useCompletedStage from "../../assets/scripts/useCompletedStage";
+import useCompletedStage from "../../assets/hooks/useCompletedStage";
 
 import Color from "./Color";
 

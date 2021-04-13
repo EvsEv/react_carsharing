@@ -1,5 +1,6 @@
 @import ../../../assets/styles/variables
 @import ../../../assets/styles/media
+@import ../../../assets/styles/adaptedProperties
 
 .item
   margin-right: 38px
@@ -43,8 +44,8 @@
 
 @include mobileDevice
   .item
-    margin-right: 10px
+    @include adaptedForMobile(margin-right, 7, 21, px )
     &::after
       display: none
   .button
-    font-size: 11px
+    @include adaptedForMobile(font-size, 12, 17, px )

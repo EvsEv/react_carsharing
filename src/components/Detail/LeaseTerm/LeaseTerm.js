@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import styles from "./leaseTerm.module.sass";
-import useCurrentDate from "../../../assets/scripts/useCurrentDate";
+import useCurrentDate from "../../../assets/hooks/useCurrentDate";
 import { useDispatch, useSelector } from "react-redux";
 import {
     setDateFrom,
