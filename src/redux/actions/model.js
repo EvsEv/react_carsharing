@@ -1,27 +1,17 @@
 import {
-    FILTER_MODELS,
     SELECT_COLOR,
     SELECT_MODEL,
-    SET_COMPLETED_STAGE,
+    SET_CHOOSING_CATEGORY,
     SET_COMPLETE_MODEL,
     SET_INCOMPLETE_ADDPARAMS,
     SET_INCOMPLETE_MODEL,
 } from "../types";
 
-export function filterModels(filter) {
-    return (dispatch, getState) => {
-        const modelState = getState().model;
-        modelState.choosingFilter = filter;
-        let filteredModels =
-            modelState.choosingFilter === "All"
-                ? modelState.allModels
-                : modelState.allModels.filter(
-                      (model) =>
-                          model.categoryId.name === modelState.choosingFilter
-                  );
-        dispatch({ type: FILTER_MODELS, payload: filteredModels });
+export const setChoosingCategory = (category) => {
+    return (dispatch) => {
+        dispatch({ type: SET_CHOOSING_CATEGORY, payload: category });
     };
-}
+};
 
 export function selectModel(model) {
     return (dispatch, getState) => {

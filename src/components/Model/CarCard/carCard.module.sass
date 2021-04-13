@@ -31,6 +31,7 @@
 .image
   display: block
   width: calc(256 * 100% / 366)
+  height: 53%
   position: absolute
   bottom: calc(16 * 100% / 222)
   right: calc(16 * 100% / 366)
@@ -40,6 +41,15 @@
     width: 100%
     height: 100%
     object-fit: contain
+    object-position: right
+
+@include desktopMinDevice
+  .image
+    height: 34%
+
+@include tabletDevice
+  .image
+    height: 60%
 
 @include mobileDevice
   .item
@@ -48,6 +58,7 @@
   .name, .price
     @include adaptedForMobile(font-size, 11, 15, px)
     line-height: 1
-
   .price
     margin-top: 5px
+  .image
+    height: 40%

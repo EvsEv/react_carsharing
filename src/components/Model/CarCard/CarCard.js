@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModel } from "../../../redux/actions/model";
 
 import styles from "./carCard.module.sass";
 
 export const CarCard = ({ car }) => {
+    const [src, setSrc] = useState();
+    const { model } = useSelector((state) => state.order);
     const dispatch = useDispatch();
-    const model = useSelector((state) => state.order.model);
 
     const classes = [styles.item];
-
     if (car.id === model.id) classes.push(styles.selected);
+
+    useEffect(() => {
+        if (car.thumbnail.path.indexOf("base64") != -1) {
+            setSrc(car.thumbnail.path);
+        } else {
+            setSrc(`https://api-factory.simbirsoft1.com/${car.thumbnail.path}`);
+        }
+    }, []);
 
     const setSelectModel = (car) => {
         if (car.id === model.id) {
@@ -27,7 +35,7 @@ export const CarCard = ({ car }) => {
                 {car.priceMax.toLocaleString("ru")} Р
             </p>
             <picture className={styles.image}>
-                <img src={car.img} />
+                <img src={src} />
             </picture>
         </div>
     );

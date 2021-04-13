@@ -9,11 +9,12 @@ export const RadioButton = ({
     onChange,
     label,
     title,
+    id,
 }) => {
     return (
         <div className={styles.parameter}>
             <input
-                id={value}
+                id={id}
                 type="radio"
                 name={name}
                 value={value}
@@ -21,7 +22,7 @@ export const RadioButton = ({
                 className={styles.radio}
                 onChange={onChange}
             />
-            <label className={styles.label} htmlFor={value} title={title}>
+            <label className={styles.label} htmlFor={id} title={title}>
                 {label}
             </label>
         </div>
