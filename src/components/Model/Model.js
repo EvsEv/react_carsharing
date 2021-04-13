@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Scrollbars from "react-custom-scrollbars";
-import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import RadioButton from "../Input/RadioButton";
 import CarCard from "./CarCard";
@@ -9,8 +8,6 @@ import useCompletedStage from "../../assets/hooks/useCompletedStage";
 import styles from "./model.module.sass";
 import { fetchData } from "../../assets/api/fetchData";
 import { setChoosingCategory } from "../../redux/actions/model";
-
-const carsPerPage = 10;
 
 export const Model = () => {
     const [carList, setCarList] = useState([]);
@@ -21,68 +18,67 @@ export const Model = () => {
             description: "Все модели",
         },
     ]);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [fetching, setFetching] = useState(true);
     const { choosingCategory } = useSelector((state) => state.model);
     const dispatch = useDispatch();
-    const [pageNumber, setPageNumber] = useState(0);
-    const pageVisited = pageNumber * carsPerPage;
-    const pageCount = Math.ceil(carList.length / carsPerPage);
-    console.log(pageNumber);
-
-    const fetchCategories = async () => {
-        try {
-            const actualCategories = await fetchData("category");
-            setCategories(categories.concat(actualCategories));
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
-    const fetchCarListWithFilter = async () => {
-        try {
-            const queryValue =
-                choosingCategory === "any" ? "" : choosingCategory;
-            const queryParameter =
-                choosingCategory === "any" ? "" : "categoryId[id]";
-            const actualCarList = await fetchData(
-                "car",
-                queryParameter,
-                queryValue
-            );
-            setCarList(actualCarList);
-        } catch (e) {
-            console.log(e);
-        }
-    };
 
     useEffect(() => {
         fetchCategories();
-        fetchCarListWithFilter();
+        // fetchCarListWithFilter();
     }, []);
 
     useEffect(() => {
+        setCarList([]);
         fetchCarListWithFilter();
     }, [choosingCategory]);
 
     useCompletedStage("model");
 
+    const fetchCategories = async () => {
+        const actualCategories = await fetchData("category");
+        setCategories(categories.concat(actualCategories));
+    };
+    console.log(currentPage, "cp");
+
+    const fetchCarListWithFilter = async () => {
+        const queryValue = choosingCategory === "any" ? "" : choosingCategory;
+        const queryParameter =
+            choosingCategory === "any" ? "" : "categoryId[id]";
+        const actualCarList = await fetchData(
+            "car",
+            queryParameter,
+            queryValue,
+            10,
+            currentPage
+        );
+        setCurrentPage((prev) => prev + 1);
+        setCarList((prev) => prev.concat(actualCarList));
+
+        setFetching(false);
+    };
+
+    const scrollHandler = (event) => {
+        if (
+            event.target.scrollHeight - event.target.scrollTop ===
+                event.target.clientHeight &&
+            event.target.scrollTop !== 0
+        ) {
+            console.log("test");
+            console.log("scrollTop", event.target.scrollTop);
+            console.log("scrollHeight", event.target.scrollHeight);
+            console.log("clientHeight", event.target.clientHeight);
+            fetchCarListWithFilter();
+        }
+    };
+
     const printModels = useMemo(() => {
         return carList.map((car) => <CarCard key={car.id} car={car} />);
     }, [carList]);
 
-    const changePage = ({ selected }) => {
-        setPageNumber(selected);
-    };
-
-    const printCarListWithPaginate = useMemo(() => {
-        return carList
-            .slice(pageVisited, pageVisited + carsPerPage)
-            .map((car) => <CarCard key={car.id} car={car} />);
-    }, [carList, pageNumber]);
-
     const onSelectCategory = (e) => {
-        setPageNumber(0);
+        setCurrentPage(0);
         dispatch(setChoosingCategory(e.target.id));
-        console.log(pageNumber);
     };
 
     return (
@@ -101,25 +97,9 @@ export const Model = () => {
                     />
                 ))}
             </form>
-            <Scrollbars className={styles.scroll}>
+            <Scrollbars className={styles.scroll} onScroll={scrollHandler}>
                 <section className={styles.wrapper}>{printModels}</section>
             </Scrollbars>
-            <section
-                className={[styles.wrapper, styles.withPaginate].join(" ")}
-            >
-                {printCarListWithPaginate}
-                <ReactPaginate
-                    previousLabel=""
-                    nextLabel=""
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    containerClassName={styles.paginationNav}
-                    previousLinkClassName={styles.prev}
-                    nextLinkClassName={styles.next}
-                    disabledClassName={styles.disabled}
-                    activeClassName={styles.pageActive}
-                />
-            </section>
         </div>
     );
 };
