@@ -2,72 +2,104 @@ import React, { useEffect, useMemo, useState } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
-import { filterModels } from "../../redux/actions/model";
 import RadioButton from "../Input/RadioButton";
 import CarCard from "./CarCard";
 import useCompletedStage from "../../assets/hooks/useCompletedStage";
 
 import styles from "./model.module.sass";
+import { fetchData } from "../../assets/api/fetchData";
+import { setChoosingCategory } from "../../redux/actions/model";
 
-const carsPerPage = 4;
+const carsPerPage = 10;
 
 export const Model = () => {
-    const model = useSelector((state) => state.model);
-    const filteredModels = model.filteredModels;
+    const [carList, setCarList] = useState([]);
+    const [categories, setCategories] = useState([
+        {
+            id: "any",
+            name: "Все модели",
+            description: "Все модели",
+        },
+    ]);
+    const { choosingCategory } = useSelector((state) => state.model);
     const dispatch = useDispatch();
     const [pageNumber, setPageNumber] = useState(0);
     const pageVisited = pageNumber * carsPerPage;
-    const pageCount = Math.ceil(filteredModels.length / carsPerPage);
+    const pageCount = Math.ceil(carList.length / carsPerPage);
+    console.log(pageNumber);
+
+    const fetchCategories = async () => {
+        try {
+            const actualCategories = await fetchData("category");
+            setCategories(categories.concat(actualCategories));
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    const fetchCarListWithFilter = async () => {
+        try {
+            const queryValue =
+                choosingCategory === "any" ? "" : choosingCategory;
+            const queryParameter =
+                choosingCategory === "any" ? "" : "categoryId[id]";
+            const actualCarList = await fetchData(
+                "car",
+                queryParameter,
+                queryValue
+            );
+            setCarList(actualCarList);
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     useEffect(() => {
-        dispatch(filterModels(model.choosingFilter));
+        fetchCategories();
+        fetchCarListWithFilter();
     }, []);
+
+    useEffect(() => {
+        fetchCarListWithFilter();
+    }, [choosingCategory]);
 
     useCompletedStage("model");
 
     const printModels = useMemo(() => {
-        return filteredModels.map((car) => <CarCard key={car.id} car={car} />);
-    }, [filteredModels]);
-
-    const filterByCategory = (e) => {
-        setPageNumber(0);
-        dispatch(filterModels(e.target.value));
-    };
+        return carList.map((car) => <CarCard key={car.id} car={car} />);
+    }, [carList]);
 
     const changePage = ({ selected }) => {
         setPageNumber(selected);
     };
 
-    const printModelsWithPaginate = () => {
-        return filteredModels
+    const printCarListWithPaginate = useMemo(() => {
+        return carList
             .slice(pageVisited, pageVisited + carsPerPage)
             .map((car) => <CarCard key={car.id} car={car} />);
+    }, [carList, pageNumber]);
+
+    const onSelectCategory = (e) => {
+        setPageNumber(0);
+        dispatch(setChoosingCategory(e.target.id));
+        console.log(pageNumber);
     };
 
     return (
         <div className={styles.model}>
             <form className={styles.select}>
-                <RadioButton
-                    name="model"
-                    value="All"
-                    checked={model.choosingFilter === "All"}
-                    onChange={filterByCategory}
-                    label="Все модели"
-                />
-                <RadioButton
-                    name="model"
-                    value="Econom"
-                    checked={model.choosingFilter === "Econom"}
-                    onChange={filterByCategory}
-                    label="Эконом"
-                />
-                <RadioButton
-                    name="model"
-                    value="Premium"
-                    checked={model.choosingFilter === "Premium"}
-                    onChange={filterByCategory}
-                    label="Премиум"
-                />
+                {categories.map((category) => (
+                    <RadioButton
+                        key={category.id}
+                        name="model"
+                        value={category.name}
+                        onChange={onSelectCategory}
+                        label={category.name}
+                        title={category.description}
+                        id={category.id}
+                        checked={category.id === choosingCategory}
+                    />
+                ))}
             </form>
             <Scrollbars className={styles.scroll}>
                 <section className={styles.wrapper}>{printModels}</section>
@@ -75,7 +107,7 @@ export const Model = () => {
             <section
                 className={[styles.wrapper, styles.withPaginate].join(" ")}
             >
-                {printModelsWithPaginate()}
+                {printCarListWithPaginate}
                 <ReactPaginate
                     previousLabel=""
                     nextLabel=""
