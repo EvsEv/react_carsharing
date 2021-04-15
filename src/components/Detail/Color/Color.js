@@ -14,27 +14,21 @@ export const Color = () => {
         <>
             <RadioButton
                 name="color"
-                value="Any"
+                value="Любой"
                 onChange={setColorModel}
                 label="Любой"
-                checked={order.color === "Any"}
+                checked={order.color === "Любой"}
+                id="Любой"
             />
-            {params.colors.map((color, idx) => (
+            {params.colors.map((color) => (
                 <RadioButton
-                    key={idx}
+                    key={color}
                     name="color"
                     value={color}
                     onChange={setColorModel}
-                    label={
-                        color === "red"
-                            ? "Красный"
-                            : color === "blue"
-                            ? "Синий"
-                            : color === "yellow"
-                            ? "Желтый"
-                            : null
-                    }
+                    label={color[0].toUpperCase() + color.slice(1)}
                     checked={order.color === color}
+                    id={color}
                 />
             ))}
         </>
