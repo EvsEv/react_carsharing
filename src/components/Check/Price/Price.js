@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPrice } from "../../../redux/actions/additionalParams";
 
 import styles from "./price.module.sass";
 
@@ -10,9 +9,7 @@ export const Price = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(setPrice());
-    }, [order.duration]);
+    useEffect(() => {}, [order.duration]);
 
     const priceValue = () => {
         if (stage.completedStage === 1 && !Object.keys(order.model).length) {

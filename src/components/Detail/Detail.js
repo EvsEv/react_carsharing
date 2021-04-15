@@ -4,7 +4,7 @@ import useCompletedStage from "../../assets/hooks/useCompletedStage";
 import Color from "./Color";
 
 import styles from "./detail.module.sass";
-import { NewLeaseTerm } from "./LeaseTerm/newLeaseTerm";
+import LeaseTerm from "./LeaseTerm";
 import Services from "./Services";
 import Tariff from "./Tariff";
 
@@ -21,7 +21,7 @@ export const Detail = () => {
             <div className={[styles.param, styles.date].join(" ")}>
                 <h3 className={styles.title}>Дата аренды</h3>
                 <div className={styles.wrapper}>
-                    <NewLeaseTerm />
+                    <LeaseTerm />
                 </div>
             </div>
             <div className={styles.param}>

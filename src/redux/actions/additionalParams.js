@@ -75,32 +75,3 @@ export function setDuration() {
         dispatch({ type: SET_DURATION, payload: "" });
     };
 }
-
-export function setPrice() {
-    return (dispatch, getState) => {
-        const duration = getState().additionalParams.duration;
-        const tariff = getState().additionalParams.tariff;
-        let price = "";
-        if (tariff === "byDay") {
-            if (
-                duration.split("д")[1] &&
-                duration.split("д")[1].split("ч")[0] != 0
-            ) {
-                price = (Number(duration.split("д")[0]) + 1) * 1999;
-            } else {
-                price = Number(duration.split("д")[0]) * 1999 || 1999;
-            }
-        } else if (tariff === "byMinute") {
-            if (duration.split("д")[1]) {
-                price =
-                    (Number(duration.split("д")[0]) * 60 * 24 +
-                        Number(duration.split("д")[1].split("ч")[0])) *
-                    7;
-            } else {
-                price = Number(duration.split("ч")[0]) * 7 * 60;
-            }
-        }
-
-        dispatch({ type: SET_PRICE, payload: price });
-    };
-}
