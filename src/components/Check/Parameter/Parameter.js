@@ -4,6 +4,7 @@ import styles from "./parameter.module.sass";
 
 export const Parameter = ({ name, valueOne, valueTwo }) => {
     const printValue = () => {
+        console.log("in function");
         if (valueOne && valueTwo) {
             return (
                 <>

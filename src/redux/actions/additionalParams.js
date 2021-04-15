@@ -1,8 +1,8 @@
 import {
     SELECT_COLOR,
     SET_COMPLETE_ADDPARAMS,
-    SET_DATE_FROM,
-    SET_DATE_TO,
+    SELECT_DATE_FROM,
+    SELECT_DATE_TO,
     SET_DURATION,
     SET_INCOMPLETE_ADDPARAMS,
     SET_PRICE,
@@ -20,9 +20,9 @@ export function selectColor(color) {
     };
 }
 
-export function setDateFrom(dateFrom) {
+export function selectDateFrom(dateFrom) {
     return (dispatch, getState) => {
-        dispatch({ type: SET_DATE_FROM, payload: dateFrom });
+        dispatch({ type: SELECT_DATE_FROM, payload: dateFrom });
         const order = getState().order;
         order.color && order.dateFrom && order.dateTo && order.tariff
             ? dispatch({ type: SET_COMPLETE_ADDPARAMS })
@@ -30,9 +30,9 @@ export function setDateFrom(dateFrom) {
     };
 }
 
-export function setDateTo(dateTo) {
+export function selectDateTo(dateTo) {
     return (dispatch) => {
-        dispatch({ type: SET_DATE_TO, payload: dateTo });
+        dispatch({ type: SELECT_DATE_TO, payload: dateTo });
     };
 }
 
@@ -55,7 +55,7 @@ export const toggleService = (service) => {
 export function setDuration() {
     return (dispatch, getState) => {
         const inputDates = getState().additionalParams;
-        if (inputDates.dateTo) {
+        if (inputDates.dateTo && inputDates.dateFrom) {
             const parsedFrom = Date.parse(inputDates.dateFrom);
             const parsedTo = Date.parse(inputDates.dateTo);
             const dateFrom = new Date(parsedFrom);
