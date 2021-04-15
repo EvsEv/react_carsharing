@@ -1,8 +1,8 @@
 import {
     SELECT_COLOR,
     SELECT_MODEL,
-    SET_DATE_FROM,
-    SET_DATE_TO,
+    SELECT_DATE_FROM,
+    SELECT_DATE_TO,
     SET_DURATION,
     SET_PRICE,
     SET_SELECTED_CITY,
@@ -39,9 +39,9 @@ export const order = (state = initialState, action) => {
             };
         case SELECT_COLOR:
             return { ...state, color: action.payload };
-        case SET_DATE_FROM:
+        case SELECT_DATE_FROM:
             return { ...state, dateFrom: action.payload };
-        case SET_DATE_TO:
+        case SELECT_DATE_TO:
             return { ...state, dateTo: action.payload };
         case SET_TARIFF:
             return { ...state, tariff: action.payload };

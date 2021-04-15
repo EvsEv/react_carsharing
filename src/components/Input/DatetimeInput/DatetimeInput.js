@@ -58,7 +58,7 @@ export const DatetimeInput = ({
                 onChange={onChange}
                 timeIntervals={10}
                 showTimeSelect
-                dateFormat="dd.MM.yyyy hh:mm"
+                dateFormat="dd.MM.yyyy HH:mm"
                 showDisabledMonthNavigation
                 timeFormat="HH:mm"
                 maxDate={maxDate || new Date(2022, 0, 1, 1)}
