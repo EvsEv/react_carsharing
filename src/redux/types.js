@@ -15,8 +15,8 @@ export const SET_INCOMPLETE_MODEL = "SET_INCOMPLETE_MODEL";
 
 export const SELECT_MODEL = "SELECT_MODEL";
 export const SELECT_COLOR = "SELECT_COLOR";
-export const SET_DATE_FROM = "SET_DATE_FROM";
-export const SET_DATE_TO = "SET_DATE_TO";
+export const SELECT_DATE_FROM = "SELECT_DATE_FROM";
+export const SELECT_DATE_TO = "SELECT_DATE_TO";
 export const SET_TARIFF = "SET_TARIFF";
 export const SET_DURATION = "SET_DURATION";
 export const SET_PRICE = "SET_PRICE";

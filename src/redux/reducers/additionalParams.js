@@ -1,7 +1,7 @@
 import {
+    SELECT_DATE_FROM,
+    SELECT_DATE_TO,
     SET_COMPLETE_ADDPARAMS,
-    SET_DATE_FROM,
-    SET_DATE_TO,
     SET_DURATION,
     SET_INCOMPLETE_ADDPARAMS,
     SET_PRICE,
@@ -20,9 +20,9 @@ const initialState = {
 
 export const additionalParams = (state = initialState, action) => {
     switch (action.type) {
-        case SET_DATE_FROM:
+        case SELECT_DATE_FROM:
             return { ...state, dateFrom: action.payload };
-        case SET_DATE_TO:
+        case SELECT_DATE_TO:
             return { ...state, dateTo: action.payload };
         case SET_TARIFF:
             return { ...state, tariff: action.payload };
