@@ -36,11 +36,11 @@ export function setDateTo(dateTo) {
     };
 }
 
-export function setTariff(tariff) {
+export function setTariff(selectedValue) {
     return (dispatch, getState) => {
-        dispatch({ type: SET_TARIFF, payload: tariff });
-        const order = getState().order;
-        order.color && order.dateFrom && order.dateTo && order.tariff
+        dispatch({ type: SET_TARIFF, payload: selectedValue });
+        const { color, dateFrom, dateTo, tariff } = getState().order;
+        color && dateFrom && dateTo && tariff
             ? dispatch({ type: SET_COMPLETE_ADDPARAMS })
             : dispatch({ type: SET_INCOMPLETE_ADDPARAMS });
     };

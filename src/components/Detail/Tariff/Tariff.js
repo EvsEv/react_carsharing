@@ -1,31 +1,36 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPrice, setTariff } from "../../../redux/actions/additionalParams";
 import RadioButton from "../../Input/RadioButton";
+import { fetchData } from "../../../assets/api/fetchData";
 
 export const Tariff = () => {
-    const additionalParams = useSelector((state) => state.additionalParams);
+    const [tariffs, setTariffs] = useState([]);
+    const addParams = useSelector((state) => state.additionalParams);
     const dispatch = useDispatch();
-    const onChange = (e) => {
+    const selectTariff = (e) => {
         dispatch(setTariff(e.target.value));
-        dispatch(setPrice());
+        // dispatch(setPrice());
     };
+
+    useEffect(async () => {
+        const actualTariffs = await fetchData("rate");
+        setTariffs(actualTariffs);
+    }, []);
+
     return (
         <>
-            <RadioButton
-                name="tariff"
-                value="byMinute"
-                label="Поминутно, 7₽/мин"
-                onChange={onChange}
-                checked={additionalParams.tariff === "byMinute"}
-            />
-            <RadioButton
-                name="tariff"
-                value="byDay"
-                label="На сутки, 1999 ₽/сутки"
-                onChange={onChange}
-                checked={additionalParams.tariff === "byDay"}
-            />
+            {tariffs.map((item) => (
+                <RadioButton
+                    key={item.id}
+                    name="tariff"
+                    id={item.id}
+                    value={item.rateTypeId.name}
+                    onChange={selectTariff}
+                    checked={item.rateTypeId.name === addParams.tariff}
+                    label={`${item.rateTypeId.name}, ${item.price}₽/${item.rateTypeId.unit}`}
+                />
+            ))}
         </>
     );
 };
