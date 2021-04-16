@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import useCompletedStage from "../../assets/hooks/useCompletedStage";
 
 import Color from "./Color";

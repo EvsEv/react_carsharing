@@ -9,6 +9,7 @@ import {
     SET_SELECTED_POINT,
     SET_TARIFF,
     TOGGLE_SERVICE,
+    CALCULATE_PRICE,
 } from "../types";
 
 const initialState = {
@@ -48,9 +49,8 @@ export const order = (state = initialState, action) => {
         case SET_DURATION: {
             return { ...state, duration: action.payload };
         }
-        case SET_PRICE: {
+        case CALCULATE_PRICE:
             return { ...state, price: action.payload };
-        }
         case TOGGLE_SERVICE:
             state[action.service] = !state[action.service];
             return { ...state };
