@@ -8,6 +8,9 @@ import {
     SET_PRICE,
     SET_TARIFF,
     TOGGLE_SERVICE,
+    SET_TARIFF_PRICE,
+    CALCULATE_PRICE,
+    IS_VALID_PRICE,
 } from "../types";
 
 export function selectColor(color) {
@@ -31,8 +34,12 @@ export function selectDateFrom(dateFrom) {
 }
 
 export function selectDateTo(dateTo) {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         dispatch({ type: SELECT_DATE_TO, payload: dateTo });
+        const order = getState().order;
+        order.color && order.dateFrom && order.dateTo && order.tariff
+            ? dispatch({ type: SET_COMPLETE_ADDPARAMS })
+            : dispatch({ type: SET_INCOMPLETE_ADDPARAMS });
     };
 }
 
@@ -45,6 +52,12 @@ export function setTariff(selectedValue) {
             : dispatch({ type: SET_INCOMPLETE_ADDPARAMS });
     };
 }
+
+export const setTariffPrice = (price) => {
+    return (dispatch) => {
+        dispatch({ type: SET_TARIFF_PRICE, payload: price });
+    };
+};
 
 export const toggleService = (service) => {
     return (dispatch) => {
@@ -75,3 +88,51 @@ export function setDuration() {
         dispatch({ type: SET_DURATION, payload: "" });
     };
 }
+
+export const calculatePrice = () => {
+    return (dispatch, getState) => {
+        const { tariffPrice } = getState().additionalParams;
+        const {
+            dateFrom,
+            dateTo,
+            tariff,
+            isFullTank,
+            isNeedChildChair,
+            isRightWheel,
+        } = getState().order;
+        let tariffInMs;
+        switch (tariff) {
+            case "Поминутно":
+                tariffInMs = 60000;
+                break;
+            case "Недельный Плюс":
+                tariffInMs = 604800000;
+                break;
+            case "На сутки":
+                tariffInMs = 86400000;
+            default:
+                break;
+        }
+
+        let addedServices = 0;
+        if (isFullTank) addedServices = addedServices + 500;
+        if (isNeedChildChair) addedServices = addedServices + 200;
+        if (isRightWheel) addedServices = addedServices + 1600;
+
+        let price =
+            dateTo > dateFrom &&
+            Math.ceil((dateTo - dateFrom) / tariffInMs) * Number(tariffPrice) +
+                addedServices;
+        dispatch({ type: CALCULATE_PRICE, payload: price });
+    };
+};
+
+export const isValidPriceNumber = (value) => {
+    return (dispatch, getState) => {
+        dispatch({ type: IS_VALID_PRICE, payload: !value });
+        const { price } = getState().order;
+        !value && price
+            ? dispatch({ type: SET_COMPLETE_ADDPARAMS })
+            : dispatch({ type: SET_INCOMPLETE_ADDPARAMS });
+    };
+};

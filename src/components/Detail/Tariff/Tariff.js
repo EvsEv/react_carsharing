@@ -1,6 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPrice, setTariff } from "../../../redux/actions/additionalParams";
+import {
+    setPrice,
+    setTariff,
+    setTariffPrice,
+} from "../../../redux/actions/additionalParams";
 import RadioButton from "../../Input/RadioButton";
 import { fetchData } from "../../../assets/api/fetchData";
 
@@ -10,12 +14,13 @@ export const Tariff = () => {
     const dispatch = useDispatch();
     const selectTariff = (e) => {
         dispatch(setTariff(e.target.value));
-        // dispatch(setPrice());
+        dispatch(setTariffPrice(e.target.id));
     };
 
     useEffect(async () => {
         const actualTariffs = await fetchData("rate");
         setTariffs(actualTariffs);
+        console.log(tariffs);
     }, []);
 
     return (
@@ -24,7 +29,7 @@ export const Tariff = () => {
                 <RadioButton
                     key={item.id}
                     name="tariff"
-                    id={item.id}
+                    id={item.price}
                     value={item.rateTypeId.name}
                     onChange={selectTariff}
                     checked={item.rateTypeId.name === addParams.tariff}

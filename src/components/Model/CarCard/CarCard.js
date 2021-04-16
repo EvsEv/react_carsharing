@@ -31,7 +31,7 @@ export const CarCard = ({ car }) => {
         <div className={classes.join(" ")} onClick={() => setSelectModel(car)}>
             <p className={styles.name}>{car.name}</p>
             <p className={styles.price}>
-                {car.priceMin.toLocaleString("ru")} - //{" "}
+                {car.priceMin.toLocaleString("ru")} -{" "}
                 {car.priceMax.toLocaleString("ru")} Р
             </p>
             <picture className={styles.image}>

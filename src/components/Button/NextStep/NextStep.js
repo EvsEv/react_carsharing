@@ -4,7 +4,7 @@ import { nextStage } from "../../../redux/actions/stage";
 
 import styles from "../button.module.sass";
 
-export const NextStep = () => {
+export const NextStep = ({ isValidPrice }) => {
     const [text, setText] = useState();
     const [disabledCondition, setDisabledCondition] = useState();
     const stage = useSelector((state) => state.stage);
@@ -27,7 +27,9 @@ export const NextStep = () => {
                 break;
             case 3:
                 setText("Итого");
-                setDisabledCondition(!additionalParams.completed);
+                setDisabledCondition(
+                    !additionalParams.completed || isValidPrice
+                );
                 break;
             case 4:
                 setText("Заказать");
@@ -41,6 +43,7 @@ export const NextStep = () => {
         model.completed,
         additionalParams.completed,
         order.color,
+        isValidPrice,
     ]);
 
     const onSumbitStage = () => {

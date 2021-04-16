@@ -5,23 +5,31 @@ import NextStep from "../../components/Button/NextStep";
 import styles from "./check.module.sass";
 import Parameter from "./Parameter";
 import Price from "./Price";
-import { setDuration } from "../../redux/actions/additionalParams";
+import {
+    isValidPriceNumber,
+    setDuration,
+} from "../../redux/actions/additionalParams";
 
 export const Check = () => {
+    const [isValidPrice, setIsValidPrice] = useState(false);
     const location = useSelector((state) => state.location);
     const order = useSelector((state) => state.order);
+    const { dateTo, dateFrom } = useSelector((state) => state.order);
     const stage = useSelector((state) => state.stage);
     const completedStage = useRef(stage.completedStage);
     const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(isValidPriceNumber(isValidPrice));
+    }, [isValidPrice]);
+
+    useEffect(() => {
         dispatch(setDuration());
-    }, [order.dateTo, order.dateFrom]);
+    }, [dateTo, dateFrom]);
 
     useEffect(() => {
         completedStage.current = stage.completedStage;
     }, [stage.completedStage]);
-
     return (
         <div className={styles.check}>
             <h3 className={styles.title}>Ваш заказ:</h3>
@@ -49,8 +57,11 @@ export const Check = () => {
             {order.isRightWheel && (
                 <Parameter name="Правый руль" valueOne="Да" />
             )}
-            <Price />
-            <NextStep />
+            <Price
+                isValidPrice={isValidPrice}
+                setIsValidPrice={setIsValidPrice}
+            />
+            <NextStep isValidPrice={isValidPrice} />
         </div>
     );
 };

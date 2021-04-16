@@ -5,6 +5,7 @@ import {
     selectDateTo,
 } from "../../../redux/actions/additionalParams";
 import DatetimeInput from "../../Input/DatetimeInput";
+import styles from "./leaseTerm.module.sass";
 
 export const LeaseTerm = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
@@ -26,23 +27,28 @@ export const LeaseTerm = () => {
 
     useEffect(() => {
         dateTo ? dispatch(selectDateTo(dateTo)) : dispatch(selectDateTo(""));
-        console.log(Math.floor(new Date(dateTo - dateFrom).getDate()));
     }, [dateTo]);
 
     return (
         <>
-            <DatetimeInput
-                minDate={currentDate}
-                maxDate={dateTo}
-                setminDate={setCurrentDate}
-                date={dateFrom}
-                setDate={setDateFrom}
-            />
-            <DatetimeInput
-                minDate={dateFrom || currentDate}
-                date={dateTo}
-                setDate={setDateTo}
-            />
+            <div className={styles.date}>
+                <span className={styles.term}>С </span>
+                <DatetimeInput
+                    minDate={currentDate}
+                    maxDate={dateTo}
+                    setminDate={setCurrentDate}
+                    date={dateFrom}
+                    setDate={setDateFrom}
+                />
+            </div>
+            <div className={styles.date}>
+                <span className={styles.term}>По</span>
+                <DatetimeInput
+                    minDate={dateFrom || currentDate}
+                    date={dateTo}
+                    setDate={setDateTo}
+                />
+            </div>
         </>
     );
 };

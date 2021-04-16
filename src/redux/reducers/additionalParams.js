@@ -1,4 +1,5 @@
 import {
+    IS_VALID_PRICE,
     SELECT_DATE_FROM,
     SELECT_DATE_TO,
     SET_COMPLETE_ADDPARAMS,
@@ -6,6 +7,7 @@ import {
     SET_INCOMPLETE_ADDPARAMS,
     SET_PRICE,
     SET_TARIFF,
+    SET_TARIFF_PRICE,
 } from "../types";
 
 const initialState = {
@@ -14,7 +16,9 @@ const initialState = {
     dateTo: "",
     duration: "",
     tariff: "",
+    tariffPrice: "",
     price: "",
+    isValidPrice: "",
     completed: false,
 };
 
@@ -30,6 +34,10 @@ export const additionalParams = (state = initialState, action) => {
             return { ...state, duration: action.payload };
         case SET_PRICE:
             return { ...state, price: action.payload };
+        case SET_TARIFF_PRICE:
+            return { ...state, tariffPrice: action.payload };
+        case IS_VALID_PRICE:
+            return { ...state, isValidPrice: action.payload };
         case SET_INCOMPLETE_ADDPARAMS:
             return { ...state, completed: false };
         case SET_COMPLETE_ADDPARAMS:

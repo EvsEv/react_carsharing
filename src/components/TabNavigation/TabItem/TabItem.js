@@ -7,8 +7,11 @@ import styles from "./tabItem.module.sass";
 export const TabItem = ({ value, tab }) => {
     const [disabled, setDisabled] = useState();
     const stage = useSelector((state) => state.stage);
-    const { completed } = useSelector((state) => state.additionalParams);
+    const { completed, isValidPrice } = useSelector(
+        (state) => state.additionalParams
+    );
     const dispatch = useDispatch();
+    console.log("sfsdf", isValidPrice);
 
     const classes = [styles.button];
     if (tab === stage.stage) {

@@ -39,7 +39,6 @@ export const Model = () => {
         const actualCategories = await fetchData("category");
         setCategories(categories.concat(actualCategories));
     };
-    console.log(currentPage, "cp");
 
     const fetchCarListWithFilter = async () => {
         const queryValue = choosingCategory === "any" ? "" : choosingCategory;
@@ -64,10 +63,6 @@ export const Model = () => {
                 event.target.clientHeight &&
             event.target.scrollTop !== 0
         ) {
-            console.log("test");
-            console.log("scrollTop", event.target.scrollTop);
-            console.log("scrollHeight", event.target.scrollHeight);
-            console.log("clientHeight", event.target.clientHeight);
             fetchCarListWithFilter();
         }
     };
