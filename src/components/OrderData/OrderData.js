@@ -27,31 +27,6 @@ export const OrderData = () => {
 
     const formatDate = `${day}.${month}.${date.getFullYear()} ${hour}:${minute} `;
 
-    // const printAddServices = order.addServices.map((service) => {
-    //     switch (service) {
-    //         case "fullFuel":
-    //             return (
-    //                 <p key={service} className={styles.item}>
-    //                     <span>Топливо</span> 100%
-    //                 </p>
-    //             );
-    //         case "childChair":
-    //             return (
-    //                 <p key={service} className={styles.item}>
-    //                     <span>Детское кресло</span> добавлено
-    //                 </p>
-    //             );
-    //         case "rightHand":
-    //             return (
-    //                 <p key={service} className={styles.item}>
-    //                     <span>Нахождение руля</span> справа
-    //                 </p>
-    //             );
-    //         default:
-    //             break;
-    //     }
-    // });
-
     useEffect(() => {
         if (order.model.thumbnail.path.indexOf("base64") != -1) {
             setSrc(order.model.thumbnail.path);
