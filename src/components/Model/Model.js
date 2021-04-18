@@ -1,61 +1,65 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import Scrollbars from "react-custom-scrollbars";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../../assets/api/fetchData";
+import {
+    changeChoosedCategory,
+    refreshModelList,
+} from "../../redux/functions/model";
 import RadioButton from "../Input/RadioButton";
 import CarCard from "./CarCard";
-import useCompletedStage from "../../assets/hooks/useCompletedStage";
+import Preloader from "../Preloader";
 
 import styles from "./model.module.sass";
-import { fetchData } from "../../assets/api/fetchData";
-import { setChoosingCategory } from "../../redux/actions/model";
 
 export const Model = () => {
-    const [carList, setCarList] = useState([]);
-    const [categories, setCategories] = useState([
+    const [categoryList, setCategoryList] = useState([
         {
             id: "any",
             name: "Все модели",
-            description: "Все модели",
+            desription: "Все модели",
         },
     ]);
-    const [currentPage, setCurrentPage] = useState(0);
-    const [fetching, setFetching] = useState(true);
-    const { choosingCategory } = useSelector((state) => state.model);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(true);
+    const { modelList, category } = useSelector((state) => state.model);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchCategories();
-        // fetchCarListWithFilter();
+        fetchCategoryList();
+        dispatch(refreshModelList(currentPage - 1));
+        setIsLoading(false);
     }, []);
 
-    useEffect(() => {
-        setCarList([]);
-        fetchCarListWithFilter();
-    }, [choosingCategory]);
-
-    useCompletedStage("model");
-
-    const fetchCategories = async () => {
-        const actualCategories = await fetchData("category");
-        setCategories(categories.concat(actualCategories));
+    const fetchCategoryList = async () => {
+        const actualCategoryList = await fetchData("category");
+        setCategoryList(categoryList.concat(actualCategoryList));
     };
 
-    const fetchCarListWithFilter = async () => {
-        const queryValue = choosingCategory === "any" ? "" : choosingCategory;
-        const queryParameter =
-            choosingCategory === "any" ? "" : "categoryId[id]";
-        const actualCarList = await fetchData(
-            "car",
-            queryParameter,
-            queryValue,
-            10,
-            currentPage
-        );
-        setCurrentPage((prev) => prev + 1);
-        setCarList((prev) => prev.concat(actualCarList));
-
-        setFetching(false);
+    const clickOnCategory = (event) => {
+        dispatch(changeChoosedCategory(event.target.id));
+        setCurrentPage(1);
+        dispatch(refreshModelList(currentPage - 1));
     };
+
+    const printCategories = useMemo(() => {
+        const categories = categoryList.map((item) => (
+            <RadioButton
+                key={item.id}
+                name="model"
+                value={item.name}
+                onChange={clickOnCategory}
+                label={item.name}
+                title={item.desription}
+                id={item.id}
+                defaultChecked={item.id === category}
+            />
+        ));
+        return categories;
+    }, [categoryList]);
+
+    const printModels = useMemo(() => {
+        return modelList.map((model) => <CarCard key={model.id} car={model} />);
+    }, [modelList]);
 
     const scrollHandler = (event) => {
         if (
@@ -63,38 +67,22 @@ export const Model = () => {
                 event.target.clientHeight &&
             event.target.scrollTop !== 0
         ) {
-            fetchCarListWithFilter();
+            setIsLoading(true);
+            setCurrentPage(currentPage + 1);
+            dispatch(refreshModelList(currentPage));
+            setIsLoading(false);
         }
-    };
-
-    const printModels = useMemo(() => {
-        return carList.map((car) => <CarCard key={car.id} car={car} />);
-    }, [carList]);
-
-    const onSelectCategory = (e) => {
-        setCurrentPage(0);
-        dispatch(setChoosingCategory(e.target.id));
     };
 
     return (
         <div className={styles.model}>
-            <form className={styles.select}>
-                {categories.map((category) => (
-                    <RadioButton
-                        key={category.id}
-                        name="model"
-                        value={category.name}
-                        onChange={onSelectCategory}
-                        label={category.name}
-                        title={category.description}
-                        id={category.id}
-                        checked={category.id === choosingCategory}
-                    />
-                ))}
-            </form>
-            <Scrollbars className={styles.scroll} onScroll={scrollHandler}>
-                <section className={styles.wrapper}>{printModels}</section>
-            </Scrollbars>
+            <form className={styles.select}>{printCategories}</form>
+            <section className={styles.wrapper} onScroll={scrollHandler}>
+                {printModels}
+                <div className={styles.preloader}>
+                    {isLoading && <Preloader mainColor={true} />}
+                </div>
+            </section>
         </div>
     );
 };

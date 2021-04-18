@@ -1,34 +1,35 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectColor } from "../../../redux/actions/additionalParams";
+import { addColor } from "../../../redux/functions/detail";
 import RadioButton from "../../Input/RadioButton";
 
 export const Color = () => {
-    const params = useSelector((state) => state.additionalParams);
-    const order = useSelector((state) => state.order);
+    const { color } = useSelector((state) => state.order);
+    const { selectedModel } = useSelector((state) => state.model);
+
     const dispatch = useDispatch();
-    const setColorModel = (e) => {
-        dispatch(selectColor(e.target.value));
+    const onClickColor = (event) => {
+        dispatch(addColor(event.target.value));
     };
     return (
         <>
             <RadioButton
                 name="color"
                 value="Любой"
-                onChange={setColorModel}
+                onChange={onClickColor}
                 label="Любой"
-                checked={order.color === "Любой"}
+                defaultChecked={color === "Любой"}
                 id="Любой"
             />
-            {params.colors.map((color) => (
+            {selectedModel.colors.map((item) => (
                 <RadioButton
-                    key={color}
+                    key={item}
                     name="color"
-                    value={color}
-                    onChange={setColorModel}
-                    label={color[0].toUpperCase() + color.slice(1)}
-                    checked={order.color === color}
-                    id={color}
+                    value={item}
+                    onChange={onClickColor}
+                    label={item[0].toUpperCase() + item.slice(1)}
+                    defaultChecked={color === item}
+                    id={item}
                 />
             ))}
         </>

@@ -12,7 +12,6 @@ import useCompletedStage from "../../assets/hooks/useCompletedStage";
 
 export const Location = () => {
     const location = useSelector((state) => state.location);
-    const stage = useSelector((state) => state.stage);
     const inputCity = useRef();
     const inputPoint = useRef();
     const dispatch = useDispatch();

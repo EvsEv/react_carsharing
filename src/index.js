@@ -20,6 +20,13 @@ const store = createStore(
     compose(applyMiddleware(thunk), ReactReduxDevTools)
 );
 
+const secret = "4cbcea96de";
+const key = "evsev96";
+
+const finalKey = `${key}:${secret}`;
+
+console.log(window.btoa(finalKey));
+
 ReactDOM.render(
     <Provider store={store}>
         <App />

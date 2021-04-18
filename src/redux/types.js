@@ -37,3 +37,5 @@ export const ADD_POINT = "ADD_POINT";
 export const GET_MODEL_LIST = "GET_MODEL_LIST";
 export const CHANGE_CATEGORY = "CHANGE_CATEGORY";
 export const ADD_MODEL = "ADD_MODEL";
+
+export const ADD_COLOR = "ADD_COLOR";

@@ -1,2 +1,2 @@
-import { NewModel } from "./NewModel";
-export default NewModel;
+import { Model } from "./Model";
+export default Model;

@@ -13,13 +13,13 @@ import {
     ADD_CITY,
     ADD_POINT,
     ADD_MODEL,
+    ADD_COLOR,
 } from "../types";
 
 const initialState = {
     city: "Ульяновск",
     point: "",
     model: "",
-    color: "",
     dateFrom: "",
     dateTo: "",
     duration: "",
@@ -31,7 +31,8 @@ const initialState = {
     //
     cityId: null,
     pointId: null,
-    carId: null,
+    carId: {},
+    color: null,
 };
 
 export const order = (state = initialState, action) => {
@@ -68,7 +69,13 @@ export const order = (state = initialState, action) => {
         case ADD_POINT:
             return { ...state, pointId: action.payload };
         case ADD_MODEL:
-            return { ...state, carId: action.payload.id };
+            return {
+                ...state,
+                color: null,
+                carId: action.payload,
+            };
+        case ADD_COLOR:
+            return { ...state, color: action.payload };
         default:
             return state;
     }

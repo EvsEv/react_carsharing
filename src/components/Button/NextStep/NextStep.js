@@ -9,9 +9,13 @@ export const NextStep = ({ isValidPrice }) => {
     const [disabledCondition, setDisabledCondition] = useState();
     const stage = useSelector((state) => state.stage);
     const location = useSelector((state) => state.location);
-    const model = useSelector((state) => state.model);
     const additionalParams = useSelector((state) => state.additionalParams);
     const order = useSelector((state) => state.order);
+
+    //
+    const { carId } = useSelector((state) => state.order);
+    console.log(carId);
+    //
 
     const dispatch = useDispatch();
 
@@ -23,7 +27,7 @@ export const NextStep = ({ isValidPrice }) => {
                 break;
             case 2:
                 setText("Дополнительно");
-                setDisabledCondition(!model.completed);
+                setDisabledCondition(!carId);
                 break;
             case 3:
                 setText("Итого");
@@ -40,10 +44,11 @@ export const NextStep = ({ isValidPrice }) => {
     }, [
         stage.stage,
         location.completed,
-        model.completed,
         additionalParams.completed,
         order.color,
         isValidPrice,
+        //
+        carId,
     ]);
 
     const onSumbitStage = () => {
