@@ -11,3 +11,7 @@ export const getModelListFromServer = (modelList) => {
 export const changeCategory = (category) => {
     return { type: CHANGE_CATEGORY, payload: category };
 };
+
+export const addModelToStore = (model) => {
+    return { type: ADD_MODEL, payload: model };
+};

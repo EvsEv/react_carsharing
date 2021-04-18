@@ -1,5 +1,6 @@
 import { fetchData } from "../../assets/api/fetchData";
 import {
+    addModelToStore,
     changeCategory,
     getModelListFromServer,
 } from "../actionCreators/model";
@@ -23,4 +24,8 @@ export const refreshModelList = (page) => {
 
 export const changeChoosedCategory = (filter) => {
     return (dispatch) => dispatch(changeCategory(filter));
+};
+
+export const addModel = (model) => {
+    return (dispatch) => dispatch(addModelToStore(model));
 };

@@ -12,6 +12,7 @@ import {
     CALCULATE_PRICE,
     ADD_CITY,
     ADD_POINT,
+    ADD_MODEL,
 } from "../types";
 
 const initialState = {
@@ -30,6 +31,7 @@ const initialState = {
     //
     cityId: null,
     pointId: null,
+    carId: null,
 };
 
 export const order = (state = initialState, action) => {
@@ -65,6 +67,8 @@ export const order = (state = initialState, action) => {
             return { ...state, cityId: action.payload, pointId: null };
         case ADD_POINT:
             return { ...state, pointId: action.payload };
+        case ADD_MODEL:
+            return { ...state, carId: action.payload.id };
         default:
             return state;
     }
