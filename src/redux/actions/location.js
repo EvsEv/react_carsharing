@@ -1,3 +1,4 @@
+import { addCityToOrder, addPointToOrder } from "../actionCreators/location";
 import {
     SET_COMPLETE_LOCATION,
     SET_INCOMPLETE_LOCATION,
@@ -24,3 +25,13 @@ export function setSelectedPoint(point) {
             : dispatch({ type: SET_COMPLETE_LOCATION });
     };
 }
+
+//
+
+export const addCity = (cityId) => {
+    return (dispatch) => dispatch(addCityToOrder(cityId));
+};
+
+export const addPoint = (pointId) => {
+    return (dispatch) => dispatch(addPointToOrder(pointId));
+};

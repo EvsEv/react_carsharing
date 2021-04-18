@@ -1,4 +1,5 @@
 import {
+    ADD_CITY,
     SET_COMPLETE_LOCATION,
     SET_INCOMPLETE_LOCATION,
     SET_SELECTED_CITY,
@@ -26,3 +27,13 @@ export const location = (state = initialState, action) => {
             return state;
     }
 };
+
+// export const location = (state = initialState, action) => {
+//     switch (action.type) {
+//         case ADD_CITY:
+//             return {...state, city:}
+
+//         default:
+//             break;
+//     }
+// };

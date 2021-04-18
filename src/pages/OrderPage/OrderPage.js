@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Check from "../../components/Check";
 import Detail from "../../components/Detail";
 import Location from "../../components/Location";
-import Model from "../../components/Model";
+import NewModel from "../../components/Model";
 import OrderData from "../../components/OrderData";
 import TabNavigation from "../../components/TabNavigation";
 
@@ -17,7 +17,7 @@ export const OrderPage = () => {
             case 1:
                 return <Location />;
             case 2:
-                return <Model />;
+                return <NewModel />;
             case 3:
                 return <Detail />;
             case 4:

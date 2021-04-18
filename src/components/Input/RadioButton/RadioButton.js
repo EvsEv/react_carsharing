@@ -5,7 +5,7 @@ import styles from "./radioButton.module.sass";
 export const RadioButton = ({
     name,
     value,
-    checked,
+    defaultChecked,
     onChange,
     label,
     title,
@@ -18,7 +18,7 @@ export const RadioButton = ({
                 type="radio"
                 name={name}
                 value={value}
-                checked={checked}
+                defaultChecked={defaultChecked}
                 className={styles.radio}
                 onChange={onChange}
             />

@@ -1,3 +1,6 @@
+import { fetchData } from "../../assets/api/fetchData";
+import { getModelListFromServer } from "../actionCreators/model";
+import { model } from "../reducers/model";
 import {
     SELECT_COLOR,
     SELECT_MODEL,
@@ -25,3 +28,5 @@ export function selectModel(model) {
             : dispatch({ type: SET_COMPLETE_MODEL });
     };
 }
+
+//

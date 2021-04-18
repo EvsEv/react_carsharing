@@ -10,6 +10,8 @@ import {
     SET_TARIFF,
     TOGGLE_SERVICE,
     CALCULATE_PRICE,
+    ADD_CITY,
+    ADD_POINT,
 } from "../types";
 
 const initialState = {
@@ -25,6 +27,9 @@ const initialState = {
     isFullTank: false,
     isNeedChildChair: false,
     isRightWheel: false,
+    //
+    cityId: null,
+    pointId: null,
 };
 
 export const order = (state = initialState, action) => {
@@ -54,6 +59,12 @@ export const order = (state = initialState, action) => {
         case TOGGLE_SERVICE:
             state[action.service] = !state[action.service];
             return { ...state };
+
+        //
+        case ADD_CITY:
+            return { ...state, cityId: action.payload, pointId: null };
+        case ADD_POINT:
+            return { ...state, pointId: action.payload };
         default:
             return state;
     }

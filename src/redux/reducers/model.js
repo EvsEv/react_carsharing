@@ -1,12 +1,17 @@
 import {
+    CHANGE_CATEGORY,
+    GET_MODEL_LIST,
     SET_CHOOSING_CATEGORY,
     SET_COMPLETE_MODEL,
     SET_INCOMPLETE_MODEL,
 } from "../types";
 
 const initialState = {
-    choosingCategory: "any",
+    modelList: [],
+    choosingCategory: null,
     completed: false,
+    //
+    category: "any",
 };
 
 export const model = (state = initialState, action) => {
@@ -17,6 +22,11 @@ export const model = (state = initialState, action) => {
             return { ...state, completed: true };
         case SET_INCOMPLETE_MODEL:
             return { ...state, completed: false };
+        //
+        case GET_MODEL_LIST:
+            return { ...state, modelList: action.payload };
+        case CHANGE_CATEGORY:
+            return { ...state, modelList: [], category: action.payload };
         default:
             return state;
     }

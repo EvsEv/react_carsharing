@@ -27,3 +27,13 @@ export const SET_INCOMPLETE_ADDPARAMS = "SET_INCOMPLETE_ADDPARAMS";
 export const TOGGLE_SERVICE = "TOGGLE_SERVICE";
 export const CALCULATE_PRICE = "CALCULATE_PRICE";
 export const IS_VALID_PRICE = "IS_VALID_PRICE";
+
+//
+export const GET_CITY_LIST = "GET_CITY_LIST";
+export const GET_POINT_LIST = "GET_POINT_LIST";
+export const ADD_CITY = "ADD_CITY";
+export const ADD_POINT = "ADD_POINT";
+
+export const GET_MODEL_LIST = "GET_MODEL_LIST";
+export const CHANGE_CATEGORY = "CHANGE_CATEGORY";
+export const ADD_MODEL = "ADD_MODEL";
