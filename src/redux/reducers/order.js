@@ -1,12 +1,7 @@
 import {
-    SELECT_COLOR,
-    SELECT_MODEL,
     SELECT_DATE_FROM,
     SELECT_DATE_TO,
     SET_DURATION,
-    SET_PRICE,
-    SET_SELECTED_CITY,
-    SET_SELECTED_POINT,
     SET_TARIFF,
     TOGGLE_SERVICE,
     CALCULATE_PRICE,
@@ -17,37 +12,23 @@ import {
 } from "../types";
 
 const initialState = {
-    city: "Ульяновск",
-    point: "",
-    model: "",
     dateFrom: "",
     dateTo: "",
     duration: "",
     tariff: "",
-    price: "",
     isFullTank: false,
     isNeedChildChair: false,
     isRightWheel: false,
     //
     cityId: null,
     pointId: null,
-    carId: {},
+    carId: null,
     color: null,
+    price: 0,
 };
 
 export const order = (state = initialState, action) => {
     switch (action.type) {
-        case SET_SELECTED_CITY:
-            return { ...state, city: action.payload };
-        case SET_SELECTED_POINT:
-            return { ...state, point: action.payload };
-        case SELECT_MODEL:
-            return {
-                ...state,
-                model: action.payload,
-            };
-        case SELECT_COLOR:
-            return { ...state, color: action.payload };
         case SELECT_DATE_FROM:
             return { ...state, dateFrom: action.payload };
         case SELECT_DATE_TO:
@@ -65,7 +46,13 @@ export const order = (state = initialState, action) => {
 
         //
         case ADD_CITY:
-            return { ...state, cityId: action.payload, pointId: null };
+            return {
+                ...state,
+                cityId: action.payload,
+                pointId: null,
+                carId: null,
+                color: null,
+            };
         case ADD_POINT:
             return {
                 ...state,

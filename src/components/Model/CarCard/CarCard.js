@@ -11,7 +11,7 @@ export const CarCard = ({ car }) => {
 
     const classes = [styles.item];
 
-    if (car.id === carId.id) {
+    if (car.id === carId?.id) {
         classes.push(styles.selected);
     }
 
@@ -24,7 +24,7 @@ export const CarCard = ({ car }) => {
     }, []);
 
     const onClickModel = (car) => {
-        if (car.id === carId.id) {
+        if (car.id === carId?.id) {
             return;
         }
         dispatch(addModel(car));

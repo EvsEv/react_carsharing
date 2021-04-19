@@ -1,2 +1,2 @@
-import { NewLocation } from "./NewLocation";
-export default NewLocation;
+import { Location } from "./Location";
+export default Location;

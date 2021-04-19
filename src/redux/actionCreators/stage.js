@@ -1,5 +1,5 @@
-import { NEXT_STAGE } from "../types";
+import { SET_STAGE } from "../types";
 
-export const setNextStage = (stage) => {
-    return { type: NEXT_STAGE, payload: stage };
+export const setStage = (stage) => {
+    return { type: SET_STAGE, payload: stage };
 };

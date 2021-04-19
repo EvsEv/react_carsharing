@@ -1,6 +1,4 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import useCompletedStage from "../../assets/hooks/useCompletedStage";
 
 import Color from "./Color";
 
@@ -10,7 +8,6 @@ import Services from "./Services";
 import Tariff from "./Tariff";
 
 export const Detail = () => {
-    useCompletedStage("additionalParams");
     return (
         <form>
             <div className={styles.param}>

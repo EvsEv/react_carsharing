@@ -1,7 +1,6 @@
 export const SWITCH_LANGUAGE = "SWITCH_LANGUAGE";
 
 export const NEXT_STAGE = "NEXT_STAGE";
-export const SET_STAGE = "SET_STAGE";
 export const SET_COMPLETED_STAGE = "SET_COMPELTED_STAGE";
 
 export const SET_SELECTED_CITY = "SET_SELECTED_CITY";
@@ -39,3 +38,5 @@ export const CHANGE_CATEGORY = "CHANGE_CATEGORY";
 export const ADD_MODEL = "ADD_MODEL";
 
 export const ADD_COLOR = "ADD_COLOR";
+
+export const SET_STAGE = "SET_STAGE";

@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setStage } from "../../../redux/actions/stage";
+import { changeStage } from "../../../redux/functions/stage";
 
 import styles from "./tabItem.module.sass";
 
 export const TabItem = ({ value, tab }) => {
-    const [disabled, setDisabled] = useState();
-    const stage = useSelector((state) => state.stage);
-    const { completed, isValidPrice } = useSelector(
-        (state) => state.additionalParams
-    );
+    const [disabled, setDisabled] = useState(false);
+    const { cityId, pointId, carId } = useSelector((state) => state.order);
+    const { stage } = useSelector((state) => state.stage);
     const dispatch = useDispatch();
     const classes = [styles.button];
-    if (tab === stage.stage) {
+    if (tab === stage) {
         classes.push(styles.active);
     }
 
-    const goToTab = () => {
-        dispatch(setStage(tab));
-    };
-
     useEffect(() => {
-        setDisabled(tab - 1 > stage.completedStage);
-    }, [stage.completedStage]);
-
-    useEffect(() => {
-        if (tab === 4 && !completed) {
-            setDisabled(!completed);
+        switch (tab) {
+            case 2:
+                setDisabled(!cityId || !pointId);
+                break;
+            case 3:
+                setDisabled(!cityId || !pointId || !carId);
+            default:
+                break;
         }
-    }, [completed]);
+    }, [cityId, pointId, carId]);
+
+    const goToTab = () => {
+        dispatch(changeStage(tab));
+    };
 
     return (
         <li className={styles.item}>
