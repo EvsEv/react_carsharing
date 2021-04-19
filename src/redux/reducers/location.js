@@ -1,5 +1,7 @@
 import {
     ADD_CITY,
+    GET_CITY_LIST,
+    GET_POINT_LIST,
     SET_COMPLETE_LOCATION,
     SET_INCOMPLETE_LOCATION,
     SET_SELECTED_CITY,
@@ -11,6 +13,10 @@ const initialState = {
     selectedCity: "Ульяновск",
     selectedPoint: "",
     completed: false,
+
+    //
+    cityList: null,
+    pointList: null,
 };
 
 export const location = (state = initialState, action) => {
@@ -23,6 +29,11 @@ export const location = (state = initialState, action) => {
             return { ...state, completed: true };
         case SET_INCOMPLETE_LOCATION:
             return { ...state, completed: false };
+        //
+        case GET_CITY_LIST:
+            return { ...state, cityList: action.payload };
+        case GET_POINT_LIST:
+            return { ...state, pointList: action.payload };
         default:
             return state;
     }

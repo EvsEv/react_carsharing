@@ -67,7 +67,11 @@ export const order = (state = initialState, action) => {
         case ADD_CITY:
             return { ...state, cityId: action.payload, pointId: null };
         case ADD_POINT:
-            return { ...state, pointId: action.payload };
+            return {
+                ...state,
+                pointId: action.payload,
+                cityId: action.payload ? action.payload.cityId : state.cityId,
+            };
         case ADD_MODEL:
             return {
                 ...state,

@@ -1,2 +1,2 @@
-import { NextStep } from "./NextStep";
-export default NextStep;
+import { NewNextStep } from "./NewNextStep";
+export default NewNextStep;

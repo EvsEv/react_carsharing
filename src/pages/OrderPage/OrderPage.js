@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import { useSelector } from "react-redux";
 import Check from "../../components/Check";
@@ -11,9 +11,9 @@ import TabNavigation from "../../components/TabNavigation";
 import styles from "./orderPage.module.sass";
 
 export const OrderPage = () => {
-    const stage = useSelector((state) => state.stage);
+    const { stage } = useSelector((state) => state.stage);
     function printStage() {
-        switch (stage.stage) {
+        switch (stage) {
             case 1:
                 return <Location />;
             case 2:

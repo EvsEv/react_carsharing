@@ -14,7 +14,6 @@ export const NextStep = ({ isValidPrice }) => {
 
     //
     const { carId } = useSelector((state) => state.order);
-    console.log(carId);
     //
 
     const dispatch = useDispatch();

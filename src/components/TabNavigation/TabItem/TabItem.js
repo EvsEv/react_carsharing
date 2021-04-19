@@ -11,8 +11,6 @@ export const TabItem = ({ value, tab }) => {
         (state) => state.additionalParams
     );
     const dispatch = useDispatch();
-    console.log("sfsdf", isValidPrice);
-
     const classes = [styles.button];
     if (tab === stage.stage) {
         classes.push(styles.active);
