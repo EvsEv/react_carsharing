@@ -1,22 +1,19 @@
-import {
-    SET_CHOOSING_CATEGORY,
-    SET_COMPLETE_MODEL,
-    SET_INCOMPLETE_MODEL,
-} from "../types";
+import { ADD_MODEL, CHANGE_CATEGORY, GET_MODEL_LIST } from "../types";
 
 const initialState = {
-    choosingCategory: "any",
-    completed: false,
+    modelList: [],
+    category: "any",
+    selectedModel: null,
 };
 
 export const model = (state = initialState, action) => {
     switch (action.type) {
-        case SET_CHOOSING_CATEGORY:
-            return { ...state, choosingCategory: action.payload };
-        case SET_COMPLETE_MODEL:
-            return { ...state, completed: true };
-        case SET_INCOMPLETE_MODEL:
-            return { ...state, completed: false };
+        case GET_MODEL_LIST:
+            return { ...state, modelList: action.payload };
+        case CHANGE_CATEGORY:
+            return { ...state, modelList: [], category: action.payload };
+        case ADD_MODEL:
+            return { ...state, selectedModel: action.payload };
         default:
             return state;
     }
