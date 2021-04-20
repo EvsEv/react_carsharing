@@ -5,6 +5,7 @@ import {
     addDurationToOrder,
     addPriceToOrder,
     addTariffToOrder,
+    toggleService,
 } from "../actionCreators/detail";
 
 export const addColor = (color) => {
@@ -37,6 +38,10 @@ export const addDuration = () => {
 
 export const addTariff = (tariff) => {
     return (dispatch) => dispatch(addTariffToOrder(tariff));
+};
+
+export const toggleSerivces = (service) => {
+    return (dispatch) => dispatch(toggleService(service));
 };
 
 export const addPrice = () => {

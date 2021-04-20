@@ -1,10 +1,5 @@
 import {
-    SELECT_DATE_FROM,
-    SELECT_DATE_TO,
-    SET_DURATION,
-    SET_TARIFF,
     TOGGLE_SERVICE,
-    CALCULATE_PRICE,
     ADD_CITY,
     ADD_POINT,
     ADD_MODEL,
@@ -26,7 +21,7 @@ const initialState = {
     fullHour: null,
     dateFrom: null,
     dateTo: null,
-    price: 0,
+    price: null,
     tariff: null,
     isFullTank: false,
     isNeedChildChair: false,
@@ -35,22 +30,6 @@ const initialState = {
 
 export const order = (state = initialState, action) => {
     switch (action.type) {
-        case SELECT_DATE_FROM:
-            return { ...state, dateFrom: action.payload };
-        case SELECT_DATE_TO:
-            return { ...state, dateTo: action.payload };
-        case SET_TARIFF:
-            return { ...state, tariff: action.payload };
-        case SET_DURATION: {
-            return { ...state, duration: action.payload };
-        }
-        case CALCULATE_PRICE:
-            return { ...state, price: action.payload };
-        case TOGGLE_SERVICE:
-            state[action.service] = !state[action.service];
-            return { ...state };
-
-        //
         case ADD_CITY:
             return {
                 ...state,
@@ -110,6 +89,9 @@ export const order = (state = initialState, action) => {
                 fullDay: action.fullDay,
                 fullHour: action.fullHour,
             };
+        case TOGGLE_SERVICE:
+            state[action.service] = !state[action.service];
+            return { ...state };
         case ADD_TARIFF:
             return { ...state, tariff: action.payload };
         case ADD_PRICE:

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Scrollbars from "react-custom-scrollbars";
 import { useSelector } from "react-redux";
 import Check from "../../components/Check";

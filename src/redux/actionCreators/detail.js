@@ -5,6 +5,7 @@ import {
     ADD_DURATION,
     ADD_PRICE,
     ADD_TARIFF,
+    TOGGLE_SERVICE,
 } from "../types";
 
 export const addColorToOrder = (color) => {
@@ -30,5 +31,7 @@ export const addTariffToOrder = (tariff) => ({
     type: ADD_TARIFF,
     payload: tariff,
 });
+
+export const toggleService = (service) => ({ type: TOGGLE_SERVICE, service });
 
 export const addPriceToOrder = (price) => ({ type: ADD_PRICE, payload: price });
