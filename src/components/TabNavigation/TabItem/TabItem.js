@@ -6,7 +6,10 @@ import styles from "./tabItem.module.sass";
 
 export const TabItem = ({ value, tab }) => {
     const [disabled, setDisabled] = useState(false);
-    const { cityId, pointId, carId } = useSelector((state) => state.order);
+    const [priceValid, setPriceValid] = useState(true);
+    const { cityId, pointId, carId, color, price } = useSelector(
+        (state) => state.order
+    );
     const { stage } = useSelector((state) => state.stage);
     const dispatch = useDispatch();
     const classes = [styles.button];
@@ -15,16 +18,26 @@ export const TabItem = ({ value, tab }) => {
     }
 
     useEffect(() => {
+        setPriceValid(price > carId?.priceMin && price < carId?.priceMax);
+    }, [price, carId]);
+
+    useEffect(() => {
         switch (tab) {
             case 2:
                 setDisabled(!cityId || !pointId);
                 break;
             case 3:
-                setDisabled(!cityId || !pointId || !carId);
+                setDisabled(!carId || !cityId || !pointId);
+                break;
+            case 4:
+                setDisabled(
+                    !priceValid || !color || !carId || !cityId || !pointId
+                );
+                break;
             default:
                 break;
         }
-    }, [cityId, pointId, carId]);
+    }, [cityId, pointId, carId, priceValid, color]);
 
     const goToTab = () => {
         dispatch(changeStage(tab));

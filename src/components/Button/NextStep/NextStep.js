@@ -6,10 +6,17 @@ import styles from "../button.module.sass";
 
 export const NextStep = () => {
     const [text, setText] = useState("");
+    const [priceValid, setPriceValid] = useState(true);
     const [disabledCondition, setDisabledCondition] = useState(true);
     const { stage } = useSelector((state) => state.stage);
-    const { cityId, pointId, carId } = useSelector((state) => state.order);
+    const { cityId, pointId, carId, price } = useSelector(
+        (state) => state.order
+    );
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        setPriceValid(price > carId?.priceMin && price < carId?.priceMax);
+    }, [price]);
 
     useEffect(() => {
         switch (stage) {
@@ -20,10 +27,15 @@ export const NextStep = () => {
             case 2:
                 setText("Дополнительно");
                 setDisabledCondition(!carId);
+                break;
+            case 3:
+                setText("Итого");
+                setDisabledCondition(!priceValid);
+                break;
             default:
                 break;
         }
-    }, [stage, cityId, pointId, carId]);
+    }, [stage, cityId, pointId, carId, priceValid]);
 
     const onClick = () => {
         dispatch(nextStage());
