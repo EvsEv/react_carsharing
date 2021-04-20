@@ -16,7 +16,6 @@ export const Search = ({
     const [showDropdown, setShowDropdown] = useState(false);
     const [suggestions, setSuggestions] = useState([]);
     const dropdown = useRef();
-    console.log("dd", dropdown);
 
     useEffect(() => {
         setValue(valueFromStore);
@@ -27,7 +26,7 @@ export const Search = ({
     }, [variants]);
 
     useEffect(() => {
-        // if (!showDropdown) return;
+        if (!showDropdown) return;
         const handleClick = (event) => {
             if (dropdown.current && !dropdown.current.contains(event.target)) {
                 setShowDropdown(false);
