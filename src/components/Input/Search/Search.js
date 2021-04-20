@@ -122,7 +122,6 @@ export const Search = ({
         ));
     };
 
-    console.log(dropdown.current);
     return (
         <div className={styles.search}>
             <label htmlFor={label} className={styles.label}>

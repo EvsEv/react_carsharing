@@ -1,71 +1,100 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import NextStep from "../../components/Button/NextStep";
+import { addDuration } from "../../redux/functions/detail";
+import NextStep from "../Button/NextStep";
 
 import styles from "./check.module.sass";
 import Parameter from "./Parameter";
 import Price from "./Price";
-import {
-    isValidPriceNumber,
-    setDuration,
-} from "../../redux/actions/additionalParams";
 
-export const Check = () => {
-    const [isValidPrice, setIsValidPrice] = useState(false);
-    const location = useSelector((state) => state.location);
-    const order = useSelector((state) => state.order);
-    const { dateTo, dateFrom } = useSelector((state) => state.order);
-    const stage = useSelector((state) => state.stage);
-    const completedStage = useRef(stage.completedStage);
+export const Check = ({ showData, setShowData, setpopupPost }) => {
+    const [term, setTerm] = useState("");
+    const {
+        cityId,
+        pointId,
+        carId,
+        color,
+        fullDay,
+        fullHour,
+        duration,
+        dateTo,
+        dateFrom,
+        tariff,
+        isNeedChildChair,
+        isRightWheel,
+        isFullTank,
+    } = useSelector((state) => state.order);
+    const { stage } = useSelector((state) => state.stage);
+    const checkData = useRef();
     const dispatch = useDispatch();
 
-    //
-    const { selectedModel } = useSelector((state) => state.model);
-    //
+    let dataClasses = [styles.data];
+
+    if (showData) {
+        dataClasses.push(styles.toggle);
+    }
+
+    if (stage === 4) {
+        dataClasses = [];
+    }
 
     useEffect(() => {
-        dispatch(isValidPriceNumber(isValidPrice));
-    }, [isValidPrice]);
+        fullDay ? setTerm(`${fullDay}д${fullHour}ч`) : setTerm(`${fullHour}ч`);
+    }, [duration]);
 
     useEffect(() => {
-        dispatch(setDuration());
+        dispatch(addDuration());
     }, [dateTo, dateFrom]);
 
     useEffect(() => {
-        completedStage.current = stage.completedStage;
-    }, [stage.completedStage]);
+        if (!showData) return;
+        const handleClick = (event) => {
+            if (
+                checkData.current &&
+                !checkData.current.contains(event.target)
+            ) {
+                setShowData(false);
+            }
+        };
+
+        window.addEventListener("click", handleClick);
+        return () => {
+            window.removeEventListener("click", handleClick);
+        };
+    }, [showData]);
+
     return (
         <div className={styles.check}>
-            <h3 className={styles.title}>Ваш заказ:</h3>
-            <Parameter
-                name="Пункт выдачи"
-                valueOne={location.selectedCity}
-                valueTwo={location.selectedPoint}
-            />
-            {selectedModel && (
-                <Parameter name="Модель" valueOne={selectedModel.name || ""} />
-            )}
-            {(order.color || stage.stage === 3) && (
-                <Parameter name="Цвет" valueOne={order.color || ""} />
-            )}
-            {(order.duration || stage.stage === 3) && (
-                <Parameter name="Срок аренды" valueOne={order.duration || ""} />
-            )}
-            {(order.tariff || stage.stage === 3) && (
-                <Parameter name="Срок аренды" valueOne={order.tariff || ""} />
-            )}
-            {order.isFullTank && <Parameter name="Полный бак" valueOne="Да" />}
-            {order.isNeedChildChair && (
-                <Parameter name="Детское кресло" valueOne="Да" />
-            )}
-            {order.isRightWheel && (
-                <Parameter name="Правый руль" valueOne="Да" />
-            )}
-            <Price
-                isValidPrice={isValidPrice}
-                setIsValidPrice={setIsValidPrice}
-            />
-            <NextStep isValidPrice={isValidPrice} />
+            <div className={dataClasses.join(" ")} ref={checkData}>
+                <h3 className={styles.title}>Ваш заказ:</h3>
+                <Parameter
+                    name="Пункт выдачи"
+                    valueOne={cityId?.name}
+                    valueTwo={pointId?.address}
+                />
+                {carId && <Parameter name="Модель" valueOne={carId?.name} />}
+                {color && (
+                    <Parameter
+                        name="Цвет"
+                        valueOne={color[0].toUpperCase() + color.slice(1)}
+                    />
+                )}
+                {duration && (
+                    <Parameter name="Длительность аренды" valueOne={term} />
+                )}
+                {tariff && (
+                    <Parameter name="Тариф" valueOne={tariff.rateTypeId.name} />
+                )}
+                {isFullTank && <Parameter name="Полный бак" valueOne="Да" />}
+                {isNeedChildChair && (
+                    <Parameter name="Детское кресло" valueOne="Да" />
+                )}
+                {isRightWheel && (
+                    <Parameter name="Тип машины" valueOne="Правый руль" />
+                )}
+                {carId && <Price />}
+            </div>
+            <NextStep setpopupPost={setpopupPost} />
         </div>
     );
 };

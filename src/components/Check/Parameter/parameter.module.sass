@@ -1,5 +1,6 @@
 @import ../../../assets/styles/variables
 @import ../../../assets/styles/media
+@import ../../../assets/styles/adaptedProperties
 
 .parameter
   display: flex
@@ -26,4 +27,4 @@
 
 @include mobileDevice
   .value, .name
-    font-size: 12px
+    @include adaptedForMobile(font-size, 12, 17, px )

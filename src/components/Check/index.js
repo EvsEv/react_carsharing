@@ -1,2 +1,2 @@
-import { NewCheck } from "./NewCheck";
-export default NewCheck;
+import { Check } from "./Check";
+export default Check;
