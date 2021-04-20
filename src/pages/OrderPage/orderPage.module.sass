@@ -7,7 +7,6 @@
   flex-direction: column
   flex-grow: 1
 
-
 .wrapper
   max-width: $desktopMaxWidth
   width: $desktopMaxWidth
@@ -31,6 +30,14 @@
   > div
     display: flex
 
+.hidden
+  overflow: hidden
+
+.toggleCheck
+  display: none
+
+
+
 @include desktopMinDevice
   .wrapper, .container
     margin: 0
@@ -41,15 +48,34 @@
   .wrapper
     display: flex
     flex-direction: column
+    padding-bottom: $defaultPadding * 0
   .stage
     width: 100%
     padding-right: 0
     border: none
+  .toggleCheck
+    display: block
+    font-size: 14px
+    color: $lightGrey
+    width: 60px
+    height: 30px
+    padding: 5px
+    position: absolute
+    bottom: 173px
+    right: 0
+    background: $darkGrey
+    z-index: 3
+    cursor: pointer
+    transition: all $short ease
+    &:hover
+      width: 80px
 
 @include mobileDevice
   .main
     margin-top: 20px
   .container, .wrapper
     padding: 0 $defaultPadding /2 0
+  .wrapper
+    padding-bottom: $defaultPadding
   .stage
-    padding-top: 30px
+    padding: 30px 0

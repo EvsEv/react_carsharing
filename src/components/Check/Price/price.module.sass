@@ -1,4 +1,6 @@
 @import ../../../assets/styles/variables
+@import ../../../assets/styles/media
+@import ../../../assets/styles/adaptedProperties
 
 .price
   font-size: 16px
@@ -26,3 +28,9 @@
 .invalid
   font-weight: bold
   color: red
+
+@include mobileDevice
+  .price
+    margin-bottom: 10px
+    @include adaptedForMobile(font-size, 12, 17, px)
+    

@@ -4,7 +4,7 @@ import { nextStage } from "../../../redux/functions/stage";
 
 import styles from "../button.module.sass";
 
-export const NextStep = () => {
+export const NextStep = ({ setpopupPost }) => {
     const [text, setText] = useState("");
     const [priceValid, setPriceValid] = useState(true);
     const [disabledCondition, setDisabledCondition] = useState(true);
@@ -32,13 +32,15 @@ export const NextStep = () => {
                 setText("Итого");
                 setDisabledCondition(!priceValid || !color);
                 break;
+            case 4:
+                setText("Заказать");
             default:
                 break;
         }
     }, [stage, cityId, pointId, carId, priceValid, color]);
 
     const onClick = () => {
-        dispatch(nextStage());
+        stage < 4 ? dispatch(nextStage()) : setpopupPost(true);
     };
 
     return (

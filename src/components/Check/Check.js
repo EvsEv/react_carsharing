@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addDuration } from "../../redux/functions/detail";
 import NextStep from "../Button/NextStep";
@@ -7,7 +7,7 @@ import styles from "./check.module.sass";
 import Parameter from "./Parameter";
 import Price from "./Price";
 
-export const Check = () => {
+export const Check = ({ showData, setShowData, setpopupPost }) => {
     const [term, setTerm] = useState("");
     const {
         cityId,
@@ -24,7 +24,19 @@ export const Check = () => {
         isRightWheel,
         isFullTank,
     } = useSelector((state) => state.order);
+    const { stage } = useSelector((state) => state.stage);
+    const checkData = useRef();
     const dispatch = useDispatch();
+
+    let dataClasses = [styles.data];
+
+    if (showData) {
+        dataClasses.push(styles.toggle);
+    }
+
+    if (stage === 4) {
+        dataClasses = [];
+    }
 
     useEffect(() => {
         fullDay ? setTerm(`${fullDay}д${fullHour}ч`) : setTerm(`${fullHour}ч`);
@@ -33,9 +45,27 @@ export const Check = () => {
     useEffect(() => {
         dispatch(addDuration());
     }, [dateTo, dateFrom]);
+
+    useEffect(() => {
+        if (!showData) return;
+        const handleClick = (event) => {
+            if (
+                checkData.current &&
+                !checkData.current.contains(event.target)
+            ) {
+                setShowData(false);
+            }
+        };
+
+        window.addEventListener("click", handleClick);
+        return () => {
+            window.removeEventListener("click", handleClick);
+        };
+    }, [showData]);
+
     return (
         <div className={styles.check}>
-            <div>
+            <div className={dataClasses.join(" ")} ref={checkData}>
                 <h3 className={styles.title}>Ваш заказ:</h3>
                 <Parameter
                     name="Пункт выдачи"
@@ -64,7 +94,7 @@ export const Check = () => {
                 )}
                 {carId && <Price />}
             </div>
-            <NextStep />
+            <NextStep setpopupPost={setpopupPost} />
         </div>
     );
 };

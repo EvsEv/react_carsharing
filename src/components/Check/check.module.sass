@@ -10,13 +10,9 @@
   display: flex
   flex-direction: column
 
-
-
 .title
   text-align: end
   margin-bottom: 26px
-
-
 
 @include desktopMinDevice
   .check
@@ -26,16 +22,44 @@
 @include tabletDevice
   .check
     width: 100%
+    padding-top: 0
     padding-left: 0
-    padding-bottom: 90px
     justify-content: flex-end
+
   .dots
     width: 300px
 
+  .data
+    position: absolute
+    height: 0
+    width: 100%
+    bottom: 0
+    left: 0
+    right: 0
+    background: $white
+    padding: 0 32px
+    box-sizing: border-box
+    // display: none
+    transform: translateY(100%)
+    transition: all $medium ease
+    z-index: -2
+    opacity: 0
+    overflow: scroll
+
+
+  .toggle
+    height: 100%
+    padding: 32px
+    z-index: 1
+    opacity: 1
+    transform: translateY(0)
+
+
 @include mobileDevice
   .check
-    padding-top: 40px
-    padding-bottom: 40px
+    padding-bottom: 32px
+    flex-grow: 0
+
   .title
     @include adaptedForMobile(font-size, 12, 17, px )
     text-align: start
