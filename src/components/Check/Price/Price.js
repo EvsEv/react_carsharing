@@ -9,7 +9,7 @@ export const Price = () => {
     const classes = [styles.value];
 
     useEffect(() => {
-        setIsValid(price > carId.priceMin && price < carId.priceMax);
+        setIsValid(price >= carId.priceMin && price <= carId.priceMax);
     }, [price]);
 
     if (!isValid) {

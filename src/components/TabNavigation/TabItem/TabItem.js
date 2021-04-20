@@ -18,7 +18,7 @@ export const TabItem = ({ value, tab }) => {
     }
 
     useEffect(() => {
-        setPriceValid(price > carId?.priceMin && price < carId?.priceMax);
+        setPriceValid(price >= carId?.priceMin && price <= carId?.priceMax);
     }, [price, carId]);
 
     useEffect(() => {

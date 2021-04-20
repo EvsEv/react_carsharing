@@ -1,5 +1,6 @@
 @import ../../assets/styles/variables
 @import ../../assets/styles/media
+@import ../../assets/styles/adaptedProperties
 
 .check
   width: calc(287 * 100% / 1248)
@@ -36,5 +37,6 @@
     padding-top: 40px
     padding-bottom: 40px
   .title
+    @include adaptedForMobile(font-size, 12, 17, px )
     text-align: start
     margin-bottom: 0px

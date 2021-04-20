@@ -43,15 +43,17 @@ export const Check = () => {
                     valueTwo={pointId?.address}
                 />
                 {carId && <Parameter name="Модель" valueOne={carId?.name} />}
-                {color && <Parameter name="Цвет" valueOne={color} />}
+                {color && (
+                    <Parameter
+                        name="Цвет"
+                        valueOne={color[0].toUpperCase() + color.slice(1)}
+                    />
+                )}
                 {duration && (
                     <Parameter name="Длительность аренды" valueOne={term} />
                 )}
                 {tariff && (
-                    <Parameter
-                        name="Тарифф"
-                        valueOne={tariff.rateTypeId.name}
-                    />
+                    <Parameter name="Тариф" valueOne={tariff.rateTypeId.name} />
                 )}
                 {isFullTank && <Parameter name="Полный бак" valueOne="Да" />}
                 {isNeedChildChair && (

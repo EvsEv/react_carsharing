@@ -9,13 +9,13 @@ export const NextStep = () => {
     const [priceValid, setPriceValid] = useState(true);
     const [disabledCondition, setDisabledCondition] = useState(true);
     const { stage } = useSelector((state) => state.stage);
-    const { cityId, pointId, carId, price } = useSelector(
+    const { cityId, pointId, carId, price, color } = useSelector(
         (state) => state.order
     );
     const dispatch = useDispatch();
 
     useEffect(() => {
-        setPriceValid(price > carId?.priceMin && price < carId?.priceMax);
+        setPriceValid(price >= carId?.priceMin && price <= carId?.priceMax);
     }, [price]);
 
     useEffect(() => {
@@ -30,12 +30,12 @@ export const NextStep = () => {
                 break;
             case 3:
                 setText("Итого");
-                setDisabledCondition(!priceValid);
+                setDisabledCondition(!priceValid || !color);
                 break;
             default:
                 break;
         }
-    }, [stage, cityId, pointId, carId, priceValid]);
+    }, [stage, cityId, pointId, carId, priceValid, color]);
 
     const onClick = () => {
         dispatch(nextStage());
