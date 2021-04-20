@@ -9,22 +9,28 @@ import {
     ADD_POINT,
     ADD_MODEL,
     ADD_COLOR,
+    ADD_DATE_FROM,
+    ADD_DATE_TO,
+    ADD_DURATION,
+    ADD_TARIFF,
+    ADD_PRICE,
 } from "../types";
 
 const initialState = {
-    dateFrom: "",
-    dateTo: "",
-    duration: "",
-    tariff: "",
-    isFullTank: false,
-    isNeedChildChair: false,
-    isRightWheel: false,
-    //
     cityId: null,
     pointId: null,
     carId: null,
     color: null,
+    duration: null,
+    fullDay: null,
+    fullHour: null,
+    dateFrom: null,
+    dateTo: null,
     price: 0,
+    tariff: null,
+    isFullTank: false,
+    isNeedChildChair: false,
+    isRightWheel: false,
 };
 
 export const order = (state = initialState, action) => {
@@ -52,21 +58,62 @@ export const order = (state = initialState, action) => {
                 pointId: null,
                 carId: null,
                 color: null,
+                dateFrom: null,
+                dateTo: null,
+                tariff: null,
+                duration: null,
+                price: null,
+                isNeedChildChair: false,
+                isRightWheel: false,
+                isFullTank: false,
             };
         case ADD_POINT:
             return {
                 ...state,
                 pointId: action.payload,
                 cityId: action.payload ? action.payload.cityId : state.cityId,
+                carId: null,
+                color: null,
+                dateFrom: null,
+                dateTo: null,
+                tariff: null,
+                duration: null,
+                price: null,
+                isNeedChildChair: false,
+                isRightWheel: false,
+                isFullTank: false,
             };
         case ADD_MODEL:
             return {
                 ...state,
                 color: null,
+                dateFrom: null,
+                dateTo: null,
+                tariff: null,
+                duration: null,
+                price: null,
+                isNeedChildChair: false,
+                isRightWheel: false,
+                isFullTank: false,
                 carId: action.payload,
             };
         case ADD_COLOR:
             return { ...state, color: action.payload };
+        case ADD_DATE_FROM:
+            return { ...state, dateFrom: action.payload };
+        case ADD_DATE_TO:
+            return { ...state, dateTo: action.payload };
+        case ADD_DURATION:
+            return {
+                ...state,
+                duration: action.payload,
+                fullDay: action.fullDay,
+                fullHour: action.fullHour,
+            };
+        case ADD_TARIFF:
+            return { ...state, tariff: action.payload };
+        case ADD_PRICE:
+            return { ...state, price: action.payload };
         default:
             return state;
     }

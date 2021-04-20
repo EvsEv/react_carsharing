@@ -11,9 +11,11 @@ export const Price = () => {
             <p className={styles.title}>Цена:</p>
             {!price && (
                 <p>
-                    {carId.priceMin} - {carId.priceMax} ₽
+                    {carId.priceMin.toLocaleString("ru")} -{" "}
+                    {carId.priceMax.toLocaleString("ru")} ₽
                 </p>
             )}
+            {price && <p>{price.toLocaleString("ru")} ₽</p>}
         </div>
     );
 };

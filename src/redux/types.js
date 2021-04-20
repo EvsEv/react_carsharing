@@ -38,5 +38,10 @@ export const CHANGE_CATEGORY = "CHANGE_CATEGORY";
 export const ADD_MODEL = "ADD_MODEL";
 
 export const ADD_COLOR = "ADD_COLOR";
+export const ADD_DATE_FROM = "ADD_DATE_FROM";
+export const ADD_DATE_TO = "ADD_DATE_TO";
+export const ADD_DURATION = "ADD_DURATION";
+export const ADD_TARIFF = "ADD_TARIFF";
+export const ADD_PRICE = "ADD_PRIECE";
 
 export const SET_STAGE = "SET_STAGE";

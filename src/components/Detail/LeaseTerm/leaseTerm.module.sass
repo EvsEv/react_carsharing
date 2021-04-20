@@ -1,4 +1,6 @@
-
+@import ../../../assets/styles/variables
+@import ../../../assets/styles/adaptedProperties
+@import ../../../assets/styles/media
 
 .date
   display: flex
@@ -8,5 +10,59 @@
 .term
   margin-right: 16px
 
-.test
+.wrapper
   position: relative
+
+.datetime
+  font-family: "RobotoLgt"
+  font-size: 14px
+  line-height: 16px
+  position: relative
+  max-width: 250px
+  margin-bottom: 13px
+  display: flex
+  justify-content: flex-end
+
+.text
+  padding-top: 7px
+  margin-right: 8px
+
+
+.reset
+  width: 20px
+  height: 100%
+  position: absolute
+  top: 50%
+  right: 0px
+  transform: translateY(-50%)
+  cursor: pointer
+  transform: translateY(-50%)
+
+  &::before, &::after
+    content: ""
+    width: 11px
+    height: 1px
+    position: absolute
+    top: 12px
+    left: 50%
+    background: $mainBlack
+    transform-origin: center
+    transform: translateX(-50%) rotate(45deg)
+    transition: all $short ease
+  &::after
+    transform: translateX(-50%) rotate(-45deg)
+  &:hover
+    &::before, &::after
+      background: $mainAccent
+
+@include mobileDevice
+  .text
+    @include adaptedForMobile(font-size, 12, 17, px )
+    line-height: 1.3
+    padding-top: 0
+  .datetime
+    flex-direction: column
+    max-width: 288px
+  .reset
+
+  

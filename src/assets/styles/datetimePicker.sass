@@ -1,13 +1,16 @@
 @import ./variables
-.MuiInputBase-input.MuiInput-input.MuiInputBase-inputAdornedEnd
-  &:not(&:placeholder-shown)
-    ~.MuiInputAdornment-root.MuiInputAdornment-positionEnd
-      display: flex
+@import ./media
+@import ./adaptedProperties
+// .MuiInputBase-input.MuiInput-input.MuiInputBase-inputAdornedEnd
+//   &:not(&:placeholder-shown)
+//     ~.MuiInputAdornment-root.MuiInputAdornment-positionEnd
+//       display: flex
 
-.MuiInputAdornment-root.MuiInputAdornment-positionEnd
-  display: none
+// .MuiInputAdornment-root.MuiInputAdornment-positionEnd
+//   display: none
 
 .MuiToolbar-root.MuiToolbar-regular.MuiPickersToolbar-toolbar.MuiPickerDTToolbar-toolbar.MuiToolbar-gutters
+  padding: 20px
   background-color: $mainAccent
 
 .MuiPickerDTTabs-tabs.MuiPickerDTTabs-tabs
@@ -38,5 +41,59 @@
   color: $mainBlack
 
 
-.PrivateTabIndicator-root-1.PrivateTabIndicator-colorSecondary-3.MuiTabs-indicator
+.PrivateTabIndicator-root-1.PrivateTabIndicator-colorSecondary-3.MuiTabs-indicator, .PrivateTabIndicator-root-5.PrivateTabIndicator-colorSecondary-7.MuiTabs-indicator
   background-color: $mainBlack
+
+
+.MuiInputBase-input.MuiInput-input.MuiInputBase-inputAdornedEnd
+  font-family: "RobotoLgt"
+  font-size: 14px
+  line-height: 16px
+  width: 66%
+  padding-bottom: 0px
+  padding-left: 10px
+
+.MuiButtonBase-root.MuiIconButton-root
+  padding: 0
+  .MuiSvgIcon-root
+    width: 20px
+    height: 30px
+  &:hover
+    background: none
+    .MuiSvgIcon-root
+      fill: $mainAccent
+
+.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl.MuiInputBase-adornedEnd
+  border-bottom: 1px solid $darkGrey
+  &::before
+    display: none
+  &::after
+    display: none
+
+.MuiFormControl-root.MuiTextField-root
+  width: 224px
+
+.MuiTouchRipple-root
+  display: none
+
+
+.MuiPickersCalendarHeader-switchHeader
+  margin: 20px !important
+
+.MuiPaper-root.MuiDialog-paper.MuiPickersModal-dialogRoot.MuiPickersModal-dialogRootWider.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.MuiPaper-elevation24.MuiPaper-rounded
+  box-shadow: none !important
+  transition: none !important
+
+.MuiFormHelperText-root.Mui-error
+  position: absolute
+  top: 100%
+  font-size: 11px
+  line-height: 0.5
+
+@include mobileDevice
+  .MuiInputBase-input.MuiInput-input.MuiInputBase-inputAdornedEnd
+    @include adaptedForMobile(font-size, 12, 17, px )
+  .MuiFormControl-root.MuiTextField-root
+    width: 100%
+  .MuiInputBase-input.MuiInput-input.MuiInputBase-inputAdornedEnd
+    width: 70%
