@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectModel } from "../../../redux/actions/model";
+import { addModel } from "../../../redux/functions/model";
 
 import styles from "./carCard.module.sass";
 
 export const CarCard = ({ car }) => {
     const [src, setSrc] = useState();
-    const { model } = useSelector((state) => state.order);
+    const { carId } = useSelector((state) => state.order);
     const dispatch = useDispatch();
 
     const classes = [styles.item];
-    if (car.id === model.id) classes.push(styles.selected);
+
+    if (car.id === carId?.id) {
+        classes.push(styles.selected);
+    }
 
     useEffect(() => {
         if (car.thumbnail.path.indexOf("base64") != -1) {
@@ -20,15 +23,15 @@ export const CarCard = ({ car }) => {
         }
     }, []);
 
-    const setSelectModel = (car) => {
-        if (car.id === model.id) {
+    const onClickModel = (car) => {
+        if (car.id === carId?.id) {
             return;
         }
-        dispatch(selectModel(car));
+        dispatch(addModel(car));
     };
 
     return (
-        <div className={classes.join(" ")} onClick={() => setSelectModel(car)}>
+        <div className={classes.join(" ")} onClick={() => onClickModel(car)}>
             <p className={styles.name}>{car.name}</p>
             <p className={styles.price}>
                 {car.priceMin.toLocaleString("ru")} -{" "}

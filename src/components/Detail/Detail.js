@@ -1,6 +1,6 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import useCompletedStage from "../../assets/hooks/useCompletedStage";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addPrice } from "../../redux/functions/detail";
 
 import Color from "./Color";
 
@@ -10,7 +10,19 @@ import Services from "./Services";
 import Tariff from "./Tariff";
 
 export const Detail = () => {
-    useCompletedStage("additionalParams");
+    const {
+        tariff,
+        duration,
+        isNeedChildChair,
+        isFullTank,
+        isRightWheel,
+    } = useSelector((state) => state.order);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(addPrice());
+    }, [tariff, duration, isNeedChildChair, isFullTank, isRightWheel]);
+
     return (
         <form>
             <div className={styles.param}>

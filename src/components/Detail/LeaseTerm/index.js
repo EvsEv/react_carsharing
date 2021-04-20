@@ -1,2 +1,2 @@
-import { LeaseTerm } from "./LeaseTerm";
-export default LeaseTerm;
+import { NewLeaseTerm } from "./NewLeaseTerm";
+export default NewLeaseTerm;

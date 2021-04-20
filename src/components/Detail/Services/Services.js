@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    setIsFullTank,
-    toggleService,
-} from "../../../redux/actions/additionalParams";
+import { toggleSerivces } from "../../../redux/functions/detail";
 import Checkbox from "../../Input/Checkbox";
 
 export const Services = () => {
@@ -12,7 +9,7 @@ export const Services = () => {
     );
     const dispatch = useDispatch();
     const onChange = (e) => {
-        dispatch(toggleService(e.target.value));
+        dispatch(toggleSerivces(e.target.value));
     };
     return (
         <>

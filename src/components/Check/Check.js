@@ -19,6 +19,10 @@ export const Check = () => {
     const completedStage = useRef(stage.completedStage);
     const dispatch = useDispatch();
 
+    //
+    const { selectedModel } = useSelector((state) => state.model);
+    //
+
     useEffect(() => {
         dispatch(isValidPriceNumber(isValidPrice));
     }, [isValidPrice]);
@@ -38,8 +42,8 @@ export const Check = () => {
                 valueOne={location.selectedCity}
                 valueTwo={location.selectedPoint}
             />
-            {(order.model || stage.stage === 2) && (
-                <Parameter name="Модель" valueOne={order.model.name || ""} />
+            {selectedModel && (
+                <Parameter name="Модель" valueOne={selectedModel.name || ""} />
             )}
             {(order.color || stage.stage === 3) && (
                 <Parameter name="Цвет" valueOne={order.color || ""} />

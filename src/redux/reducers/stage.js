@@ -7,8 +7,6 @@ const initialState = {
 
 export const stage = (state = initialState, action) => {
     switch (action.type) {
-        case NEXT_STAGE:
-            return { ...state, stage: action.payload };
         case SET_STAGE:
             return { ...state, stage: action.payload };
         case SET_COMPLETED_STAGE:
