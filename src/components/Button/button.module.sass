@@ -75,11 +75,22 @@
     background: linear-gradient(90deg, #281349 0%, #720C7B 100%)
 
 
+.submit
+  width: 177px
+  height: 48px
+  margin-top: 0
+
 .wide
   font-size: 17px
   line-height: 21px
   width: 100%
   margin-top: 32px
+  position: relative
+  z-index: 2
+
+@include desktopMinDevice
+  .wide
+    margin-bottom: $defaultPadding * 3
 
 @include mobileDevice
   .default
@@ -93,6 +104,10 @@
   .wide
     font-size: 15px
     margin-right: -16px
+    margin-top: 0
+    margin-bottom: 0
+  .submit
+    margin-left: 0
 
 @include mobileMinDevice
   .default

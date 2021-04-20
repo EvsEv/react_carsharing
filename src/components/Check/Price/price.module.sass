@@ -1,4 +1,6 @@
 @import ../../../assets/styles/variables
+@import ../../../assets/styles/media
+@import ../../../assets/styles/adaptedProperties
 
 .price
   font-size: 16px
@@ -12,13 +14,23 @@
   margin-right: 5px
 
 .value
+  flex-shrink: 0
+  transition: all $short ease
   span
     color: $darkGrey
 
 .alert
-  font-size: 10px
+  font-size: 12px
+  margin: 0 0 0 auto
   color: red
   display: block
-  position: absolute
-  top: 100%
-  left: 0
+
+.invalid
+  font-weight: bold
+  color: red
+
+@include mobileDevice
+  .price
+    margin-bottom: 10px
+    @include adaptedForMobile(font-size, 12, 17, px)
+    
