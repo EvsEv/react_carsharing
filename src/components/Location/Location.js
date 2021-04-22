@@ -23,7 +23,7 @@ export const Location = () => {
 
     useEffect(() => {
         dispatch(getPointList());
-    }, [cityId]);
+    }, []);
 
     useEffect(() => {
         const newCityList =

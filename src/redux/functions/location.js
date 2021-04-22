@@ -31,14 +31,13 @@ export const getCityList = () => {
 };
 
 export const getPointList = () => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         const pointList = await fetchData("point");
-        const { cityId } = getState().order;
 
-        const updatedList = pointList.map((point) => {
-            const address = `${cityId?.name}, ${point.address}`;
+        const updatedList = pointList.map(async (point) => {
+            const address = `${point.cityId?.name}, ${point.address}`;
             const coordinates = fetch(
-                `http://search.maps.sputnik.ru/search?q=${address}&tlat=${cityId?.boxArea[0]}&tlon=${cityId?.boxArea[1]}&blat=${cityId?.boxArea[3]}&blon=${cityId?.boxArea[4]}`
+                `http://search.maps.sputnik.ru/search?q=${address}`
             )
                 .then((res) => res.json())
                 .then((json) => ({
@@ -54,9 +53,14 @@ export const getPointList = () => {
 
             return coordinates;
         });
-        Promise.all(updatedList).then((item) =>
-            dispatch(getPointListFromServer(item))
-        );
+
+        Promise.allSettled(updatedList).then((item) => {
+            const fullFilledPromise = item
+                .filter((prom) => prom.status === "fulfilled")
+                .map((fullfilled) => fullfilled.value);
+
+            dispatch(getPointListFromServer(fullFilledPromise));
+        });
     };
 };
 
