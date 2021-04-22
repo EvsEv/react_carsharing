@@ -36,9 +36,9 @@ export const getPointList = () => {
         const { cityId } = getState().order;
 
         const updatedList = pointList.map((point) => {
-            const address = `${cityId.name}, ${point.address}`;
+            const address = `${cityId?.name}, ${point.address}`;
             const coordinates = fetch(
-                `http://search.maps.sputnik.ru/search?q=${address}`
+                `http://search.maps.sputnik.ru/search?q=${address}&tlat=${cityId?.boxArea[0]}&tlon=${cityId?.boxArea[1]}&blat=${cityId?.boxArea[3]}&blon=${cityId?.boxArea[4]}`
             )
                 .then((res) => res.json())
                 .then((json) => ({

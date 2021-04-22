@@ -19,8 +19,11 @@ export const Location = () => {
     const dispatch = useDispatch();
     useEffect(async () => {
         dispatch(getCityList());
-        dispatch(getPointList());
     }, []);
+
+    useEffect(() => {
+        dispatch(getPointList());
+    }, [cityId]);
 
     useEffect(() => {
         const newCityList =
