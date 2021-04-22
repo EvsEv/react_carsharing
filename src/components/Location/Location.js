@@ -9,8 +9,7 @@ import {
 import { Search } from "../Input/Search/Search";
 
 import styles from "./location.module.sass";
-
-import mapImage from "../../assets/images/mapImage.jpg";
+import Map from "../Map";
 
 export const Location = () => {
     const { cityList, pointList } = useSelector((state) => state.location);
@@ -38,26 +37,29 @@ export const Location = () => {
     };
 
     const onSelectPoint = (point) => {
-        dispatch(addPoint(point));
+        const cityOfPoint = cityList.filter(
+            (city) => city.id === point?.cityId.id
+        );
+        dispatch(addPoint(point, cityOfPoint[0]));
     };
 
     useEffect(() => {
         const newPointList = cityId
-            ? pointList.filter((item) => {
+            ? pointList?.filter((item) => {
                   if (item.cityId && cityId) {
                       return item.cityId.id === cityId.id;
                   }
               })
             : pointList;
         cityId &&
-            pointList.filter((item) => {
+            pointList?.filter((item) => {
                 if (item.cityId && cityId) {
                     return item.cityId.id === cityId.id;
                 }
             });
+
         setPointListToSearch(newPointList);
     }, [cityId, pointList]);
-
     return (
         <>
             <form>
@@ -80,7 +82,7 @@ export const Location = () => {
             <section className={styles.onMap}>
                 <h3 className={styles.title}>Выбрать на карте</h3>
                 <div className={styles.map}>
-                    <img src={mapImage} />
+                    <Map points={pointListToSearch} cities={cityListToSearch} />
                 </div>
             </section>
         </>

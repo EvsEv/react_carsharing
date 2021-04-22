@@ -107,7 +107,6 @@ export const Search = ({
 
     const onSearchClick = () => {
         setShowDropdown(true);
-        console.log(showDropdown);
     };
 
     const printSuggestions = () => {

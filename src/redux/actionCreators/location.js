@@ -4,8 +4,8 @@ export const addCityToOrder = (cityId) => {
     return { type: ADD_CITY, payload: cityId };
 };
 
-export const addPointToOrder = (pointId) => {
-    return { type: ADD_POINT, payload: pointId };
+export const addPointToOrder = (pointId, cityId) => {
+    return { type: ADD_POINT, payload: pointId, city: cityId };
 };
 
 export const getCityListFromServer = (carList) => {
