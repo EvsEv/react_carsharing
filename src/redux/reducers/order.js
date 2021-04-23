@@ -12,7 +12,18 @@ import {
 } from "../types";
 
 const initialState = {
-    cityId: null,
+    cityId: {
+        id: "5e26a128099b810b946c5d87",
+        name: "Ульяновск",
+        latitude: 54.31667,
+        longitude: 48.36667,
+        boxArea: [
+            48.0558315006526,
+            54.1387543653734,
+            48.6924280426867,
+            54.4215314857901,
+        ],
+    },
     pointId: null,
     carId: null,
     color: null,
@@ -50,7 +61,7 @@ export const order = (state = initialState, action) => {
             return {
                 ...state,
                 pointId: action.payload,
-                cityId: action.payload ? action.payload.cityId : state.cityId,
+                cityId: action.payload ? action.city : state.cityId,
                 carId: null,
                 color: null,
                 dateFrom: null,
