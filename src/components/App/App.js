@@ -7,7 +7,8 @@ export const App = () => {
     return (
         <HashRouter basename="/">
             <Route exact path="/" render={() => <MainLayout />} />
-            <Route path="/order" render={() => <OrderLayout />} />
+            <Route path="/order" exact render={() => <OrderLayout />} />
+            <Route path="/order/:id" render={() => <OrderLayout />} />
         </HashRouter>
     );
 };
