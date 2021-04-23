@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router";
 import useMenu from "../../assets/hooks/useMenu";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -8,9 +9,10 @@ import OrderPage from "../../pages/OrderPage";
 
 import styles from "./orderLayout.module.sass";
 
-export const OrderLayout = () => {
+export const OrderLayout = ({ children }) => {
     const [isOpenMenu, toggleMenu] = useMenu();
-    const [popupPost, setpopupPost] = useState(false);
+    const { id } = useParams();
+    console.log(id);
 
     return (
         <div className={styles.body}>
@@ -23,9 +25,10 @@ export const OrderLayout = () => {
                         order={true}
                     />
                 </div>
-                <OrderPage setpopupPost={setpopupPost} />
+                <OrderPage isWatchOrder={id} />
+                {/* {children} */}
             </section>
-            {popupPost && <Popup setpopupPost={setpopupPost} />}
+
             <Menu isOpen={isOpenMenu} toggle={toggleMenu} />
         </div>
     );
