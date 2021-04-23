@@ -140,7 +140,7 @@ export const Map = () => {
                         </p>
                     </div>
                 )}
-                <FullscreenControl />
+                <FullscreenControl className={styles.fullscreen} />
             </ReactMapGL>
             );
         </div>
