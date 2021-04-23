@@ -1,19 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Scrollbars from "react-custom-scrollbars";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Check from "../../components/Check";
 import Detail from "../../components/Detail";
 import Location from "../../components/Location";
 import NewModel from "../../components/Model";
 import OrderData from "../../components/OrderData";
 import TabNavigation from "../../components/TabNavigation";
+import { changeStage } from "../../redux/functions/stage";
 
 import styles from "./orderPage.module.sass";
 
-export const OrderPage = ({ setpopupPost }) => {
+export const OrderPage = ({ isWatchOrder }) => {
     const [showData, setShowData] = useState(false);
     const { stage } = useSelector((state) => state.stage);
+    const [popupPost, setpopupPost] = useState(false);
     const scrollWrapper = useRef();
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (isWatchOrder) {
+            dispatch(changeStage(4));
+        }
+    }, [isWatchOrder]);
+
     function printStage() {
         switch (stage) {
             case 1:
@@ -23,7 +32,12 @@ export const OrderPage = ({ setpopupPost }) => {
             case 3:
                 return <Detail />;
             case 4:
-                return <OrderData />;
+                return (
+                    <OrderData
+                        popupPost={popupPost}
+                        setpopupPost={setpopupPost}
+                    />
+                );
             default:
                 return;
         }
@@ -40,7 +54,7 @@ export const OrderPage = ({ setpopupPost }) => {
     };
     return (
         <main className={styles.main}>
-            <TabNavigation />
+            {!isWatchOrder && <TabNavigation />}
             <Scrollbars className={styles.scroll} ref={scrollWrapper}>
                 <div className={classesWrapper.join(" ")}>
                     <div className={styles.stage}>{printStage()}</div>
