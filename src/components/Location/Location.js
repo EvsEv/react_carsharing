@@ -41,7 +41,7 @@ export const Location = () => {
 
     const onSelectPoint = (point) => {
         const cityOfPoint = cityList.filter(
-            (city) => city.id === point?.cityId.id
+            (city) => city?.id === point?.cityId.id
         );
         dispatch(addPoint(point, cityOfPoint[0]));
     };
@@ -84,7 +84,7 @@ export const Location = () => {
             </form>
             <section className={styles.onMap}>
                 <h3 className={styles.title}>Выбрать на карте</h3>
-                <div className={styles.map}>
+                <div className={[styles.map, "mapboxgl-map"].join(" ")}>
                     <Map points={pointListToSearch} cities={cityListToSearch} />
                 </div>
             </section>
