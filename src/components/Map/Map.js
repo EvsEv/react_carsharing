@@ -68,6 +68,8 @@ export const Map = () => {
         dispatch(addCity(cityWithCoords[0]));
     };
 
+    console.log("new vers of mapbox");
+
     useEffect(() => {
         const whenResize = () => {
             let wrapper = document.getElementById("wrapper");
