@@ -35,37 +35,33 @@ export const getPointList = () => {
         const pointList = await fetchData("point");
 
         const updatedList = pointList.map(async (point) => {
-            const address = `${point.cityId?.name}, ${point.address}`;
+            const address = `${point.cityId?.name} ${point.address}`;
+            const options = {};
             const coordinates = fetch(
-                `http://search.maps.sputnik.ru/search?q=${address}`,
-                {
-                    header: {
-                        "Access-Control-Allow-Origin": "*",
-                    },
-                }
-            )
-                .then((res) => res.json())
-                .then((json) => ({
-                    id: point.id,
-                    address: point.address,
-                    name: point.name,
-                    coordinate: [
-                        json.result[0].position.lat,
-                        json.result[0].position.lon,
-                    ],
-                    cityId: point.cityId,
-                }));
+                `https://nominatim.openstreetmap.org/search/${address}format=json&addressdetails=1&limit=1`
+            ).then((res) => console.log(res.json()));
+            // .then((json) => ({
+            //     id: point.id,
+            //     address: point.address,
+            //     name: point.name,
+            //     coordinate: [
+            //         json.result[0].position.lat,
+            //         json.result[0].position.lon,
+            //     ],
+            //     cityId: point.cityId,
+            // }));
 
+            console.log(coordinates);
             return coordinates;
         });
 
-        Promise.allSettled(updatedList).then((item) => {
-            const fullFilledPromise = item
-                .filter((prom) => prom.status === "fulfilled")
-                .map((fullfilled) => fullfilled.value);
+        // Promise.allSettled(updatedList).then((item) => {
+        //     const fullFilledPromise = item
+        //         .filter((prom) => prom.status === "fulfilled")
+        //         .map((fullfilled) => fullfilled.value);
 
-            dispatch(getPointListFromServer(fullFilledPromise));
-        });
+        //     dispatch(getPointListFromServer(fullFilledPromise));
+        // });
     };
 };
 
