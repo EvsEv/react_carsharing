@@ -68,7 +68,7 @@ export const Map = () => {
         dispatch(addCity(cityWithCoords[0]));
     };
 
-    console.log(" header fetch");
+    console.log(" testtst fetch");
 
     useEffect(() => {
         const whenResize = () => {
