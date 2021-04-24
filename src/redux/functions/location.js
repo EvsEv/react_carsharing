@@ -37,7 +37,12 @@ export const getPointList = () => {
         const updatedList = pointList.map(async (point) => {
             const address = `${point.cityId?.name}, ${point.address}`;
             const coordinates = fetch(
-                `http://search.maps.sputnik.ru/search?q=${address}`
+                `http://search.maps.sputnik.ru/search?q=${address}`,
+                {
+                    header: {
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                }
             )
                 .then((res) => res.json())
                 .then((json) => ({
