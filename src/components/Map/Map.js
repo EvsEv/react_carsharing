@@ -68,7 +68,7 @@ export const Map = () => {
         dispatch(addCity(cityWithCoords[0]));
     };
 
-    console.log("new vers of mapbox");
+    console.log(" header fetch");
 
     useEffect(() => {
         const whenResize = () => {
