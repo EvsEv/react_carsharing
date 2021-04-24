@@ -35,14 +35,9 @@ export const getPointList = () => {
         const pointList = await fetchData("point");
 
         const updatedList = pointList.map(async (point) => {
-            const address = `${point.cityId?.name}, ${point.address}`;
+            const address = `${point.cityId?.name} ${point.address}`;
             const coordinates = fetch(
-                `http://search.maps.sputnik.ru/search?q=${address}`,
-                {
-                    header: {
-                        "Access-Control-Allow-Origin": "*",
-                    },
-                }
+                `https://api.opencagedata.com/geocode/v1/json?key=2c84412836ff4043ba8920e7ae47b47c&q=${address}&pretty=1&no_annotations=1`
             )
                 .then((res) => res.json())
                 .then((json) => ({
@@ -50,12 +45,11 @@ export const getPointList = () => {
                     address: point.address,
                     name: point.name,
                     coordinate: [
-                        json.result[0].position.lat,
-                        json.result[0].position.lon,
+                        json.results[0].geometry.lat,
+                        json.results[0].geometry.lng,
                     ],
                     cityId: point.cityId,
                 }));
-
             return coordinates;
         });
 
