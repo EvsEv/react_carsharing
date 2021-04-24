@@ -36,32 +36,30 @@ export const getPointList = () => {
 
         const updatedList = pointList.map(async (point) => {
             const address = `${point.cityId?.name} ${point.address}`;
-            const options = {};
             const coordinates = fetch(
-                `https://nominatim.openstreetmap.org/search/${address}format=json&addressdetails=1&limit=1`
-            ).then((res) => console.log(res.json()));
-            // .then((json) => ({
-            //     id: point.id,
-            //     address: point.address,
-            //     name: point.name,
-            //     coordinate: [
-            //         json.result[0].position.lat,
-            //         json.result[0].position.lon,
-            //     ],
-            //     cityId: point.cityId,
-            // }));
-
-            console.log(coordinates);
+                `https://api.opencagedata.com/geocode/v1/json?key=2c84412836ff4043ba8920e7ae47b47c&q=${address}&pretty=1&no_annotations=1`
+            )
+                .then((res) => res.json())
+                .then((json) => ({
+                    id: point.id,
+                    address: point.address,
+                    name: point.name,
+                    coordinate: [
+                        json.results[0].geometry.lat,
+                        json.results[0].geometry.lng,
+                    ],
+                    cityId: point.cityId,
+                }));
             return coordinates;
         });
 
-        // Promise.allSettled(updatedList).then((item) => {
-        //     const fullFilledPromise = item
-        //         .filter((prom) => prom.status === "fulfilled")
-        //         .map((fullfilled) => fullfilled.value);
+        Promise.allSettled(updatedList).then((item) => {
+            const fullFilledPromise = item
+                .filter((prom) => prom.status === "fulfilled")
+                .map((fullfilled) => fullfilled.value);
 
-        //     dispatch(getPointListFromServer(fullFilledPromise));
-        // });
+            dispatch(getPointListFromServer(fullFilledPromise));
+        });
     };
 };
 
