@@ -23,15 +23,14 @@ export const Location = () => {
 
     useEffect(() => {
         dispatch(getPointList());
-    }, []);
+    }, [cityList]);
 
     useEffect(() => {
-        const newCityList =
-            cityList &&
-            pointList &&
-            cityList.filter((city) =>
-                pointList.find((point) => point?.cityId?.id === city.id)
-            );
+        const newCityList = cityList;
+        // pointList &&
+        // cityList.filter((city) =>
+        //     pointList.find((point) => point?.cityId?.id === city.id)
+        // );
         setCityListToSearch(newCityList);
     }, [pointList, cityList]);
 
@@ -41,7 +40,7 @@ export const Location = () => {
 
     const onSelectPoint = (point) => {
         const cityOfPoint = cityList.filter(
-            (city) => city?.id === point?.cityId.id
+            (city) => city?.id === point?.cityId?.id
         );
         dispatch(addPoint(point, cityOfPoint[0]));
     };

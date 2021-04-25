@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import Scrollbars from "react-custom-scrollbars";
-import { useSelector } from "react-redux";
 
 import styles from "./search.module.sass";
 

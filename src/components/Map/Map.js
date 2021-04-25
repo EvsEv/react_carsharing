@@ -32,7 +32,7 @@ export const Map = () => {
             ...prev,
             latitude: cityId?.latitude,
             longitude: cityId?.longitude,
-            zoom: 9,
+            zoom: 10,
         }));
     }, [cityId]);
 
@@ -98,7 +98,6 @@ export const Map = () => {
                 onViewportChange={(viewport) =>
                     markers && setViewport(viewport)
                 }
-                className="et"
             >
                 {markers?.map((item) => (
                     <Marker
@@ -126,9 +125,21 @@ export const Map = () => {
                     </Popup>
                 )}
 
-                {!markers?.length && cityId && (
+                {!markers?.length && (
                     <div className={styles.block}>
-                        <Preloader />
+                        {pointList?.find(
+                            (point) => point.cityId.name === cityId?.name
+                        ) ? (
+                            <Preloader />
+                        ) : (
+                            cityId &&
+                            pointList && (
+                                <p className={styles.recomendation}>
+                                    В настоящий момент в выбраном городе нет
+                                    свободных машин
+                                </p>
+                            )
+                        )}
                     </div>
                 )}
                 {!cityId && (
@@ -140,7 +151,6 @@ export const Map = () => {
                 )}
                 <FullscreenControl className={styles.fullscreen} />
             </ReactMapGL>
-            );
         </div>
     );
 };
