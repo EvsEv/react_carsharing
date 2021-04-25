@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import { fetchData, putData } from "../../../assets/api/fetchData";
 import { nextStage } from "../../../redux/functions/stage";
 
 import styles from "../button.module.sass";
 
-export const NextStep = ({ setpopupPost }) => {
+export const NextStep = ({ setpopupPost, isWatchOrder }) => {
     const [text, setText] = useState("");
     const [priceValid, setPriceValid] = useState(true);
     const [disabledCondition, setDisabledCondition] = useState(true);
@@ -12,7 +14,14 @@ export const NextStep = ({ setpopupPost }) => {
     const { cityId, pointId, carId, price, color } = useSelector(
         (state) => state.order
     );
+    const history = useHistory();
     const dispatch = useDispatch();
+
+    const classes = [styles.default, styles.wide];
+
+    if (isWatchOrder) {
+        classes.push(styles["color-2"]);
+    }
 
     useEffect(() => {
         setPriceValid(price >= carId?.priceMin && price <= carId?.priceMax);
@@ -34,18 +43,41 @@ export const NextStep = ({ setpopupPost }) => {
                 break;
             case 4:
                 setText("Заказать");
+                setDisabledCondition(false);
+                break;
             default:
                 break;
         }
-    }, [stage, cityId, pointId, carId, priceValid, color]);
 
-    const onClick = () => {
+        if (isWatchOrder) {
+            setText("Отменить");
+            setDisabledCondition(false);
+        }
+    }, [stage, cityId, pointId, carId, priceValid, color, isWatchOrder]);
+
+    const onClick = async () => {
+        if (isWatchOrder) {
+            const [cancelOrder] = await fetchData(
+                "orderStatus",
+                "name",
+                "cancelled"
+            );
+
+            const cancelled = putData(
+                "order",
+                { orderStatusId: cancelOrder },
+                isWatchOrder
+            );
+            console.log(cancelled);
+            history.push("/order");
+            return;
+        }
         stage < 4 ? dispatch(nextStage()) : setpopupPost(true);
     };
 
     return (
         <button
-            className={[styles.default, styles.wide].join(" ")}
+            className={classes.join(" ")}
             onClick={onClick}
             disabled={disabledCondition}
         >

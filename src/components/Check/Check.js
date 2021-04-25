@@ -7,7 +7,12 @@ import styles from "./check.module.sass";
 import Parameter from "./Parameter";
 import Price from "./Price";
 
-export const Check = ({ showData, setShowData, setpopupPost }) => {
+export const Check = ({
+    showData,
+    setShowData,
+    setpopupPost,
+    isWatchOrder,
+}) => {
     const [term, setTerm] = useState("");
     const {
         cityId,
@@ -94,7 +99,7 @@ export const Check = ({ showData, setShowData, setpopupPost }) => {
                 )}
                 {carId && <Price />}
             </div>
-            <NextStep setpopupPost={setpopupPost} />
+            <NextStep setpopupPost={setpopupPost} isWatchOrder={isWatchOrder} />
         </div>
     );
 };

@@ -7,6 +7,7 @@ import Location from "../../components/Location";
 import NewModel from "../../components/Model";
 import OrderData from "../../components/OrderData";
 import TabNavigation from "../../components/TabNavigation";
+import { clearOrder } from "../../redux/functions/order";
 import { changeStage } from "../../redux/functions/stage";
 
 import styles from "./orderPage.module.sass";
@@ -17,6 +18,11 @@ export const OrderPage = ({ isWatchOrder }) => {
     const [popupPost, setpopupPost] = useState(false);
     const scrollWrapper = useRef();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(clearOrder());
+    }, []);
+
     useEffect(() => {
         if (isWatchOrder) {
             dispatch(changeStage(4));
@@ -36,6 +42,7 @@ export const OrderPage = ({ isWatchOrder }) => {
                     <OrderData
                         popupPost={popupPost}
                         setpopupPost={setpopupPost}
+                        isWatchOrder={isWatchOrder}
                     />
                 );
             default:
@@ -54,7 +61,7 @@ export const OrderPage = ({ isWatchOrder }) => {
     };
     return (
         <main className={styles.main}>
-            {!isWatchOrder && <TabNavigation />}
+            <TabNavigation isWatchOrder={isWatchOrder} />
             <Scrollbars className={styles.scroll} ref={scrollWrapper}>
                 <div className={classesWrapper.join(" ")}>
                     <div className={styles.stage}>{printStage()}</div>
@@ -63,6 +70,7 @@ export const OrderPage = ({ isWatchOrder }) => {
                         setShowData={setShowData}
                         scrollWrapper={scrollWrapper}
                         setpopupPost={setpopupPost}
+                        isWatchOrder={isWatchOrder}
                     />
                 </div>
             </Scrollbars>
