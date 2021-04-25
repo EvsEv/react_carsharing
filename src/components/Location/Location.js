@@ -84,7 +84,7 @@ export const Location = () => {
             <section className={styles.onMap}>
                 <h3 className={styles.title}>Выбрать на карте</h3>
                 <div className={[styles.map, "mapboxgl-map"].join(" ")}>
-                    <Map points={pointListToSearch} cities={cityListToSearch} />
+                    {/* <Map points={pointListToSearch} cities={cityListToSearch} /> */}
                 </div>
             </section>
         </>

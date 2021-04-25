@@ -41,7 +41,8 @@
 
 @include tabletDevice
   .wrapper
-    max-height: calc(550 * 100vh / 1024)
+    max-height: calc(600 * 100vh / 1024)
+    box-sizing: border-box
 
 @include mobileDevice
   .select
@@ -49,8 +50,9 @@
   .label
     font-size: 11px
   .wrapper
-    padding-bottom: 0
+    padding-bottom: 112px
+    box-sizing: border-box
 
 @include mobileDeviceVertical
   .wrapper
-    @include adaptedVh(max-height, 240, 500, px)
+    @include adaptedVh(max-height, 359, 603, px)
