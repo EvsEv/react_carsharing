@@ -31,13 +31,16 @@ export const getCityList = () => {
 };
 
 export const getPointList = () => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         const pointList = await fetchData("point");
-
         const updatedList = pointList.map(async (point) => {
-            const address = `${point.cityId?.name} ${point.address}`;
+            const address = `${point.cityId?.name} ${
+                point.address === "Нариманова 1, корп.2"
+                    ? "проспект Нариманова 1 с2"
+                    : point.address
+            } `;
             const coordinates = fetch(
-                `https://api.opencagedata.com/geocode/v1/json?key=2c84412836ff4043ba8920e7ae47b47c&q=${address}&pretty=1&no_annotations=1`
+                `https://api.opencagedata.com/geocode/v1/json?key=2c84412836ff4043ba8920e7ae47b47c&q=${address}`
             )
                 .then((res) => res.json())
                 .then((json) => ({
@@ -56,8 +59,8 @@ export const getPointList = () => {
         Promise.allSettled(updatedList).then((item) => {
             const fullFilledPromise = item
                 .filter((prom) => prom.status === "fulfilled")
-                .map((fullfilled) => fullfilled.value);
-
+                .map((fullfilled) => fullfilled.value)
+                .filter((pointsWithCityId) => pointsWithCityId.cityId);
             dispatch(getPointListFromServer(fullFilledPromise));
         });
     };
