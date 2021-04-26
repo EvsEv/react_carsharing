@@ -33,28 +33,28 @@ export const getCityList = () => {
 export const getPointList = () => {
     return async (dispatch, getState) => {
         const pointList = await fetchData("point");
-        const updatedList = pointList.map(async (point) => {
-            const address = `${point.cityId?.name} ${
-                point.address === "Нариманова 1, корп.2"
-                    ? "проспект Нариманова 1 с2"
-                    : point.address
-            } `;
-            // const coordinates = fetch(
-            //     `https://api.opencagedata.com/geocode/v1/json?key=2c84412836ff4043ba8920e7ae47b47c&q=${address}`
-            // )
-            //     .then((res) => res.json())
-            //     .then((json) => ({
-            //         id: point.id,
-            //         address: point.address,
-            //         name: point.name,
-            //         coordinate: [
-            //             json.results[0].geometry.lat,
-            //             json.results[0].geometry.lng,
-            //         ],
-            //         cityId: point.cityId,
-            //     }));
-            // return coordinates;
-        });
+        // const updatedList = pointList.map(async (point) => {
+        //     const address = `${point.cityId?.name} ${
+        //         point.address === "Нариманова 1, корп.2"
+        //             ? "проспект Нариманова 1 с2"
+        //             : point.address
+        //     } `;
+        //     const coordinates = fetch(
+        //         `https://api.opencagedata.com/geocode/v1/json?key=2c84412836ff4043ba8920e7ae47b47c&q=${address}`
+        //     )
+        //         .then((res) => res.json())
+        //         .then((json) => ({
+        //             id: point.id,
+        //             address: point.address,
+        //             name: point.name,
+        //             coordinate: [
+        //                 json.results[0].geometry.lat,
+        //                 json.results[0].geometry.lng,
+        //             ],
+        //             cityId: point.cityId,
+        //         }));
+        //     return coordinates;
+        // });
         dispatch(getPointListFromServer(pointList));
 
         // Promise.allSettled(updatedList).then((item) => {

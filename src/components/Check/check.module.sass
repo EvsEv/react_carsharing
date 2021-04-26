@@ -33,31 +33,29 @@
     width: 300px
 
   .data
+    height: 100vh
     position: absolute
-    height: 0
     width: 100%
-    bottom: 0
-    left: 0
+    bottom: -138px
+    left: -13px
     right: 0
-    background: $white
-    padding: 0 32px
+    background: #ffffff
+    padding: 32px
+    padding-bottom: 182px
     box-sizing: border-box
-    // display: none
     transform: translateY(100%)
-    transition: all $medium ease
-    z-index: -2
+    z-index: -1
     opacity: 0
-    overflow: scroll
+    overflow-y: scroll
 
   .static
     position: static
 
 
   .toggle
-    height: 100%
-    padding: $defaultPadding
     z-index: 1
     opacity: 1
+    transition: all 0.5s ease
     transform: translateY(0)
 
 

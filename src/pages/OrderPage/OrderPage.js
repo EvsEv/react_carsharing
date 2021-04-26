@@ -52,7 +52,6 @@ export const OrderPage = ({ isWatchOrder }) => {
     }
     const toggleData = () => {
         setShowData(!showData);
-        // scrollWrapper.current.scrollTop(0);
     };
     return (
         <main className={styles.main}>
