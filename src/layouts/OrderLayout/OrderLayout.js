@@ -9,7 +9,7 @@ import OrderPage from "../../pages/OrderPage";
 
 import styles from "./orderLayout.module.sass";
 
-export const OrderLayout = ({ children }) => {
+export const OrderLayout = () => {
     const [isOpenMenu, toggleMenu] = useMenu();
     const { id } = useParams();
     console.log(id);
@@ -26,7 +26,6 @@ export const OrderLayout = ({ children }) => {
                     />
                 </div>
                 <OrderPage isWatchOrder={id} />
-                {/* {children} */}
             </section>
 
             <Menu isOpen={isOpenMenu} toggle={toggleMenu} />

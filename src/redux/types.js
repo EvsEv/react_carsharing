@@ -45,3 +45,7 @@ export const ADD_TARIFF = "ADD_TARIFF";
 export const ADD_PRICE = "ADD_PRIECE";
 
 export const SET_STAGE = "SET_STAGE";
+
+export const ADD_ISFULLTANK = "ADD_ISFULLTANK";
+export const ADD_ISNEEDCHILDCHAIR = "ADD_ISNEEDCHILDCHAIR";
+export const ADD_ISRIGHTWHEEL = "ADD_ISRIGHTWHEEL";

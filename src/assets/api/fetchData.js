@@ -47,3 +47,26 @@ export const postData = async (table, body) => {
         console.log(e);
     }
 };
+
+export const putData = async (table, body, id) => {
+    try {
+        const headers = {
+            "Content-Type": "application/json",
+            "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
+        };
+        const response = await fetch(
+            `https://api-factory.simbirsoft1.com/api/db/${table}/${id}`,
+            {
+                method: "PUT",
+                headers,
+                body: JSON.stringify(body),
+            }
+        );
+
+        const json = await response.json();
+
+        return json.data;
+    } catch (e) {
+        console.log(e);
+    }
+};

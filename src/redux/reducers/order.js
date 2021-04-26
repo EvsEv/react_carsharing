@@ -9,6 +9,9 @@ import {
     ADD_DURATION,
     ADD_TARIFF,
     ADD_PRICE,
+    ADD_ISFULLTANK,
+    ADD_ISNEEDCHILDCHAIR,
+    ADD_ISRIGHTWHEEL,
 } from "../types";
 
 const initialState = {
@@ -107,6 +110,12 @@ export const order = (state = initialState, action) => {
             return { ...state, tariff: action.payload };
         case ADD_PRICE:
             return { ...state, price: action.payload };
+        case ADD_ISFULLTANK:
+            return { ...state, isFullTank: action.payload };
+        case ADD_ISNEEDCHILDCHAIR:
+            return { ...state, isNeedChildChair: action.payload };
+        case ADD_ISRIGHTWHEEL:
+            return { ...state, isRightWheel: action.payload };
         default:
             return state;
     }
