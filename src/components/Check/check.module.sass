@@ -49,10 +49,13 @@
     opacity: 0
     overflow: scroll
 
+  .static
+    position: static
+
 
   .toggle
     height: 100%
-    padding: 32px
+    padding: $defaultPadding
     z-index: 1
     opacity: 1
     transform: translateY(0)
@@ -64,6 +67,15 @@
     flex-grow: 0
     position: fixed
     bottom: $defaultPadding
+
+  .static
+    position: static
+    padding-bottom: $defaultPadding
+    >div
+      padding-bottom: 60px
+    button
+      position: fixed
+      bottom: $defaultPadding
 
   .title
     @include adaptedForMobile(font-size, 12, 17, px )

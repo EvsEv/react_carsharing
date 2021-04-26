@@ -13,7 +13,7 @@ export const refreshModelList = (page) => {
             "car",
             filter,
             category,
-            10,
+            15,
             page
         );
         const updatedModelList =

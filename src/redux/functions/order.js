@@ -7,7 +7,7 @@ import {
     addWheelInfo,
 } from "./detail";
 import { addCity, addPoint } from "./location";
-import { addModel } from "./model";
+import { addModel, changeChoosedCategory } from "./model";
 import { changeStage } from "./stage";
 
 export const clearOrder = () => {
@@ -15,6 +15,7 @@ export const clearOrder = () => {
         dispatch(changeStage(1));
         dispatch(addCity(null));
         dispatch(addPoint(null, null));
+        dispatch(changeChoosedCategory("any"));
         dispatch(addModel(null));
         dispatch(addDateFrom(null));
         dispatch(addDateTo(null));

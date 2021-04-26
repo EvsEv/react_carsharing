@@ -20,10 +20,6 @@ export const OrderPage = ({ isWatchOrder }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(clearOrder());
-    }, []);
-
-    useEffect(() => {
         if (isWatchOrder) {
             dispatch(changeStage(4));
         }

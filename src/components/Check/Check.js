@@ -33,6 +33,12 @@ export const Check = ({
     const checkData = useRef();
     const dispatch = useDispatch();
 
+    const classesForCheck = [styles.check];
+
+    if (stage === 4) {
+        classesForCheck.push(styles.static);
+    }
+
     let dataClasses = [styles.data];
 
     if (showData) {
@@ -69,7 +75,7 @@ export const Check = ({
     }, [showData]);
 
     return (
-        <div className={styles.check}>
+        <div className={classesForCheck.join(" ")}>
             <div className={dataClasses.join(" ")} ref={checkData}>
                 <h3 className={styles.title}>Ваш заказ:</h3>
                 <Parameter

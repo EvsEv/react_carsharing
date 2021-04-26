@@ -34,7 +34,7 @@
 .car
   width: calc(256 * 100% / 736)
   display: flex
-  align-self: flex-end
+  align-self: flex-start
   img
     display: block
     width: 100%
@@ -51,9 +51,12 @@
 @include mobileDevice
   .order
     font-size: 11px
+    margin-bottom: 20px
   .car
     width: calc(125 * 100% / 288)
   .item
     @include adaptedForMobile(font-size, 11, 15, px )
   .model, .number
+    @include adaptedForMobile(font-size, 12, 17, px )
+  .confirm
     @include adaptedForMobile(font-size, 12, 17, px )
