@@ -1,4 +1,4 @@
-import { fetchData } from "../../assets/api/fetchData";
+import { fetchData } from "../../api/fetchData";
 import {
     addCityToOrder,
     addPointToOrder,
@@ -39,31 +39,29 @@ export const getPointList = () => {
                     ? "проспект Нариманова 1 с2"
                     : point.address
             } `;
-            // const coordinates = fetch(
-            //     `https://api.opencagedata.com/geocode/v1/json?key=2c84412836ff4043ba8920e7ae47b47c&q=${address}`
-            // )
-            //     .then((res) => res.json())
-            //     .then((json) => ({
-            //         id: point.id,
-            //         address: point.address,
-            //         name: point.name,
-            //         coordinate: [
-            //             json.results[0].geometry.lat,
-            //             json.results[0].geometry.lng,
-            //         ],
-            //         cityId: point.cityId,
-            //     }));
-            // return coordinates;
+            const coordinates = fetch(
+                `https://api.opencagedata.com/geocode/v1/json?key=2c84412836ff4043ba8920e7ae47b47c&q=${address}`
+            )
+                .then((res) => res.json())
+                .then((json) => ({
+                    id: point.id,
+                    address: point.address,
+                    name: point.name,
+                    coordinate: [
+                        json.results[0].geometry.lat,
+                        json.results[0].geometry.lng,
+                    ],
+                    cityId: point.cityId,
+                }));
+            return coordinates;
         });
-        dispatch(getPointListFromServer(pointList));
-
-        // Promise.allSettled(updatedList).then((item) => {
-        //     const fullFilledPromise = item
-        //         .filter((prom) => prom.status === "fulfilled")
-        //         .map((fullfilled) => fullfilled.value)
-        //         .filter((pointsWithCityId) => pointsWithCityId.cityId);
-        //     dispatch(getPointListFromServer(fullFilledPromise));
-        // });
+        Promise.allSettled(updatedList).then((item) => {
+            const fullFilledPromise = item
+                .filter((prom) => prom.status === "fulfilled")
+                .map((fullfilled) => fullfilled.value)
+                .filter((pointsWithCityId) => pointsWithCityId.cityId);
+            dispatch(getPointListFromServer(fullFilledPromise));
+        });
     };
 };
 

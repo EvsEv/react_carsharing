@@ -5,7 +5,7 @@ import {
     addPoint,
     getCityList,
     getPointList,
-} from "../../redux/functions/location";
+} from "../../redux/thunks/location";
 import { Search } from "../Input/Search/Search";
 
 import styles from "./location.module.sass";
@@ -26,12 +26,7 @@ export const Location = () => {
     }, [cityList]);
 
     useEffect(() => {
-        const newCityList = cityList;
-        // pointList &&
-        // cityList.filter((city) =>
-        //     pointList.find((point) => point?.cityId?.id === city.id)
-        // );
-        setCityListToSearch(newCityList);
+        setCityListToSearch(cityList);
     }, [pointList, cityList]);
 
     const onSelectCity = (city) => {
@@ -84,7 +79,7 @@ export const Location = () => {
             <section className={styles.onMap}>
                 <h3 className={styles.title}>Выбрать на карте</h3>
                 <div className={[styles.map, "mapboxgl-map"].join(" ")}>
-                    {/* <Map points={pointListToSearch} cities={cityListToSearch} /> */}
+                    <Map points={pointListToSearch} cities={cityListToSearch} />
                 </div>
             </section>
         </>

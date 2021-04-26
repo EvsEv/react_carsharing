@@ -5,7 +5,7 @@ import Preloader from "../Preloader";
 
 import styles from "./button.module.sass";
 import { useDispatch } from "react-redux";
-import { clearOrder } from "../../redux/functions/order";
+import { clearOrder } from "../../redux/thunks/order";
 
 const Button = ({ text, link, style }) => {
     const [isLoading, setIsloading] = useState(false);

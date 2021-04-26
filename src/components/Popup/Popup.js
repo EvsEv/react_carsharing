@@ -2,7 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { fetchData, postData } from "../../assets/api/fetchData";
+import { fetchData, postData } from "../../api/fetchData";
 import Submit from "../Button/Submit";
 
 import styles from "./popup.module.sass";
@@ -24,7 +24,6 @@ export const Popup = ({ setpopupPost }) => {
     const history = useHistory();
     const postOrder = async () => {
         const statusId = await fetchData("orderStatus", "name", "new");
-        console.log(statusId);
         const orderData = {
             orderStatusId: statusId[0],
             cityId: {
@@ -58,9 +57,7 @@ export const Popup = ({ setpopupPost }) => {
             isNeedChildChair,
             isRightWheel,
         };
-        console.log(orderData);
         const response = await postData("order", orderData);
-        console.log(response);
         setpopupPost();
         history.push(`/order/${response.id}`);
     };

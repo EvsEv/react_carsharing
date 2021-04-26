@@ -2,9 +2,9 @@ import { format } from "date-fns";
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../assets/api/fetchData";
-import { addPoint, addCity } from "../../redux/functions/location";
-import { addModel } from "../../redux/functions/model";
+import { fetchData } from "../../api/fetchData";
+import { addPoint, addCity } from "../../redux/thunks/location";
+import { addModel } from "../../redux/thunks/model";
 import {
     addChairInfo,
     addColor,
@@ -14,7 +14,7 @@ import {
     addTankInfo,
     addTariff,
     addWheelInfo,
-} from "../../redux/functions/detail";
+} from "../../redux/thunks/detail";
 import Popup from "../Popup";
 
 import styles from "./orderData.module.sass";

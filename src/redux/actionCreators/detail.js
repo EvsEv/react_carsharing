@@ -11,17 +11,17 @@ import {
     TOGGLE_SERVICE,
 } from "../types";
 
-export const addColorToOrder = (color) => {
-    return { type: ADD_COLOR, payload: color };
-};
+export const addColorToOrder = (color) => ({ type: ADD_COLOR, payload: color });
 
-export const addDateFromToOrder = (date) => {
-    return { type: ADD_DATE_FROM, payload: date };
-};
+export const addDateFromToOrder = (date) => ({
+    type: ADD_DATE_FROM,
+    payload: date,
+});
 
-export const addDateToToOrder = (date) => {
-    return { type: ADD_DATE_TO, payload: date };
-};
+export const addDateToToOrder = (date) => ({
+    type: ADD_DATE_TO,
+    payload: date,
+});
 
 export const addDurationToOrder = (duration, fullDay, fullHour) => ({
     type: ADD_DURATION,

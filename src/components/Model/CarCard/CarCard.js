@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addModel } from "../../../redux/functions/model";
+import { addModel } from "../../../redux/thunks/model";
 
 import styles from "./carCard.module.sass";
 

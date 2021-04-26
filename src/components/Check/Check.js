@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addDuration } from "../../redux/functions/detail";
+import { addDuration } from "../../redux/thunks/detail";
 import NextStep from "../Button/NextStep";
 
 import styles from "./check.module.sass";

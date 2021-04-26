@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addColor } from "../../../redux/functions/detail";
+import { addColor } from "../../../redux/thunks/detail";
 import RadioButton from "../../Input/RadioButton";
 
 export const Color = () => {

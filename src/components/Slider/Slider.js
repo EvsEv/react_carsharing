@@ -1,7 +1,7 @@
 import React from "react";
 import SlickSlider from "react-slick";
 
-import "../../assets/styles/slickSlider.sass";
+import "../../styles/slickSlider.sass";
 import Button from "../Button";
 import styles from "./slider.module.sass";
 
