@@ -1,6 +1,6 @@
-@import ../../../assets/styles/variables
-@import ../../../assets/styles/media
-@import ../../../assets/styles/adaptedProperties
+@import ../../../styles/variables
+@import ../../../styles/media
+@import ../../../styles/adaptedProperties
 
 .parameter
   display: flex
@@ -28,3 +28,7 @@
 @include mobileDevice
   .value, .name
     @include adaptedForMobile(font-size, 12, 17, px )
+  .parameter
+    margin-bottom: 8px
+    &:first-of-type
+      margin-top: 10px

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSerivces } from "../../../redux/functions/detail";
+import { toggleSerivces } from "../../../redux/thunks/detail";
 import Checkbox from "../../Input/Checkbox";
 
 export const Services = () => {

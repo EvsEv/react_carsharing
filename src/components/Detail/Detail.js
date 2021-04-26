@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addPrice } from "../../redux/functions/detail";
+import { addPrice } from "../../redux/thunks/detail";
 
 import Color from "./Color";
 

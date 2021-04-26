@@ -1,4 +1,4 @@
-import { fetchData } from "../../assets/api/fetchData";
+import { fetchData } from "../../api/fetchData";
 import {
     addCityToOrder,
     addPointToOrder,
@@ -55,7 +55,6 @@ export const getPointList = () => {
                 }));
             return coordinates;
         });
-
         Promise.allSettled(updatedList).then((item) => {
             const fullFilledPromise = item
                 .filter((prom) => prom.status === "fulfilled")

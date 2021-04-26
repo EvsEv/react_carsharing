@@ -1,13 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addDuration } from "../../redux/functions/detail";
+import { addDuration } from "../../redux/thunks/detail";
 import NextStep from "../Button/NextStep";
 
 import styles from "./check.module.sass";
 import Parameter from "./Parameter";
 import Price from "./Price";
 
-export const Check = ({ showData, setShowData, setpopupPost }) => {
+export const Check = ({
+    showData,
+    setShowData,
+    setpopupPost,
+    isWatchOrder,
+}) => {
     const [term, setTerm] = useState("");
     const {
         cityId,
@@ -27,6 +32,12 @@ export const Check = ({ showData, setShowData, setpopupPost }) => {
     const { stage } = useSelector((state) => state.stage);
     const checkData = useRef();
     const dispatch = useDispatch();
+
+    const classesForCheck = [styles.check];
+
+    if (stage === 4) {
+        classesForCheck.push(styles.static);
+    }
 
     let dataClasses = [styles.data];
 
@@ -64,7 +75,7 @@ export const Check = ({ showData, setShowData, setpopupPost }) => {
     }, [showData]);
 
     return (
-        <div className={styles.check}>
+        <div className={classesForCheck.join(" ")}>
             <div className={dataClasses.join(" ")} ref={checkData}>
                 <h3 className={styles.title}>Ваш заказ:</h3>
                 <Parameter
@@ -94,7 +105,7 @@ export const Check = ({ showData, setShowData, setpopupPost }) => {
                 )}
                 {carId && <Price />}
             </div>
-            <NextStep setpopupPost={setpopupPost} />
+            <NextStep setpopupPost={setpopupPost} isWatchOrder={isWatchOrder} />
         </div>
     );
 };

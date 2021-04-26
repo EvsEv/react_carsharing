@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react-dom";
 import ReactMapGL, { FullscreenControl, Marker, Popup } from "react-map-gl";
 import { useDispatch, useSelector } from "react-redux";
-import { addCity, addPoint } from "../../redux/functions/location";
+import { addCity, addPoint } from "../../redux/thunks/location";
 import styles from "./map.module.sass";
 import Preloader from "../Preloader";
 
@@ -73,7 +73,6 @@ export const Map = () => {
     useEffect(() => {
         const whenResize = () => {
             let wrapper = document.getElementById("wrapper");
-            console.log(wrapper.offsetWidth);
             setViewport((prev) => ({
                 ...prev,
                 width: wrapper.offsetWidth,

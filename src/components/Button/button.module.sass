@@ -1,5 +1,5 @@
-@import ../../assets/styles/variables
-@import ../../assets/styles/media
+@import ../../styles/variables
+@import ../../styles/media
 
 .default
   font-family: "RobotoMed"
@@ -88,9 +88,13 @@
   position: relative
   z-index: 2
 
-@include desktopMinDevice
+// @include desktopMinDevice
+  // .wide
+    // margin-bottom: $defaultPadding * 3
+
+@include tabletDevice
   .wide
-    margin-bottom: $defaultPadding * 3
+    margin-top: 0
 
 @include mobileDevice
   .default
@@ -116,4 +120,3 @@
     height: 30px
     font-size: 14px
     line-height: 0
-    margin-top: 30px

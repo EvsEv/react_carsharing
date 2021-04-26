@@ -1,9 +1,10 @@
-@import ../../assets/styles/variables
-@import ../../assets/styles/media
-@import ../../assets/styles/adaptedProperties
+@import ../../styles/variables
+@import ../../styles/media
+@import ../../styles/adaptedProperties
 
 .check
   width: calc(287 * 100% / 1248)
+  padding-top: $defaultPadding
   padding-left: calc(32 * 100% / 1248)
   flex-grow: 1
   display: flex
@@ -16,13 +17,15 @@
 @include desktopMinDevice
   .check
     width: 35%
-    padding-left: 5%
+    padding-left: calc(32 * 100% / 896)
 
 @include tabletDevice
   .check
     width: 100%
     padding-top: 0
     padding-left: 0
+    padding-bottom: calc(#{$defaultPadding} - 15px)
+    margin-top: 0
     justify-content: flex-end
     flex-grow: 0
 
@@ -30,35 +33,47 @@
     width: 300px
 
   .data
+    height: 100vh
     position: absolute
-    height: 0
     width: 100%
-    bottom: 0
-    left: 0
+    bottom: -138px
+    left: -13px
     right: 0
-    background: $white
-    padding: 0 32px
+    background: #ffffff
+    padding: 32px
+    padding-bottom: 182px
     box-sizing: border-box
-    // display: none
     transform: translateY(100%)
-    transition: all $medium ease
-    z-index: -2
+    z-index: -1
     opacity: 0
-    overflow: scroll
+    overflow-y: scroll
+
+  .static
+    position: static
 
 
   .toggle
-    height: 100%
-    padding: 32px
     z-index: 1
     opacity: 1
+    transition: all 0.5s ease
     transform: translateY(0)
 
 
 @include mobileDevice
   .check
-    padding-bottom: 32px
+    padding-bottom: 0
     flex-grow: 0
+    position: fixed
+    bottom: $defaultPadding
+
+  .static
+    position: static
+    padding-bottom: $defaultPadding
+    >div
+      padding-bottom: 60px
+    button
+      position: fixed
+      bottom: $defaultPadding
 
   .title
     @include adaptedForMobile(font-size, 12, 17, px )

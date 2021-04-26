@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeStage } from "../../../redux/functions/stage";
+import { changeStage } from "../../../redux/thunks/stage";
 
 import styles from "./tabItem.module.sass";
 

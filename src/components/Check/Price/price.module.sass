@@ -1,6 +1,6 @@
-@import ../../../assets/styles/variables
-@import ../../../assets/styles/media
-@import ../../../assets/styles/adaptedProperties
+@import ../../../styles/variables
+@import ../../../styles/media
+@import ../../../styles/adaptedProperties
 
 .price
   font-size: 16px
@@ -29,8 +29,12 @@
   font-weight: bold
   color: red
 
+@include tabletDevice
+  .price
+    margin-bottom: 32px
+
 @include mobileDevice
   .price
-    margin-bottom: 10px
+    margin-top: 10px
     @include adaptedForMobile(font-size, 12, 17, px)
     

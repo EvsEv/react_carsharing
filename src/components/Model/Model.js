@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../assets/api/fetchData";
+import { fetchData } from "../../api/fetchData";
 import {
     changeChoosedCategory,
     refreshModelList,
-} from "../../redux/functions/model";
+} from "../../redux/thunks/model";
 import RadioButton from "../Input/RadioButton";
 import CarCard from "./CarCard";
 import Preloader from "../Preloader";

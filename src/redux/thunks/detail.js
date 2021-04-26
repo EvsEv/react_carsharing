@@ -3,6 +3,9 @@ import {
     addDateFromToOrder,
     addDateToToOrder,
     addDurationToOrder,
+    addIsFullTankFromServer,
+    addIsNeedChildChairFromServer,
+    addIsRightWheelFromServer,
     addPriceToOrder,
     addTariffToOrder,
     toggleService,
@@ -75,4 +78,16 @@ export const addPrice = () => {
         }
         dispatch(addPriceToOrder(currentPrice));
     };
+};
+
+export const addTankInfo = (boolean) => {
+    return (dispatch) => dispatch(addIsFullTankFromServer(boolean));
+};
+
+export const addChairInfo = (boolean) => {
+    return (dispatch) => dispatch(addIsNeedChildChairFromServer(boolean));
+};
+
+export const addWheelInfo = (boolean) => {
+    return (dispatch) => dispatch(addIsRightWheelFromServer(boolean));
 };

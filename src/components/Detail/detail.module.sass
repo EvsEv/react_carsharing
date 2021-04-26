@@ -1,6 +1,6 @@
-@import ../../assets/styles/variables
-@import ../../assets/styles/media
-@import ../../assets/styles/adaptedProperties
+@import ../../styles/variables
+@import ../../styles/media
+@import ../../styles/adaptedProperties
 
 .title
   font-family: "RobotoLgt"
@@ -44,5 +44,8 @@
   .wrapper
     label
       @include adaptedForMobile(font-size, 11, 15, px)
+  .param
+    &:last-of-type
+      padding-bottom: 112px
 
 
