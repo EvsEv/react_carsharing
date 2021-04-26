@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { fetchData, putData } from "../../../assets/api/fetchData";
+import { fetchData, putData } from "../../../api/fetchData";
 import { nextStage } from "../../../redux/thunks/stage";
 
 import styles from "../button.module.sass";

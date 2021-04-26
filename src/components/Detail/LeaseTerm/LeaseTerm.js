@@ -7,7 +7,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import ruLocale from "date-fns/locale/ru";
 
 import styles from "./leaseTerm.module.sass";
-import "../../../assets/styles/datetimePicker.sass";
+import "../../../styles/datetimePicker.sass";
 import { useDispatch, useSelector } from "react-redux";
 import { addDateFrom, addDateTo } from "../../../redux/thunks/detail";
 

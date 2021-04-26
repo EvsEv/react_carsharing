@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
-import useMenu from "../../assets/hooks/useMenu";
+import useMenu from "../../hooks/useMenu";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 import Popup from "../../components/Popup";

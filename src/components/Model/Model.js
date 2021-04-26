@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../assets/api/fetchData";
+import { fetchData } from "../../api/fetchData";
 import {
     changeChoosedCategory,
     refreshModelList,

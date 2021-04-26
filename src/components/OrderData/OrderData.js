@@ -2,7 +2,7 @@ import { format } from "date-fns";
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../assets/api/fetchData";
+import { fetchData } from "../../api/fetchData";
 import { addPoint, addCity } from "../../redux/thunks/location";
 import { addModel } from "../../redux/thunks/model";
 import {

@@ -1,4 +1,4 @@
-import { fetchData } from "../../assets/api/fetchData";
+import { fetchData } from "../../api/fetchData";
 import {
     addModelToStore,
     changeCategory,

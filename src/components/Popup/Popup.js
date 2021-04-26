@@ -2,7 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { fetchData, postData } from "../../assets/api/fetchData";
+import { fetchData, postData } from "../../api/fetchData";
 import Submit from "../Button/Submit";
 
 import styles from "./popup.module.sass";
