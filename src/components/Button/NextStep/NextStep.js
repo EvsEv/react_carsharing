@@ -68,7 +68,6 @@ export const NextStep = ({ setpopupPost, isWatchOrder }) => {
                 { orderStatusId: cancelOrder },
                 isWatchOrder
             );
-            console.log(cancelled);
             history.push("/order");
             return;
         }

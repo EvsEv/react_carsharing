@@ -71,7 +71,6 @@ export const Map = () => {
     useEffect(() => {
         const whenResize = () => {
             let wrapper = document.getElementById("wrapper");
-            console.log(wrapper.offsetWidth);
             setViewport((prev) => ({
                 ...prev,
                 width: wrapper.offsetWidth,

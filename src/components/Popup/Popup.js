@@ -24,7 +24,6 @@ export const Popup = ({ setpopupPost }) => {
     const history = useHistory();
     const postOrder = async () => {
         const statusId = await fetchData("orderStatus", "name", "new");
-        console.log(statusId);
         const orderData = {
             orderStatusId: statusId[0],
             cityId: {
@@ -58,9 +57,7 @@ export const Popup = ({ setpopupPost }) => {
             isNeedChildChair,
             isRightWheel,
         };
-        console.log(orderData);
         const response = await postData("order", orderData);
-        console.log(response);
         setpopupPost();
         history.push(`/order/${response.id}`);
     };

@@ -12,7 +12,6 @@ import styles from "./orderLayout.module.sass";
 export const OrderLayout = () => {
     const [isOpenMenu, toggleMenu] = useMenu();
     const { id } = useParams();
-    console.log(id);
 
     return (
         <div className={styles.body}>
