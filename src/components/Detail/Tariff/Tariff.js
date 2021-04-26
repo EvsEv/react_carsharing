@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import RadioButton from "../../Input/RadioButton";
 import { fetchData } from "../../../assets/api/fetchData";
-import { addTariff } from "../../../redux/functions/detail";
+import { addTariff } from "../../../redux/thunks/detail";
 
 export const Tariff = () => {
     const [tariffs, setTariffs] = useState([]);

@@ -5,7 +5,7 @@ import {
     addPoint,
     getCityList,
     getPointList,
-} from "../../redux/functions/location";
+} from "../../redux/thunks/location";
 import { Search } from "../Input/Search/Search";
 
 import styles from "./location.module.sass";

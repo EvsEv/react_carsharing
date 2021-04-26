@@ -4,7 +4,7 @@ import { fetchData } from "../../assets/api/fetchData";
 import {
     changeChoosedCategory,
     refreshModelList,
-} from "../../redux/functions/model";
+} from "../../redux/thunks/model";
 import RadioButton from "../Input/RadioButton";
 import CarCard from "./CarCard";
 import Preloader from "../Preloader";

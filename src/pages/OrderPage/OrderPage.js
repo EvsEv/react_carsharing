@@ -7,8 +7,7 @@ import Location from "../../components/Location";
 import NewModel from "../../components/Model";
 import OrderData from "../../components/OrderData";
 import TabNavigation from "../../components/TabNavigation";
-import { clearOrder } from "../../redux/functions/order";
-import { changeStage } from "../../redux/functions/stage";
+import { changeStage } from "../../redux/thunks/stage";
 
 import styles from "./orderPage.module.sass";
 
