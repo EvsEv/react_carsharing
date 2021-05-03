@@ -1,0 +1,16 @@
+@import ../../styles/variables
+@import ../../styles/media
+
+.sidebar
+    width: 64px
+    padding: 32px 16px
+    box-sizing: border-box
+    background-color: $lightBlack
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+
+@include mobileDevice
+    .sidebar
+        display: none

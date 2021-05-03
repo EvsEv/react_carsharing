@@ -1,0 +1,82 @@
+@import ../../styles/variables
+@import  ../../styles/media
+
+.main
+  margin-top: 40px
+  display: flex
+  flex-direction: column
+  flex-grow: 1
+
+.wrapper
+  max-width: $desktopMaxWidth
+  width: $desktopMaxWidth
+  padding: 0 $defaultPadding * 2 0
+  margin: 0 auto
+  box-sizing: border-box
+  display: flex
+  justify-content: space-between
+  flex-grow: 1
+
+.stage
+  width: calc(736 * 100% / 1248)
+  padding-top: 39px
+  padding-right: calc(192 * 100% / 1248)
+  border-right: 1px solid $lightGrey
+  flex-grow: 1
+  display: flex
+  flex-direction: column
+
+.scroll
+  > div
+    display: flex
+
+.hidden
+  overflow: hidden
+
+.toggleCheck
+  display: none
+
+
+
+@include desktopMinDevice
+  .wrapper, .container
+    margin: 0
+    width: 100%
+    padding: 0 $defaultPadding 0
+
+@include tabletDevice
+  .wrapper
+    display: flex
+    flex-direction: column
+    padding-bottom: $defaultPadding * 0
+  .stage
+    width: 100%
+    padding-right: 0
+    border: none
+    flex-grow: 1
+  .toggleCheck
+    display: block
+    font-size: 14px
+    color: $lightGrey
+    width: 60px
+    height: 30px
+    padding: 5px
+    position: absolute
+    bottom: 100px
+    right: 0
+    background: $darkGrey
+    z-index: 3
+    cursor: pointer
+    transition: all $short ease
+    &:hover
+      width: 80px
+
+@include mobileDevice
+  .main
+    margin-top: 20px
+  .container, .wrapper
+    padding: 0 $defaultPadding /2 0
+  .wrapper
+    padding-bottom: 0
+  .stage
+    padding: 30px 0 0

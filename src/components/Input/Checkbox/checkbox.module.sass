@@ -1,0 +1,55 @@
+@import ../../../styles/variables
+@import ../../../styles/media
+@import ../../../styles/adaptedProperties
+
+.checkbox
+  display: none
+  &:checked
+    ~ .label
+        color: $mainBlack
+        &::before
+          border: 1px solid $mainAccent
+        &::after
+          opacity: 1
+
+.label
+  font-family: "RobotoLgt"
+  font-size: 14px
+  line-height: 16px
+  color: $darkGrey
+  padding-left: 20px
+  position: relative
+  cursor: pointer
+  transition: all $short ease
+
+  &::before
+    content: ""
+    width: 12px
+    height: 12px
+    border: 1px solid $darkGrey
+    box-sizing: border-box
+    position: absolute
+    top: 2px
+    left: 0
+    transition: all $short ease
+
+  &::after
+    content: ""
+    width: 4px
+    height: 9px
+    position: absolute
+    top: 0
+    left: 6px
+    opacity: 0
+    border-right: 2px solid $mainBlack
+    border-bottom: 2px solid $mainBlack
+    transform: rotate(45deg)
+    transition: all $short ease
+
+@include mobileDevice
+  .label
+    @include adaptedForMobile(font-size, 11, 15, px)
+    &::before
+      top: 0
+    &::after
+      top: -2px

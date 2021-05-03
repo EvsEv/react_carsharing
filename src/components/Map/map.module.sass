@@ -1,0 +1,81 @@
+@import ../../styles/variables
+@import ../../styles/media
+
+.wrapper
+  width: 100%
+  height: 100%
+  flex-grow: 1
+
+.mapbox
+  position: absolute
+  top: 0
+  left: 0
+
+.point
+  width: 18px
+  height: 18px
+  background: $mainAccent
+  border-radius: 50%
+  border: none
+  position: absolute
+  cursor: pointer
+  &:active
+    outline: none
+    &::after
+      transform: scale(1)
+      opacity: 0
+  &::after
+    content: ""
+    position: absolute
+    top: 0%
+    left: 0%
+    width: 100%
+    height: 100%
+    border-radius: 50%
+    background: $white
+    transform-origin: center
+    transform: scale(0.5)
+    transition: all $medium ease
+
+.popup
+  >div
+    transform: translateX(7px)
+
+.name
+  font-family: "RobotoBld"
+  font-size: 12px
+  padding-top: 10px
+
+.address
+  font-family: "RobotoLgt"
+  font-size: 10px
+
+.city
+  font-family: "RobotoLgt"
+  font-style: italic
+  font-size: 8px
+
+.block
+  width: 100%
+  height: 100%
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 2
+  background: rgba($darkGrey, 0.15)
+
+.recomendation
+  font-family: "RobotoBld"
+  color: $white
+  width: 100%
+  height: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  background: rgba($darkGrey, 0.9)
+
+.fullscreen
+  top: 10px
+  left: 10px
+  width: 29px
+  position: absolute

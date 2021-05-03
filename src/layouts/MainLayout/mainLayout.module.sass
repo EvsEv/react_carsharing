@@ -1,0 +1,40 @@
+@import ../../styles/variables
+@import ../../styles/media
+
+.body
+  display: flex
+
+.content
+  max-width: 1376px
+  min-height: 100vh
+  width: 100%
+  padding: 32px 64px
+  margin: 0 auto
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  box-sizing: border-box
+
+.slider
+  width: calc(50% - 32px)
+
+
+@include desktopMinDevice
+  .content
+    width: 100%
+    padding: 32px
+
+  .slider
+    width: calc(410 * 100% / 1024)
+
+@include tabletDevice
+  .slider
+    display: none
+
+@include mobileDevice
+  .body
+    width: 100vw
+    height: 100vh
+    overflow: hidden
+  .content
+    padding: 16px

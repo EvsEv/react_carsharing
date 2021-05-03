@@ -1,0 +1,33 @@
+@import ../../styles/variables
+@import  ../../styles/media
+
+
+.container
+  line-height: 0
+  max-width: $desktopMaxWidth
+  padding: 0 $defaultPadding * 2
+  box-sizing: border-box
+  margin: 0 auto
+  display: flex
+  flex-wrap: wrap
+
+.tabs
+  padding: 0
+  margin: 0
+  list-style: none
+  border-top: 1px solid $lightGrey
+  border-bottom: 1px solid $lightGrey
+
+
+@include desktopMinDevice
+  .container
+    margin: 0
+    width: 100%
+    padding: 0 $defaultPadding 0
+    justify-content: flex-start
+
+
+@include mobileDevice
+  .container
+    padding: 0 $defaultPadding /2 0
+

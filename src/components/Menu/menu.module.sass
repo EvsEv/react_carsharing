@@ -1,0 +1,93 @@
+@import ../../styles/variables
+@import ../../styles/media
+
+.menu
+    width: 100vw
+    height: 100vh
+    padding-left: 128px
+    background: rgba(21, 27, 31, 0.81)
+    box-sizing: border-box
+    display: none
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 5
+
+    &::before
+        content: ""
+        width: calc(50% + 32px)
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        z-index: -1
+        background: #111518
+
+.open
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+.navigation
+    padding-bottom: 38px
+
+.list
+    list-style: none
+    margin: 0
+    padding: 0
+    display: inline-block
+
+.item
+    text-transform: uppercase
+    margin-bottom: calc(50px / 3)
+    &:last-of-type
+        margin-bottom: 0
+
+.link
+    font-family: RobotoMed
+    font-size: 32px
+    line-height: 37px
+    text-decoration: none
+    color: white
+    transition: all $short ease
+
+    &:hover
+        color: $mainAccent
+
+@include desktopMinDevice
+    .menu
+        padding-left: 97px
+        &::before
+            width: calc(614 * 100% / 1024)
+
+@include tabletDevice
+    .menu
+        background: rgb(21, 27, 31)
+
+        &::before
+            display: none
+    .item
+        margin-bottom: 15px
+    .link
+        font-size: 28px
+        line-height: 33px
+
+@include mobileDevice
+    .menu
+        padding:  80px 0 28px 22px
+        justify-content: flex-start
+
+    .link
+        font-size: 22px
+        line-height: 26px
+
+@include mobileMinDevice
+    .menu
+        width: 100%
+        padding-top: 55px
+    .navigation
+        padding-bottom: 20px
+    .link
+        font-size: 16px
+        line-height: 100%
+        margin-bottom: 10px

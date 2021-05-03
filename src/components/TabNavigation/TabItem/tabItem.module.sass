@@ -1,0 +1,51 @@
+@import ../../../styles/variables
+@import ../../../styles/media
+@import ../../../styles/adaptedProperties
+
+.item
+  margin-right: 38px
+  position: relative
+  &::after
+    content: ""
+    width: 0px
+    height: 0px
+    border: 4px solid transparent
+    border-right-width: 0px
+    border-left: 6px solid $darkGrey
+    position: absolute
+    top: 50%
+    right: -22px
+    transform: translateY(-50%)
+
+  &:last-of-type
+    margin-right: 0
+    &::after
+      display: none
+
+.button
+  font-family: "RobotoReg"
+  font-size: 14px
+  font-weight: bold
+  line-height: 16px
+  color: $mainBlack
+  padding: 8px 0
+  background: none
+  outline: none
+  border: none
+  cursor: pointer
+  transition: all $short ease
+  &:disabled
+    color: $darkGrey
+    cursor: default
+
+.active
+  color: $mainAccent
+
+
+@include mobileDevice
+  .item
+    @include adaptedForMobile(margin-right, 7, 21, px )
+    &::after
+      display: none
+  .button
+    @include adaptedForMobile(font-size, 12, 17, px )

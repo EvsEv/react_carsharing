@@ -1,0 +1,51 @@
+@import ../../styles/variables
+@import ../../styles/media
+@import ../../styles/adaptedProperties
+
+.title
+  font-family: "RobotoLgt"
+  font-size: 14px
+  font-weight: normal
+  line-height: 16px
+  color: $mainBlack
+  margin-bottom: 18px
+
+.wrapper
+  display: flex
+  flex-wrap: wrap
+  gap: 16px
+  label
+    font-size: 14px
+    line-height: 16px
+
+.date
+  max-width: 261px
+  .wrapper
+    display: block
+
+.block
+  display: block
+  div
+    margin-bottom: 8px
+    &:last-child
+      margin-bottom: 0
+
+.param
+  margin-top: 32px
+  &:first-of-type
+    margin-top: 0
+
+@include mobileDevice
+  .title
+    font-weight: bold
+    @include adaptedForMobile(font-size, 11, 15, px)
+  .date
+    max-width: 100%
+  .wrapper
+    label
+      @include adaptedForMobile(font-size, 11, 15, px)
+  .param
+    &:last-of-type
+      padding-bottom: 112px
+
+

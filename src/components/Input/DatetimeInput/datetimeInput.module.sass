@@ -1,0 +1,54 @@
+@import ../../../styles/variables
+@import ../../../styles/media
+
+.date
+
+.input
+  font-family: "RobotoLgt"
+  font-size: 14px
+  line-height: 16px
+  color: $mainBlack
+  width: 220px
+  border: none
+  border-bottom: 1px solid $darkGrey
+  &:focus
+    outline: none
+  &::placeholder
+    color: $darkGrey
+  ~button
+    width: 20px
+    height: 100%
+    position: absolute
+    top: 45%
+    right: 7px
+    transform: translateY(-50%)
+    cursor: pointer
+
+    &::before, &::after
+      content: ""
+      width: 11px
+      height: 1px
+      position: absolute
+      top: 50%
+      left: 50%
+      background: $mainBlack
+      transform-origin: center
+      transform: translate(-50%) rotate(45deg)
+    &::after
+      padding: 0
+      transform: translate(-50%) rotate(-45deg)
+
+
+.incorrect
+  border-bottom-color: red
+
+.alert
+  font-size: 10px
+  color: red
+  visibility: hidden
+  opacity: 0
+  transition: all $short ease
+
+.show
+  opacity: 1
+  visibility: visible

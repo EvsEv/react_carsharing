@@ -1,0 +1,81 @@
+@import ../../styles/variables
+@import ../../styles/media
+@import ../../styles/adaptedProperties
+
+.check
+  width: calc(287 * 100% / 1248)
+  padding-top: $defaultPadding
+  padding-left: calc(32 * 100% / 1248)
+  flex-grow: 1
+  display: flex
+  flex-direction: column
+
+.title
+  text-align: end
+  margin-bottom: 26px
+
+@include desktopMinDevice
+  .check
+    width: 35%
+    padding-left: calc(32 * 100% / 896)
+
+@include tabletDevice
+  .check
+    width: 100%
+    padding-top: 0
+    padding-left: 0
+    padding-bottom: calc(#{$defaultPadding} - 15px)
+    margin-top: 0
+    justify-content: flex-end
+    flex-grow: 0
+
+  .dots
+    width: 300px
+
+  .data
+    height: 100vh
+    position: absolute
+    width: 100%
+    bottom: -138px
+    left: -13px
+    right: 0
+    background: #ffffff
+    padding: 32px
+    padding-bottom: 182px
+    box-sizing: border-box
+    transform: translateY(100%)
+    z-index: -1
+    opacity: 0
+    overflow-y: scroll
+
+  .static
+    position: static
+
+
+  .toggle
+    z-index: 1
+    opacity: 1
+    transition: all 0.5s ease
+    transform: translateY(0)
+
+
+@include mobileDevice
+  .check
+    padding-bottom: 0
+    flex-grow: 0
+    position: fixed
+    bottom: $defaultPadding
+
+  .static
+    position: static
+    padding-bottom: $defaultPadding
+    >div
+      padding-bottom: 60px
+    button
+      position: fixed
+      bottom: $defaultPadding
+
+  .title
+    @include adaptedForMobile(font-size, 12, 17, px )
+    text-align: start
+    margin-bottom: 0px

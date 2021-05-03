@@ -1,0 +1,42 @@
+@import ../../styles/variables
+@import ../../styles/media
+
+.footer
+  display: flex
+  justify-content: space-between
+
+.copyright,.phone
+  font-size: 13px
+  line-height: 15px
+
+.copyright
+  color: $darkGrey
+
+.phone
+  color: $mainBlack
+  text-decoration: none
+  transition: all $short ease
+  &:hover, &:active
+    color: $mainAccent
+
+@include mobileDevice
+  .footer
+    padding: 16px
+    margin: 0 -16px -16px
+    background: $lightBlack
+    flex-direction: column-reverse
+    align-items: flex-end
+
+  .phone
+    color: $mainAccent
+    &:hover, &:active
+      color: $lightGrey
+
+  .copyright
+    color: $lightGrey
+    margin-top: 8px
+
+@include mobileMinDevice
+  .footer
+    flex-direction: row
+

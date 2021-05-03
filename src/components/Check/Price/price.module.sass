@@ -1,0 +1,40 @@
+@import ../../../styles/variables
+@import ../../../styles/media
+@import ../../../styles/adaptedProperties
+
+.price
+  font-size: 16px
+  line-height: 16px
+  margin-top: 32px
+  display: flex
+  position: relative
+
+.title
+  font-weight: bold
+  margin-right: 5px
+
+.value
+  flex-shrink: 0
+  transition: all $short ease
+  span
+    color: $darkGrey
+
+.alert
+  font-size: 12px
+  margin: 0 0 0 auto
+  color: red
+  display: block
+
+.invalid
+  font-weight: bold
+  color: red
+
+@include tabletDevice
+  .price
+    margin-bottom: 32px
+
+@include mobileDevice
+  .price
+    margin-top: 10px
+    @include adaptedForMobile(font-size, 12, 17, px)
+    

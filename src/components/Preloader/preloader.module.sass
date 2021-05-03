@@ -1,0 +1,24 @@
+@import ../../styles/variables
+
+.spinner
+  display: inline
+  width: 24px
+  height: 24px
+  border: 3px solid #f5f6f8
+  border-right-color: transparent
+  border-radius: 50%
+  position: absolute
+  top: 50%
+  left: 50%
+  animation: spin 1s infinite linear
+
+
+.mainColor
+  border-color: $mainAccent
+  border-right-color: transparent
+
+@keyframes spin
+  0%
+    transform: translate(-50%, -50%) rotate(45deg)
+  100%
+    transform: translate(-50%, -50%) rotate(405deg)

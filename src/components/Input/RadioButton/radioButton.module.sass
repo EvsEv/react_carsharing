@@ -1,0 +1,41 @@
+@import ../../../styles/variables
+@import ../../../styles/media
+@import ../../../styles/adaptedProperties
+
+.parameter
+
+.radio
+  display: none
+
+.label
+  font-family: "RobotoLgt"
+  color: $darkGrey
+  padding-left: 20px
+  position: relative
+  cursor: pointer
+  transition: all $short ease
+
+  &::before, &::after
+    content: ""
+    width: 12px
+    height: 12px
+    border-radius: 50%
+    background: $mainAccent
+    box-sizing: border-box
+    position: absolute
+    top: 50%
+    left: 0
+    transform: translateY(-50%)
+
+  &::after
+    background: $white
+    transition: all $short ease
+
+.radio:checked ~ .label
+  color: $mainBlack
+  &::after
+    transform: translateY(-50%) scale(0.5)
+
+@include mobileDevice
+  .label
+    @include adaptedForMobile(font-size, 11, 15, px)
